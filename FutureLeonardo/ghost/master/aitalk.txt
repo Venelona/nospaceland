@@ -1,0 +1,1507 @@
+﻿//---------------------------AI Talk--------------------------
+//Alright, this is it! The bread and butter of your ghost. This is where all their random conversations are stored. Of all the .dic files, this is the one you will probably be adding stuff to and updating the most as new dialogue comes to your mind. It is relatively simple in that there aren't many functions or real coding involved with this file, but there are a few cool tricks you can do within randomtalk that can make dialogue with interesting effects, so I'll point them out as we go along.
+//I'm going to leave a lot of examples of different types of dialogue in here that you can study if the possibilities they present intrigue you. Study them carefully!
+
+//Make sure to read the walkthrough (http://www.ashido.com/ukagaka/) for more details about how to properly format ghost dialogue!
+//I will reiterate that you should be editing these in Notepad++, and in particular, you should set the Language to C (or Java I guess) to properly highlight all the text. It will make things A LOT EASIER for you, trust me! It will also help you keep track of your brackets in case you forget some. If you click on a line with a bracket in Notepad++, it should highlight where the other bracket ends, or turn purple if there's no finishing bracket (which you should definitely fix!)
+//It will also highlight my commented lines in green, so you'll know where they are. Any line beginning with // is a commented line that the code will not read. It's just for your reference!
+
+//--AiTalk
+//Leave this alone.
+//Advanced users, this is mostly setting up whether or not dialogue is in a chain before it displays. Again, you can leave it alone unless you want to screw around with chains for some strange reason.
+
+AiTalk
+ {
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if mikireflag == 0
+		{
+			if CHAIN.IDName == "" {
+ 				lastTalk = RandomTalk
+			}
+			else {
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+ 		else
+		{ 
+		MikireTalk
+ 		}
+	}
+ }
+
+
+//--RandomTalk 
+ //Alright, here we go! This is where ALL your ghost's random dialogue will go! These are the conversations that they'll have with you or each other that pop up depending on the talk rate defined in menu.dic (or if you ignored that, set in bootend.dic in the first boot, which would be every five minutes).
+ 
+//*********************Advanced User Info*******************************
+//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+
+//You CAN link to other pools of dialogue in RandomTalk using envelopes/functions, such as %(teatalk) to pull from a pool of dialogue about tea. Then you'd just add that line in among the other dialogue in here with %(teatalk). However, this vastly lowers the probability of dialogue in that function being called. If teatalk only gets called 1/5 times, and it has 10 pieces of dialogue in there, then you're only getting... uh... god, I'm bad at fractions... 1...50th? a chance that a certain teatalk line will appear. LOOK THE GIST IS THAT THE PROBABILITY GETS LOW. This applies to any kind of dialogue in a conditional. A simpler example would be if you have one piece of normal dialogue, and one piece that's an if check that has four pieces of dialogue in there. You'd end up with a 50% chance to get that normal dialogue, and a 50% chance for ONE of the other four pieces of dialogue... which makes the odds of seeing any specific line in that special dialogue that much lower.
+
+//You can't do things like put OnSystemBoot or something in RandomTalk. You could use \![raise] to pull something though, although I'd be careful about it. More on these kind of things and conditionals in general in the coding page on the walkthrough.
+
+//If you split up RandomTalk with if/else checks, then you can redirect in an If to another function, like... if chargermode == "on" { ChargerChatting } else {normal random talk dialogue}. This would redirect the random dialogue to ChargerChatting instead. You can't just throw a function into RandomTalk directly though, like "dialogue 1" "dialogue 2" OnFunctionname "dialogue 3", that kind of thing. You'll have to split it off into its own if or point to it with an envelope.
+
+//You can do multiple ifs in RandomTalk if required... like an if for if a character is asleep, or if a third character is present, or if they're having a nervous breakdown, or if they're sulking. It depends! You can add a bunch of checks leading to specialized pools if you want. Just make sure you leave some normal dialogue in the last else for RandomTalk (unless you want to redirect that somewhere else with an envelope too... although that seems a bit redundant, honestly.)
+//***********************************************************************
+
+RandomTalk : nonoverlap
+{
+	//Alright, here is where all your dialogue will go. I hope you studied how to format dialogue carefully in the walkthrough, as there is little here I can help you with. You're going to have to write most of it yourself. So instead, I'll give you a set of examples to look at.
+	
+	//"\0\s[0]This is a single line of dialogue for the main character. There is no response.\e"
+	
+	//"\1\s[10]This is a single line of dialogue for the side character.\e"
+	
+	//FREE ROAM DIALOGUE
+	if bigmood > -1000 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	{
+		if nowshell == "master" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
+		{
+		//Then these conversations are available! Note the brackets enclosing this set of dialogue.
+			"\0\s[0]You like my end-of-the-world get up? \w8These pants are pretty comfy.\e"
+		}
+	
+		//You can also put in multiple ifs checking for the same thing to vary the responses. In this case, it's checking to see if they're wearing another shell. You don't need to use elseifs for this! Just an if is fine.
+		if nowshell == "Chin Stripes"
+		{
+			"\0\s[34]You like my chin bananas, \w3huh? \w8\w4\s[53]Do they make me look older?\e"
+		
+			"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need more bandages\w4.\w4.\w4.\f[sub,false]\e"
+		
+			"\0\s[12]\i[5]*He's scratching his chin.\s[12]\e"
+		
+			"\0\s[12]\i[5]*He's rubbing his chin.\s[12]\e"
+		}
+		if nowshell == "Neon Leon"
+		{
+			"\0\s[0]You like my end-of-the-world get up? \w8These pants are pretty comfy.\e"
+		
+			"\0\s[15]I need to clean up my pockets\w3.\w3.\w3.\e"
+		
+			"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need more bandages\w4.\w4.\w4.\f[sub,false]\e"
+		}
+	
+		//Profanity
+		if Profanity == 1 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[63]I cannot believe you wanted me to call you\w3.\w3.\w3. \w8\w4so innapropriate\w3.\w3.\w3.\e"
+		}
+		
+		//food n supplies
+		if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && pizzagot == 1
+		{
+			"\0\s[0]\i[5]*He smells like the pizza you gave him.\s[0]\e"
+		
+			"\0\s[23]Thank you again for the pizza. \w8\w4\s[0]I promise we'll eat it all. \w8\w4\s[19]Yes, \w3the box too.\e"
+		
+			"\0\s[35]\i[5]*He's thinking about that pizza you gave him.\s[35]\e"
+			
+			"\0\s[0]\i[5]\i[6]*He's thinking about that pizza you gave him.\e"
+		}
+	
+		if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && supgot == 1
+		{
+			"\0\s[119]\i[6]*He is checking if the bag you gave him is still there.\e"
+		
+			"\0\s[19]Thank you for those supples. \w8\w3\s[0]They are truly invaluable for us, \w3\s[23]every little thing.\e"
+		
+			"\0\s[2]\i[5]*He's wondering what have you put in that supplies bag you've given him.\s[2]\e"
+		
+			"\0\s[0]\i[5]\i[6]*He is very happy about the bag you gave him.\e"
+		}
+	
+		if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && supgot == 1 && pizzagot == 1
+		{
+			"\0\s[119]\i[6]*He is checking if the stuff you gave him is still there.\e"
+		
+			"\0\s[74]You know that you don't have to give me anything while I'm here, \w3\s[72]right? \w8\w4\s[79]But\w3.\w3.\w3. \w3\s[97]thank you.\e"
+		
+			"\0\s[14]\i[5]*He's wondering how did you give him stuff if he's inside of your computer.\s[14]\e"
+		
+			"\0\s[0]\i[5]\i[6]*He's imagening how people back at the Resistance will react when he brings them the stuff you gave him.\e"
+		}
+			
+		//Pets stuff
+		if petadd > 50 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[50]\i[5]*He doesn't say it, but it looks like he wants more pets.\s[50]\e"
+		
+			"\0\s[49]\i[5]*He's thinking about your pets.\s[49]\e"
+		
+			"\0\s[2]\i[5]*He's wondering when you will pet him again.\s[2]\e"
+		
+			"\0\s[56]\i[5]*He's wondering if you will pet him again.\s[56]\e"
+		}
+		//More pets
+		if petadd > 100 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[50]\i[5]*You can hear him mumble something. \n\n[half]\f[sub,true]\s[50]\w8\w6.\w3.\w3.\w3.\w3mo\w3re \w4pe\w3ts?\w3.\w3.\w3.\w3.\f[sub,false]\e"
+		}
+		//500 PETS!!!
+		if petadd >= 500 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]I can't believe you pet me, \w3like, \w3five hundred times. \w8\w4Really. \w8\w4\s[19]Damn. \w8\w4\s[57]Thank you, \w3I guess? \w8\w4\s[19]Come here, \w3I'll pet your head, \w3too. \w8\w4\s[23]Good job.\e"
+		}
+	
+	
+		"\0\s[2]I wonder why I got here\w3.\w3.\w3.\e"
+	
+		"\0\s[14]I wonder if I can teleport out of this computer\w3.\w3.\w3.\e"
+	
+		"\0\s[11]\i[5]*He looks to be deep in thought.\s[11]\e"
+		
+		"\0\s[100]War\w3.\w3.\w3. \w8\w8has \w3changed\w3.\w3.\w3.\e"
+	
+	
+		//"\0\s[0]I am pausing \w4for dramatic \w6emphasis. \w8P\w6 - \w6A - \w6U - \w6S - \w6E.\e"
+	
+	
+		"\0\s[27]\i[5]He's looking at you closely. Well, as close as he can with his pixel-y pupils.\w3\0\s[26]\n\n[half]Huh?\e"
+	
+		"\0\s[21]Never thought I'd miss green trees\w4.\w4.\w4. \w8and orange \ntrees\w4.\w4.\w4. \w8and purple trees\w4.\w4.\w4.\e"
+	
+		"\0\s[100]\i[5]*He seems to be listening intently. \w8\w8\w8\w8\s[20]\n\n[half]Oh? Sorry, I thought I heard an enemy approaching. \n\w8\s[0]Forgot where I was for a second there.\e"
+	
+		"\0\s[18]I wonder if I can bring other folks here\w5.\w5.\w5.\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need to tell Casey about old fashioned computers\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need to teach Casey this move\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need to check on Mikey\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...my turn to polish the shells\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...what would Raph do\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...dad would like this\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...resistance\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...krang\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...my fault\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...knows so much of my world\w4.\w4.\w4. of my past\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...would guys believe me about this\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...squad 17 haven't reported back yet\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...hope they're doing fine without me\w4.\w4.\w4.\f[sub,false]\e"
+	
+		//"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...did I give Drax his orders?\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]I hope everyone back at the Resistance are managing\w4.\w4.\w4.\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true].\w3.\w3.\w3need to manage our resources\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[18]I think I mixed up squad 6 and squad 9 again\w3.\w3.\w3.\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true].\w3.\w3.\w3hope Casey isn't too worried about me\w4.\w4.\w4.\f[sub,false]\e"
+	
+		"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]W\w3W\w3L\w3J\w3D\w4.\w4.\w4.\f[sub,false]\e"
+	
+		//"\0\s[1]%(username)!! Quickly!! BEHIND YOU! TURN AROUND!!! AAAAAAA- \[s0]Ha! \w3Gotcha! \w3Gosh, It'd been forever since I could saythis as a joke.\s[2]\n\n[half]*You tell Leo you didn't turn around.\s[0]\n\n[half]Your mistake, %(username), you really should be more careful.\e"
+	
+		"\0\s[2]\i[5]*You can hear him hum a song.\s[2]\n\n[half].\w3.\w3.\w3should host another karaoke night\w5.\w5.\w5.\e"
+	
+		"\0\s[100]\i[5]*He's looking around.\e"
+	
+		"\0\s[50]\i[5]*He tries to ninja his way into your more private folders.\w8\w5\s[0]\n\n[half]Let me \w1i\w1i\w1i\w1i\w1n.\e"
+	
+		"\0\s[2]\i[5]*He's humming a song.\e"
+	
+		"\0\s[48]\i[5]*He's meditating.\e"
+		
+		"\0\s[15]Did I turn the stove off before getting here?\i[5]\w5.\w5.\w5. \w8\s[20]eh, probably.\e"
+	
+		"\0\s[15]Did I turn the stove off before getting here?\i[5]\w5.\w5.\w5.\w5.\w5.\w5. \w8\w4\s[14]oops.\e"
+	
+		"\0\s[0]Do you mind if I train here? \w8\w4A lot of space I can cra- \w4\s[26]a\w3a\w3a\w3i mean \s[0]\w6practice around. \w8\w8\w5\s[28]\f[sub,true]Saved it.\f[sub,false]\e"
+	
+		"\0\s[11]How long have I been here? \w8\w4I'm not sure if time is flowing much slower or incredibly faster\w2.\w2.\w2.\e"
+	
+		"\0\s[2]%(username)\w3.\w3.\w3. \w8\w4what an odd name\w3.\w3.\w3.\e"
+	
+		"\0\s[15]Is there anything mystical about this computer? \n\w8\w4Aside for it being pretty ancient.\e"
+	
+		"\0\s[0]I hope weather outside is nice. \w8\w4Although, \w3nowadays, \w3where I'm from, \w2\s[21]rain is much more preferable.\e"
+	
+		"\0\s[29]\i[5]*He tightens his bandana.\e"
+	
+		//"\0\s[2]\i[5]*He's rubbing his right arm. \w8You wonder if it's uncomfortable.\s[2]\e"
+	
+		//"\0\s[2]\i[5]*He's rubbing his right arm. \w8You wonder if he feels phantom pain.\s[2]\e"
+	
+		"\0\s[100]\i[5]*You catch a glimpse of Leo touching bandanas on his sword. \w8He's probably thinking about his brothers.\s[100]\e"
+	
+		"\0\s[0]\i[6]\i[5]*He's daydreaming.\e"
+	
+		"\0\s[2]\i[5]*He sighs. \w8You can see how he aged\w3.\w3.\w3.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's humming a catchy tune. \w8Sounds like the show's opening theme\w3.\w3.\w3.\s[2]\e"
+	
+		"\0\s[2]I hope I won't be late for my mission\w3.\w3.\w3.\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably Raph.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably Mikey.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably Donnie.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably April.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably Splinter.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably Casey Jr.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably the Resistance.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6Probably the Krang.\s[2]\e"
+	
+		"\0\s[2]\i[5]*He's humming a tune. \w6\w6\s[2]\f[sub,true]\n\n[half].\w3.\w3.\w3dabudi dabudai\w3.\w3.\w3.\f[sub,false]"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6\s[30]\i[5]You, maybe?\w8\w8\w6\s[2]\e"
+
+		"\0\s[0]I told Cass we'll train together today\w3.\w3.\w3. \s[35]I hope she \nwon't be too mad.\e"
+		
+		//"\0\s[0].\e"
+		if month >= 12 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for December.\w8\1\s[18]A cold month?\e"
+		
+			"\0\s[0]December, \w3huh? \w8\w4\i[6]No wonder I've been feeling sleepy lately\w3.\w3.\w3.\e"
+		}
+	
+		//So you can use these to check for any number of situations. I think this feature is really neat, so I'm going to set up some quick default responses for the months, days, and time of day. If you don't want to do these, you can just delete this whole set of ifs down to the //--Double Envelopes section below.
+		//You can also nest ifs within these, so you could check if it was the 25 of April in the morning for example. You can also add or take away dialogue from these as you like, so if you want to have five dialogue options for April or one for January, you can totally do that.
+	
+		if month == 1 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for January.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Happy New Year. \w8\w2May no aliens attack your dimension.\e"
+		}
+		if month == 2 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for February.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]When will February end? \w8\w1\s[9]Winter is always the roughest.\e"
+		}
+		if month == 3 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for March.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]It's March, right? \w8Spring is\w3.\w3.\w3. \w6not very different from any other season back home.\e"
+		}
+		if month == 4 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for April.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[23]April~ \w6April~ \w8\w4\s[0]Best month to tease my dear friend\w6.\w6.\w6. \w8\w4Rupert. \w8He's allergic to pollen.\e"
+		}
+		if month == 5 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for May.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[23]\f[italic,true]May\f[italic,false] \w8I ask what month is it currently?\e"
+		}
+		if month == 6 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for June.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Summer time\w3.\w3.\w3. \w8\w4\s[22]I hope you can enjoy a nice day on the beach, \w3%(username).\e"
+		}
+		if month == 7 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+		//"\0\s[0]This is dialogue for July.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Ah, \w3July, \w3my favourite month. \w8\w2\s[17]Well, used to be. \w8\w2Right now all of them feel pretty much the same. \w8\w8\s[19]Still, July's pretty great.\e"
+		}
+		if month == 8 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+		//"\0\s[0]This is dialogue for August.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]August\w3.\w3.\w3. \w8\w2\s[100]Donnie really liked August\w3.\w3.\w3.\e"
+		}
+		if month == 9 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+		//"\0\s[0]This is dialogue for September.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]As a kid, \w3\s[19]I always hated September. \w8\w2And as a teen, \w2too. \n\w8\w2\s[79]Now\w3.\w3.\w3. \w6\s[2]winter's much worse.\e"
+		
+			"\0\s[2]I can't remember\w3.\w3.\w3. \w8\w5What happened in September\w3.\w3.\w3.\e"
+		}
+		if month == 10 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for October.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[19]October rocks. \w8\w2Halloween was always so sick. \w8\w2I hope you enjoy it.\e"
+		
+			"\0\s[20]Looking for a Halloween costume? \w8\w2\s[19]I suggest a handsome turtle ninja master.\e"
+		}
+		if month == 11 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for November.\w8\1\s[10]Yup.\e"
+		
+			//its about my birthday LMAO listen month dialogue was hard to come up with
+			"\0\s[0]Someone's birthday is in November\w3.\w3.\w3. \w8\w2\s[30]Happy brithday, \w3pal\w3.\w3.\w3.\e"
+		}
+		//These ifs check what day of the week it is.
+		if weekday == 1 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Monday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Mondays, \w3\s[19]am I right?\e"
+		
+			"\0\s[17]It's Monday? \w8\w3AGAIN? \w8\w3Jeez\w3.\w3.\w3.\e"
+		}
+		if weekday == 2 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Tuesday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]It's Tuesday, \w3right? \w8\w3\s[19]My turn to patrol today.\e"
+		}
+		if weekday == 3 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Wednesday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[100]I hope I won't miss my Wednesday training session\w3.\w3.\w3.\e"
+		}
+		if weekday == 4 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Thursday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]Thursday\w3.\w3.\w3. \w8\w3Mikey's probably back home already.\e"
+		}
+		if weekday == 5 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Friday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]It's Friday, and do you know what that means? \w8\s[24]\i[6]\w3Karaoke night, \s[25]toda la noche hasta la medianoche!\e"
+		
+			"\0\s[0]Last day before weekends, \w3right, \w3compadre? \w8\w3\s[23]I hope you can get some rest.\e"
+		}
+		if weekday == 6 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Saturday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Saturday\w3.\w3.\w3. \w8\w3the sleep day. \w8\w3Aka the day when I get the most sleep. \w8\w6Whole 2 hours.\i[6]\e"
+		}
+		if weekday == 7 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Sunday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Had a productive week? \w8\w4Good job.\e"
+		}
+		
+		if timeslot == "earlymorning" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[22]Gee, \w3it's early\w3.\w3.\w3. \w8\w4\s[0]Well, \w4\s[19]like they say, \w4\s[23]early bird gets the rat.\e"
+		
+			"\0\s[27]Why are you up so early, \w3%(username)? \w8\w3\s[26]Is it an emergency? \w8\w3Need any help?\e"
+		}
+		if timeslot == "morning" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]Ready for a productive day? \w8\w4\s[23]Don't worry, \w4me neither."
+		
+			//"\0\s[0]This is more dialogue for the morning.\w8\1\s[10]That it is.\e"
+		}
+		if timeslot == "lunch" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[20]Did you have lunch already?\e"
+		
+			"\0\s[18]Is it my turn to eat lunch today?\w3.\w3.\e"
+		}
+		if timeslot == "afternoon" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for the afternoon.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]\i[5]*It's afternoon.\s[2]\e"
+		}
+		if timeslot == "evening" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[22]It feels nice to spend a nice evening on a nice desktop screen.\e"
+		
+			//"\0\s[0]This is more dialogue for the evening.\w8\1\s[10]That it is.\e"
+		}
+		if timeslot == "latenight" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]It's getting late, \w3ain't it?\e"
+		
+			"\0\s[100]It's getting dark. \w8\w3Stay alert, \w3compadre.\e"
+		}
+		if timeslot == "midnight" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]It's past midnight. \w8\w4\s[19]Back home you should be back in the Resistance by this time, \w3unless you are on a mission\w3.\w3.\w3. \w8\w4\s[57]Or stuck in someone's computer.\e"
+		
+			"\0\s[100]Curfew is up.\e"
+		
+			"\0\s[2]Es el toque de queda de medianoche.\e"
+		}
+	}
+	
+	//post ded reveal
+	if raphchain == 3 || donchain == 3 || splinterchain == 3
+	{
+		"\0\s[82]\i[5]*You can hear him sigh.\s[82]\e"
+		
+		"\0\s[85]\i[5]*He's looking at the photo again.\s[85]\e"
+		
+		"\0\s[2]\i[5]*He's deep in thought.\s[2]\e"
+		
+		"\0\s[2]\i[5]*He's thinking about the past.\s[2]\e"
+		
+		"\0\s[2]\i[5]*He's silent.\s[2]\e"
+		
+		"\0\s[30]\i[5]*He's thinking about his family.\s[30]\e"
+		
+		"\0\s[2]\i[5]*He's quiet. \w8\w4It seems he'll be like that the whole day.\s[2]\e"
+		
+		"\0\s[2]\i[5]*He's quiet. \w8\w4Maybe it's better to send him back home.\s[2]\e"
+		
+		"\0\s[82]\i[5]*It's been a tough conversation\w3.\w3.\w3. \w8\w4Maybe it's better to let him go home for now.\s[82]\e"
+		
+		"\0\s[79]\i[5]*Looks like your conversation did a number on him.\s[79]\e"
+	}
+	
+		
+	//A happier Leo
+	if happycount >= 125 && bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	{
+		if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && pizzagot == 1
+		{
+			"\0\s[0]\i[5]*He smells like the pizza you gave him.\s[0]\e"
+		
+			"\0\s[23]Thank you again for the pizza. \w8\w4\s[0]I promise we'll eat it all.\n\w8\w4\s[19]Yes, \w3the box too.\e"
+		
+			"\0\s[35]\i[5]*He's thinking about that pizza you gave him.\s[35]\e"
+			
+			"\0\s[0]\i[5]\i[6]*He's thinking about that pizza you gave him.\e"
+		}
+	
+		if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && supgot == 1
+		{
+			"\0\s[119]\i[6]*He is checking if the bag you gave him is still there.\e"
+		
+			"\0\s[19]Thank you for those supples. \w8\w3\s[0]They are truly invaluable for us, \w3\s[23]every little thing.\e"
+		
+			"\0\s[2]\i[5]*He's wondering what have you put in that supplies bag you've given him.\s[2]\e"
+		
+			"\0\s[0]\i[5]\i[6]*He is very happy about the bag you gave him.\e"
+		}
+	
+		if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && supgot == 1 && pizzagot == 1
+		{
+			"\0\s[119]\i[6]*He is checking if the stuff you gave him is still there.\e"
+		
+			"\0\s[74]You know that you don't have to give me anything while I'm here, \w3\s[72]right? \w8\w4\s[79]But\w3.\w3.\w3. \w3\s[97]thank you.\e"
+		
+			"\0\s[14]\i[5]*He's wondering how did you give him stuff if he's inside of your computer.\s[14]\e"
+		
+			"\0\s[0]\i[5]\i[6]*He's imagening how people back at the Resistance will react when he brings them the stuff you gave him.\e"
+		}
+			
+		//Pets stuff
+		if petadd > 50 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[50]\i[5]*He doesn't say it, but it looks like he wants more pets.\s[50]\e"
+		
+			"\0\s[49]\i[5]*He's thinking about your pets.\s[49]\e"
+		
+			"\0\s[2]\i[5]*He's wondering when you will pet him again.\s[2]\e"
+		
+			"\0\s[56]\i[5]*He's wondering if you will pet him again.\s[56]\e"
+		}
+		//More pets
+		if petadd > 100 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[50]\i[5]*You can hear him mumble something. \n\n[half]\f[sub,true]\s[50]\w8\w6.\w3.\w3.\w3.\w3mo\w3re \w4pe\w3ts?\w3.\w3.\w3.\w3.\f[sub,false]\e"
+		}
+		//500 PETS!!!
+		if petadd >= 500 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]I can't believe you pet me, \w3like, \w3five hundred times. \w8\w4Really. \w8\w4\s[19]Damn. \w8\w4\s[57]Thank you, \w3I guess? \w8\w4\s[19]Come here, \w3I'll pet your head, \w3too. \w8\w4\s[23]Good job.\e"
+		}
+		
+		"\0\s[2]\i[5]*He's humming a tune. \w6\w6\s[2]\f[sub,true]\n\n[half]...dabudi dabudai\w3.\w3.\w3.\f[sub,false]"
+	
+		"\0\s[2]\i[5]*He's thinking about something. \w6\w6\s[30]\i[5]You, \w3maybe?\w8\w8\w6\s[2]\e"
+
+		"\0\s[0]I told Cass we'll train together today\w3.\w3.\w3. \w8\w4\s[35]I hope she \nwon't be too mad.\e"
+		
+		//"\0\s[0].\e"
+		if month >= 12 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for December.\w8\1\s[18]A cold month?\e"
+		
+			"\0\s[0]December, huh? \w8\w4\i[6]No wonder I've been feeling sleepy lately...\e"
+		}
+	
+		//So you can use these to check for any number of situations. I think this feature is really neat, so I'm going to set up some quick default responses for the months, days, and time of day. If you don't want to do these, you can just delete this whole set of ifs down to the //--Double Envelopes section below.
+		//You can also nest ifs within these, so you could check if it was the 25 of April in the morning for example. You can also add or take away dialogue from these as you like, so if you want to have five dialogue options for April or one for January, you can totally do that.
+	
+		if month == 1 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for January.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Happy New Year. \w8\w2May no aliens attack your dimension.\e"
+		}
+		if month == 2 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for February.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]When will February end? \w8\w1\s[9]Winter is always the roughest.\e"
+		}
+		if month == 3 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for March.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]It's March, \w3right? \w8Spring is\w3.\w3.\w3. \w6not very different from any other season back home.\e"
+		}
+		if month == 4 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for April.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[23]April~ \w6April~ \w8\w4\s[0]Best month to tease my dear friend\w6.\w6.\w6. \w8\w4Rupert. \w8He's allergic to pollen.\e"
+		}
+		if month == 5 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for May.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[23]\f[italic,true]May\f[italic,false] \w8I ask what month is it currently?\e"
+		}
+		if month == 6 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for June.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Summer time\w3.\w3.\w3. \w8\w4\s[22]I hope you can enjoy a nice day on the beach, \w3%(username).\e"
+		}
+		if month == 7 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+		//"\0\s[0]This is dialogue for July.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Ah, \w3July, \w3my favourite month. \w8\w2\s[17]Well, used to be. \w8\w2Right now all of them feel pretty much the same. \w8\w8\s[19]Still, \w3July's pretty great.\e"
+		}
+		if month == 8 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+		//"\0\s[0]This is dialogue for August.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]August\w3.\w3.\w3. \w8\w2\s[100]Donnie really liked August\w3.\w3.\w3.\e"
+		}
+		if month == 9 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+		//"\0\s[0]This is dialogue for September.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]As a kid, \w3\s[19]I always hated September. \w8\w2And as a teen, \w2too. \n\w8\w2\s[79]Now\w3.\w3.\w3. \w6\s[2]winter's much worse.\e"
+		
+			"\0\s[2]I can't remember\w3.\w3.\w3. \w8\w5What happened in September\w3.\w3.\w3.\e"
+		}
+		if month == 10 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for October.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[19]October rocks. \w8\w2Halloween was always so sick. \w8\w2I hope you enjoy it.\e"
+		
+			"\0\s[20]Looking for a Halloween costume? \w8\w2\s[19]I suggest a handsome turtle ninja master.\e"
+		}
+		if month == 11 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for November.\w8\1\s[10]Yup.\e"
+		
+			//its about my birthday LMAO listen month dialogue was hard to come up with
+			"\0\s[0]Someone's birthday is in November\w3.\w3.\w3. \w8\w2\s[30]Happy brithday, \w3pal\w3.\w3.\w3.\e"
+		}
+		//These ifs check what day of the week it is.
+		if weekday == 1 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Monday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Mondays, \w3\s[19]am I right?\e"
+		
+			"\0\s[17]It's Monday? \w8\w3AGAIN? \w8\w3Jeez\w3.\w3.\w3.\e"
+		}
+		if weekday == 2 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Tuesday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]It's Tuesday, \w3right? \w8\w3\s[19]My turn to patrol today.\e"
+		}
+		if weekday == 3 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Wednesday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[100]I hope I won't miss my Wednesday training session\w3.\w3.\w3.\e"
+		}
+		if weekday == 4 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Thursday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]Thursday\w3.\w3.\w3. \w8\w3Mikey's probably back home already.\e"
+		}
+		if weekday == 5 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Friday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]It's Friday, \w3and do you know what that means? \w8\s[24]\i[6]\w3Karaoke night, \s[25]toda la noche hasta la medianoche!\e"
+		
+			"\0\s[0]Last day before weekends, \w3right, \w3compadre? \w8\w3\s[23]I hope you can get some rest.\e"
+		}
+		if weekday == 6 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Saturday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Saturday\w3.\w3.\w3. \w8\w4the sleep day. \w8\w3Aka the day when I get the most sleep. \w8\w6Whole 2 hours.\i[6]\e"
+		}
+		if weekday == 7 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for Sunday.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[0]Had a productive week? \w8\w4Good job.\e"
+		}
+		
+		if timeslot == "earlymorning" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[22]Gee, \w3it's early\w3.\w3.\w3. \w8\w4\s[0]Well, \w4\s[19]like they say, \w4\s[23]early bird gets the rat.\e"
+		
+			"\0\s[27]Why are you up so early, \w3%(username)? \w8\w3\s[26]Is it an emergency? \w8\w3Need any help?\e"
+		}
+		if timeslot == "morning" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]Ready for a productive day? \w8\w4\s[23]Don't worry, \w4me neither."
+		
+			//"\0\s[0]This is more dialogue for the morning.\w8\1\s[10]That it is.\e"
+		}
+		if timeslot == "lunch" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[20]Did you have lunch already?\e"
+		
+			"\0\s[18]Is it my turn to eat lunch today?\w3.\w3.\e"
+		}
+		if timeslot == "afternoon" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			//"\0\s[0]This is dialogue for the afternoon.\w8\1\s[10]Yup.\e"
+		
+			"\0\s[2]\i[5]*It's afternoon.\s[2]\e"
+		}
+		if timeslot == "evening" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[22]It feels nice to spend a nice evening on a nice desktop screen.\e"
+		
+			//"\0\s[0]This is more dialogue for the evening.\w8\1\s[10]That it is.\e"
+		}
+		if timeslot == "latenight" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]It's getting late, \w3ain't it?\e"
+		
+			"\0\s[100]It's getting dark. \w8\w3Stay alert, \w3compadre.\e"
+		}
+		if timeslot == "midnight" && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[0]It's past midnight. \w8\w4\s[19]Back home you should be back in the Resistance by this time, \w3unless you are on a mission\w3.\w3.\w3. \w8\w4\s[57]Or stuck in someone's computer.\e"
+		
+			"\0\s[100]Curfew is up.\e"
+		
+			"\0\s[2]Es el toque de queda de medianoche.\e"
+		}
+		
+		"\0\s[23]Thank you for treating me the way you do. \w8\w3\s[0]Even in the war, \s[2]some humans still \w4side eye us mutants.\e"
+		
+		"\0\s[23]Thank you for spending time with me. \w8\w5\s[22]It's a good breather from what's going on back home.\e"
+	
+		"\0\s[0]Remember to take breaks! \n\n[half]\i[5]\w8*You ask him if \s[26]\i[5]he takes breaks. \0\s[26]\n\n[half]\w8We're not talking about me! \w8\w6\0\s[0]Besides, \w6\s[19]technically, \w6\s[20]I'm on a break right now.\e"
+		
+		"\0\s[100]You can never lower your defences\w5.\w5.\w5. \w8\s[20]But this place is pretty chill.\e"
+		
+		"\0\s[0]You don't invite any other turtles here when I'm gone,\n\w5do you?\e"
+	
+		"\0\s[23]I hope your day has been going well. \s[0]It's hell on Earth back home for me.\e"
+	
+		"\0\s[0]If the weather is nice, \w3you should go outside. \w8\w4\s[21]Enjoy the world\w3.\w3.\w3.\e"
+		
+		"\0\s[0]\i[6]\i[5]*He seems relaxed.\e"
+		
+		"\0\s[0]\i[6]\i[5]*He's whistling a tune.\e"
+	
+		"\0\s[0]\i[6]\i[5]*He seems at ease.\e"
+		
+		"\0\s[0]You know, \s[19]I actually enjoy this place. \w8\w4You can say \s[24]\i[6]I like \w4C\w2R\w2\s[25]A\w2S\w2H\w2I\w2N\w2G \w4here.\e"
+		
+		"\0\s[85]\i[5]*He's looking at the photo of his family\w3.\w3.\w3.\s[85]\e"
+			
+		//Great mood Leo
+		if bigmood > 120 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[95]\i[5]\i[6]*You can see tiredness melt away from his shoulders\w3.\w3.\w3.\e"
+		
+			"\0\s[52]\i[5]*He looks pretty upbeat.\s[52]\e"
+		}
+	
+	}
+	
+	//Bad mood Leo
+	if bigmood < -15 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	{
+		"\0\s[2]\i[5]*He seems bummed out.\s[2]\e"
+		
+		"\0\s[2]\i[5]*He seems to be not in the mood.\s[2]\e"
+		
+		"\0\s[100]\i[5]*He seems more quiet than usual.\s[100]\e"
+		
+		"\0\s[100]\i[5]*You hear a heavy sigh.\s[100]\e"
+		//really bad mood leo
+		if bigmood <= -50 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		{
+			"\0\s[84]\i[5]*He's looking at the photo of his family\w3.\w3.\w3.\s[84]\e"
+		
+			"\0\s[86]\i[5]*Looks like he's going down the memory lane\w3.\w3.\w3.\s[86]\e"
+		
+			"\0\s[84]\i[5]*He looks sad\w3.\w3.\w3.\s[84]\e"
+		}
+	
+	}
+	
+	
+	//Here is what a simple two line exchange between your characters might look like. Either character can start a piece of dialogue, it doesn't always have to be the main one.
+	
+	//"\0\s[0]This is a three-step piece of dialogue.\w8\1\s[10]Here is the response.\w8\0\s[0]\n\n[half]Here is the third step.\e"
+	
+	//Note here that the code comes back to character 0 and spaces out their second statement with \n\n (or \n\n[half]... really whatever spacing looks best in your balloon). This makes it so the next line of dialogue from them is spaced apart from the previous in the balloon, which will make it easier for your user to read.
+	
+	//"\0\s[0]This is a long piece of dialogue.\w8\1\s[10]This is my first response.\w8\0\s[0]\n\n[half]This is my response to that.\w8\1\s[10]\n\n[half]This is my second response.\w8\0\s[0]\n\n[half]And this is my last response.\w8\1\s[10]\n\n[half]This is my final word.\e"
+	
+	//As you can see, you can extend a conversation as long as you want by remembering to space things with \n\n as needed.
+	
+	//"\0\s[1]This is dialogue with my embarrassed pose.\w8\1\s[11]This is also dialogue with my embarrassed pose.\e"
+	
+	//Note here that s[0] has become s[1] and s[10] has become s[11]. As I explained in the walkthrough, the \s[] tag determines the pose of your ghost. Poses are defined in surfaces.txt within your shell's folder. If you're following my guidelines for your ghost, you should have around ten poses for each character. You can change the \s[] value depending on what expression you want your ghost to have.
+	
+	//"\0\s[5]In this dialogue, I will go from happy \s[4]to sad.\e"
+	
+	//As you can see here, you can change your ghost's expression while they are speaking. This can make their expression vary dynamically depending on what they're talking about.
+	
+	//"\0\s[0]I am saying something surprising. \1\s[12]\0\s[0]Triangle is surprised.\e"
+	
+	//You can also change the side character's expression while the other character is talking. Note here that after the surprising statement, Triangle's pose is changed to s[12]. Then the focus is brought back to Girl with the \0 tag and she resumes talking. You can change focus without having the character actually say anything to accomplish just this effect.
+
+	
+	//Here's dialogue with all of their poses so you can see them in action. Note how the \s number changes for each of them. They don't have to match of course, you can have one character happy and one character sad and do whatever you like. These are just examples you can rewrite as you like with your own dialogue.
+	
+	
+	//"\1\s[10]Here is dialogue on one line.\nHere is dialogue on the next line.\e"
+	
+	//You can use \n to move dialogue down one line, like hitting enter once. 
+	
+	//"\0\s[0]This is dialogue referring to %(username).\w8\1\s[10]Hello, %(username).\e"
+	
+	//Here, the characters are using the %(username) envelope to use the user's name. More on envelopes in word.dic. You can use any envelope you want in dialogue, practically.
+	
+	//"\1\s[10]Here is dialogue using %(username)'s pronouns.\w8\0\s[0]%(heshe) went to the store and got %(himher)self some milk for %(hisher) cat.\e"
+	
+	//You can use the pronouns set up during their first boot (see bootend.dic) or in the config menu (menu.dic) in sentences like this as well. You can see that the envelope %(heshe) replaces where he or she would be in the sentence, and so on for the rest of them. This makes it so they use the correct pronoun in the right place.
+	
+	//"\1\s[10]Here we'll use the envelope 'exampleenvelope' to show what it looks like in a balloon.\w8\0\s[0]%(exampleenvelope).\e"
+	
+	//As you can see, you can put any envelope from word.dic in here, as long as you properly format it as an envelope by putting a percent sign in front and putting it in parentheses. %(username), %(icecream), %(bunnies), whatever, this is up to you as long as you've defined it in word.dic. You can see how the values stored in the envelope appear in the balloon when the dialogue is called.
+	//Do note that you cannot put quotation marks in your dialogue. If you're using Notepad++ which you should be doing, you'll see the line break and turn black if you do. Use apostrophes instead.
+	
+	//"\1\s[10]Here we'll use the envelope 'blanklist' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist).\e"
+	
+	//"\1\s[10]Here we'll use the envelope 'blanklist2' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist2).\e"
+	
+	//"\1\s[10]Here we'll use the envelope 'blanklist3' to show what it looks like in a balloon.\w8\0\s[0]%(blanklist3).\e"
+	
+	//And here are more examples using the blanklists I set up in word.dic.
+	
+	//"\1\s[10]Here we'll use the envelope 'usersfolder' to pretend to look at the user's files.\w8\0\s[0]Hey, have you looked at %(usersfolder) lately?\w8\1\s[19]\n\n[half]No.\e"
+	
+	//You can use the usersfolder envelope creatively if you like, haha.
+	
+	//"\1\s[10]Here we'll use the envelope 'internalenvelope' to show an envelop containing another envelope.\w8\0\s[0]%(internalenvelope).\e"
+	
+	//Here's an example using the internal envelope I mentioned in word.dic. Basically, a function within a function. More on that kind of thing on the coding page of the walkthrough.
+	
+	//"\0\s[0]Here is dialogue referring to Anchor 1.\w8\0\s[0]Here is dialogue referring to Anchor 2 and Anchor 3.\e"
+	
+	//Anchor words are defined more in anchor.dic. Note here when you see this dialogue that Anchor 1, 2, and 3 become links when spoken, even if they weren't written as links in the dialogue in this file. This is why anchor words are convenient, you don't have to set up link code every time they say a certain word. Try clicking the links when they appear to see what they lead to. It'll give you an idea of exactly how anchors work.
+	
+	
+	//--Chains
+	//Chain dialogue is unique. A dialogue chain consists of multiple bits of dialogue that get called in order over a period of time.
+	if happycount >= 325 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && raphded == 0 && raphpoint >=5
+	{
+		"\0\s[2]\i[5]*He sighs.\s[2]\e:chain=sadchaingogogo"
+	}
+	if happycount >= 350 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && donded == 0 && donpoint >=5
+	{
+		"\0\s[2]\i[5]*He sighs.\s[2]\e:chain=sadchaingogogo"
+	}
+	if happycount >= 250 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && dadded == 0 && splinterpoint >=5
+	{
+		"\0\s[2]\i[5]*He sighs.\s[2]\e:chain=sadchaingogogo"
+	}
+	//"\0\s[0]This is the first part of a chained dialogue.\w8\1\s[10]Second part to come when we next speak.\e:chain=achain"
+	
+	//Note here that instead of ending the dialogue with the normal end tag of \e, it ends with \e:chain=achain. This will link down below to a chunk of code outside RandomTalk called achain. You can scroll down and find it now if you want. You can name your chain anything you want, it'd just follow the same format of \e:chain=yourchainsname. Once a dialogue has entered a chain, they won't say any other random dialogue until the chain is finished.
+	
+	//"\0\s[0]This will lead to the second piece of chained dialogue.\w8\1\s[10]This will have another chain attached to it.\e:chain=anotherchain"
+	
+	//Here, this will link to a different chain to continue the conversation. You can scroll down to the section on chains to see this in action.
+	
+	
+	//--If statements
+	//You can put if statements in RandomTalk! They don't even need Else statements, unless you want to keep two sets of statements completely separate - for example, you have one pool of conversations for when there are two characters, and one for if there are three characters. You wouldn't want these to overlap, so you'd put one pool in the if statement and the other in the else. Most of the time though, you won't need an Else statement for these, since they'll mostly only be adding in dialogue if the if statement is true. 
+	
+
+	//After the if statement is done, you can continue with dialogue as normal. As you can see, you can move the ifs around in here, it doesn't really matter. You may want to stick them all in one place together if you want to keep track of them, or you can scatter them around your dialogue as you please. It's up to you. These two lines below are just normal random dialogue.
+	
+	//"\1\s[10]This is generic dialogue.\w8\0\s[0]This can be replaced with whatever you want.\e"
+	
+	//"\1\s[10]This is more generic dialogue to be replaced.\w8\0\s[0]Do whatever you like with it.\e"
+	
+	//And here we're going to go back into ifs! You see, you can space out your ifs with normal dialogue if you want, as I just mentioned. Anyway, you can set up if statements to check for a lot of different things! One of the cooler ones I think are ones set to check for time. This one for example checks if the month is December.
+	
+	
+	//These ifs check for the time of day as defined in bootend.dic. Do you remember the words used for each chunk of time in GetTimeSlot? These are the same words!
+	
+	
+	
+	//--Double Envelopes
+	//If you've gone through word.dic, you may remember a list with two sets of values on each line. This is how you would call something like that! Technically, what I call a double envelope is really an array, or a stored list of values. You can pull certain things out of that list as you need, although it requires some specific formatting. For this example, we'll use the double envelope that cindysuke made that has a Korean word and its definition. This can be a bit complicated, so pay close attention.
+	//If this scares you too much, you can delete the whole thing.
+	
+	//note that this is enclosed in its own set of brackets
+	//{
+	//_korean = lessonkor //Here, the envelope "lessonkor" (which is in word.dic) is stored as a new temporary value called _korean. You can name the new value anything you like. As a reminder, when coding, it goes "4 = 2 + 2" and not "2 + 2 = 4". The result always comes first!
+	//If you look at lessonkor in word.dic, you'll see it goes "Korean word, meaning". So "Korean word" is the first value in that array, and "meaning" is the second. Arrays always start at 0, as a note.
+	//_korword = _korean[0] //Now we make a temporary value called "_korword", which is what will store the Korean word. Since the Korean word is the first value in the array _korean which we just defined, then we can pull that value from the array with _korean[0]. [0] is telling it which entry in the array to take - in this case, the first one (again, arrays start at 0).
+	//_kormean = _korean[1] //Now we make a temporary value called "_kormean", which is what will store the meaning of the Korean word. This is the second value in the array, so we can pull it out of _korean by using _korean[1].
+	
+	//Now we put it all together!
+	//"\1\s[10]Here is an example of a double envelope. The Korean word is %(_korword).\w8\0\s[0]The word means %(_kormean).\e"
+	
+	//As you can see here, we then use the values we set above for _korword and _kormean up there in the dialogue as our new envelopes. If you're planning on using a double envelope/array like this, study how this works very carefully! If you're good with arrays, you can do a lot with this kind of thing, but I must admit I am terrible with arrays and they're still hard for me to wrap my head around, so I don't have much advice on how to do that kind of thing.
+	//The underscores in front of korword and kormean mean that the value is temporary, and will disappear when the dialogue has finished. More on this kind of thing on the coding page of the walkthrough.
+	
+	//Additional Note - You can't test this kind of dialogue in Script Input. You'll have to wait until it comes up naturally in your ghost's random dialogue.
+	//}
+	//That's all for double envelopes! As mentioned, if this scares you, you can delete this chunk and you'll be fine.
+	
+	
+	//Now we're going to go back to normal dialogue for a bit of a break. Feel free to rewrite this all as you like.
+	
+	//"\1\s[10]This is another piece of random dialogue to be replaced.\w8\0\s[0]Do whatever you want.\w8\1\n\n[half]\s[15]The power is yours!\w8\0\n\n[half]\s[3]Playing with power even, you could say.\e"
+	
+	//"\1\s[10]More dialogue to be replaced.\w8\0\s[0]Remember you can write your own new lines of dialogue too.\w8\1\n\n[half]\s[10]You don't have to only replace the words in these.\e"
+	
+	//"\1\s[10]This is another bit of dialogue to be replaced.\w8\0\s[0]aitalk.dic can be as long as you want.\e"
+	
+	//"\0\s[6]More dialogue to be replaced.\w8\1\s[15]Follow your heart and write some text!\e"
+	
+	
+	//--Multiple Responses
+	//If you've poked around menu.dic or string.dic or read the walkthrough, you may have seen me touch on setting multiple options for any one given bit of dialogue. This kind of dialogue follows much the same format.
+	
+	{ //Again, note the brackets around these unique bits of dialogue. Dialogue that's more complicated than just a single line of "dialogue/more dialogue/more dialogue/end" usually needs to be put in brackets like this. 
+	
+	//"\0\s[0]I am asking you a generic question, Triangle. Generic question?\w8\1\s[10]"
+	//Notice that the last few tags set up Triangle's pose before going into his text below. You don't have to do this if you want each response to have its own pose, but if he'll have the same expression regardless of what he's saying, you might as well save yourself the work. Note this does not end with \e either, since the dialogue isn't done yet.
+	//-- //You've probably seen these double dashes before in other .dic files. In this case, these dashes enclose a set of multiple responses. More on double dashes in the coding page on the walkthrough site.
+	//"This is my first response."
+	//"This is my second response."
+	//"This is my third response."
+	//"This is my fourth response."
+	//"This is my fifth response."
+	//"This is my sixth response."
+	//As you can see here, there are six potential replies Triangle might have to Girl's question. Each time this dialogue is called, he will randomly select one response from these six.
+	//-- //The closing set of dashes for his dialogue options.
+	//"\w8\0\s[0]\n\n[half]" //Now we're going back to Girl to set up for her multiple responses in return. This line of tags mostly just sets up for what she will say. Like above, you can see her pose is set in here with \s[0], so she'll have the same pose for each response, and the consistent spacing with \n\n[half].
+	//-- //opening dashes
+	//"First response to your response."
+	//"Second response to your response."
+	//"Third response to your response."
+	//"Fourth response to your response."
+	//Following the same pattern as above, Girl will randomly reply with one of these bits of dialogue. Note that these responses are also randomly chosen, so it may go Triangle says response one, Girl says response three, or Triangle says response four, Girl says response two, or so on and so forth. So make sure the exchange will still make sense regardless of what either of them might say.
+	//-- //closing dashes
+	//"\e" //Dialogue ends
+	}
+	
+	//Here's another example of multiple responses. This one will let you randomly choose something to say in the middle of a sentence.
+	
+	{
+	//"\0\s[0]Say either black or white.\w8\1\s[10]What if I say " 
+	//-- //opening dashes
+	//"green"
+	//"red"
+	//"purple"
+	//"orange"
+	//"yellow"
+	//"\s[18]magenta" //Notice here I added a tag for his thoughtful pose. If he chooses magenta, he'll do this pose. You can set up individual expressions for each potential choice this way.
+	//-- //closing dashes
+	//" instead?\w8\0\n\n[half]\s[9]Then you're not really cooperating.\w8\1\n\n[half]\s[15]Sounds about right.\e" //dialogue ends
+	
+	//You can see that this follows the formula of the above, although there's only one set of multiple responses in here, then Triangle continues with his sentence. You can use this feature in many different ways if you're creative.
+	}
+	
+	//"\0\s[0]\f[height,20]These words are really large.\f[height,default]\w8\1\s[10]These words are a normal size. \w8\f[height,6]These words are small.\f[height,default]\e"
+	
+	//You can use other fancier SakuraScript bits in your dialogue if you want to get font effects, although I won't get too much into them here. In this case, \f[height,20] changes the height of the font, in this case to 20 or to 6, and then \f[height,default] changes them back to normal. I touch more on this in the SakuraScript page of the walkthrough.
+	
+	//"\0\s[0]\f[strike,true]These words are struck out.\f[strike,default]\w8\1\s[10]\f[sub,true]These words are a subscript.\f[sub,false] \f[sup,true]These words are a superscript.\f[sup,false] \f[underline,true]These words are underlined.\f[underline,default] \f[bold,true]These words are bold.\f[bold,false] \f[italic,true]These words are italic.\f[italic,false] \f[color,186,146,112]These words are a color.\f[color,default] This tag would return to default.\f[default]\e"
+	
+	//Here's a list of similar tags you may find useful. You can see they function much like <b> or <i> tags in html. You just enclose the piece of text you want to change with them. Note that they start with \f[word,true] to turn it on, then \f[word,false] or \f[word,default] to turn it off. I assume you can tell what the tags do by the text they enclose.
+	//For the \f[color] tag, the three colors listed are the RGB values of the color you want to use for your text. Change them to whatever color you want to use. \f[default] can be an easy way to quickly go back to the default word setting in your balloon after messing with colors and effects a lot.
+	
+	//"\0\s[0]Here's a link to a website. \_a[http://www.website.com/]Right here.\_a\e"
+	
+	//Along the same lines as above, you can use \_a[address] to link to certain things. Note that it ends with \_a to close the link. It's very similar to <a href=address> and </a> in html.
+	
+	//"\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
+	
+	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
+	
+	//And so we reach the end of randomtalk! I again reiterate, YOU CAN AND SHOULD WRITE YOUR OWN NEW LINES OF DIALOGUE FOR THIS! I included some random example phrases here for you just to replace the text, but there really aren't that many. You'll want to add more, and doing so is easy! Just copy and paste a line and redo the text. Repeat as many times as you want with as many conversations as you want. You can always expand this section!
+}
+
+
+//--Chains
+//Here is where you will put your bits of chain dialogue. They are outside of RandomTalk, which makes them a bit more flexible as I mentioned above.
+//Each chain function will go through each part of the chain in order even if it's in one function, until it goes to \e:chain=end which will end the chain, as you could probably guess. So you can put the entire chain dialogue into one place.
+
+achain
+{{CHAIN
+	//this will happen the first time the chain is called
+	//"\0\s[0]Here is the second part of the chain.\w8\1\s[10]Will there be more?\e"
+	
+	//they will then go to this dialogue next
+	//"\0\s[0]This is the third part of chained dialogue.\1\w8\s[10]This will lead to a fourth part.\e"
+	
+	//this will be the last piece of dialogue in the chain, then they will go back to their normal dialogue
+	//"\0\s[0]This is the fourth piece of chained dialogue.\1\w8\s[10]This is the end.\e:chain=end"
+}}CHAIN
+
+//Pay careful attention to the CHAIN text and double brackets for these. Double brackets, CHAIN, dialogue, double brackets, CHAIN. If you are planning on making chains, I'd recommend just copying and pasting the chain example here and changing the dialogue and name of the function as you need. Less likely for mistakes to happen, you know?
+//Note also it ends with \e:chain=end, basically ending the chain.
+
+anotherchain
+{{CHAIN
+	//"\0\s[0]This is the second example of chained dialogue.\1\w8\s[10]This will only have two parts.\e"
+	
+	//"\0\s[0]This is the last piece of the second example of chained dialogue\1\w8\s[10]This will end here.\e:chain=end"
+}}CHAIN
+
+
+sadchaingogogo
+{{CHAIN
+	sadchainstart = 1
+	"\0\s[81]\i[5]*He looks troubled.\s[81]\e"
+	
+	"\0\s[81]\i[5]*He's staring into space.\s[81]\e"
+	
+	{
+		"\0\s[81]\i[5]*He's been deep in thought for a while now\w3.\w3.\w3. \w8\w4Should you ask him what's on his mind?\s[81]\n\n"
+		--
+		"\![*]\q[Ask if he's okay,areuokmyman]\n/
+		\![*]\q[Let him cool down,lethimchill]\e:chain=end"
+	}
+	
+	"\0\s[100]\i[5]*You can hear him sigh. \w8\w4He'll be fine.\e:chain=end"
+	//"\0\s[84]\i[5]*He's looking at the photo of his family.\s[84]\e"
+	
+	//"\0\s[84]\i[5]*He's been looking at the photo for a while now.\s[84]\e"
+}}CHAIN
+
+Select.areuokmyman
+{
+	//helpedwithiccups = 1
+	if raphded == 0 && raphpoint >= 5
+	{
+		"\s[81]\i[5]*You ask him if he's doing alright. \n\n[half]\w8\w4\s[0]\i[7]\w2Huh?\w8\s[23] I'm perfectly fine, \w3pal! \w8\w4All peachy. \w8\w8\w8\w8\s[74]\w8\w8\w8\w8\s[75]\w8\w8\w8\w8\w8\w4I suppose I'm just\w3.\w3.\w3 \w8\w8\w8\s[77]Thinking about some stuff.\e:chain=raphreveal1"
+	}
+	if donded == 0 && donpoint >= 5
+	{
+		"\s[81]\i[5]*You ask him if he's doing alright. \n\n[half]\w8\w4\s[0]\i[7]\w2Huh?\w8\s[23] I'm perfectly fine, \w3pal! \w8\w4All peachy. \w8\w8\w8\w8\s[74]\w8\w8\w8\w8\s[75]\w8\w8\w8\w8\w8\w4I suppose I'm just\w3.\w3.\w3 \w8\w8\w8\s[77]Thinking about some stuff.\e:chain=donreveal1"
+	}
+	if dadded == 0 && splinterpoint >= 5
+	{
+		"\s[81]\i[5]*You ask him if he's doing alright. \n\n[half]\w8\w4\s[0]\i[7]\w2Huh?\w8\s[23] I'm perfectly fine, \w3pal! \w8\w4All peachy. \w8\w8\w8\w8\s[74]\w8\w8\w8\w8\s[75]\w8\w8\w8\w8\w8\w4I suppose I'm just\w3.\w3.\w3 \w8\w8\w8\s[77]Thinking about some stuff.\e:chain=splinterreveal1"
+	}
+}
+
+Select.lethimchill
+{
+	sadchainstart = 0
+	bigmood = -50
+	
+	"\s[81]\i[5]*You decide to give him some space. \w8\w8\w4He'll be fine.\s[81]\e:chain=end"
+}
+
+//RAPHAEL
+raphreveal1
+{{CHAIN
+	sadchainstart = 0
+	raphchain = 1
+	bigmood = -80
+	"\0\s[84]\i[5]*He's looking at the picture of his family.\s[84]\e:chain=raphreveal2"
+}}CHAIN
+
+raphreveal2
+{{CHAIN
+	raphchain = 2
+	"\0\s[90]\w8\w8\w8\w8\w8\w8\w4*He's staring at the photo. \w8\w4You wonder if he's alright.\s[87]\e"
+	
+	"\0\s[87]\i[5]*He looks distressed.\s[87]\e"
+	{
+		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1n\w1e\w1d\w1 \w1t\w1o \w1R\w1a\w1p\w1h\w1?\w5.\w5.\w5.\n\n"
+		--
+		"\![*]\q[Yes,raphreveal3]\n/
+		\![*]\q[No,raphnono]\e:chain=end"
+	}
+}}CHAIN
+
+Select.raphreveal3
+{
+	"\![leave,passivemode]\s[87]\i[5]*You tell him you would like to know if he wants to tell you. \n\n[half]\w8\w8\s[88]Hah\w5.\w5.\w5. \w8\w5M\w1i\w1g\w1h\w1t\w1 \w1a\w1s\w1 \w1w\w1e\w1l\w1l\w1 \w1t\w1a\w1l\w1k\w1 \w1a\w1b\w1o\w1u\w1t\w1 \w1i\w1t\w1.\e:chain=raphreveal4"
+}
+
+Select.raphnono
+{
+	sadchainstart = 0
+	raphchain = 0
+	bigmood = -250
+	
+	"\![leave,passivemode]\s[87]\i[5]*You tell him he can tell you another time, \w3when he feels better. \n\n[half]\w8\w4\s[87]\w1M\w1h\w1m\w3.\w3.\w3. \w6\w6\w6\s[88]Don't worry about me. \w8\w8\w8\w8\s[86]I'm alright.\n\w8\w8\w5\f[sub,true]I'm alright, \w4Raph\w3.\w3.\w3.\f[sub,false]\e:chain=end"
+}
+
+raphreveal4
+{{CHAIN
+	bigmood = -800
+	//"\0\s[87]*Raph's like super dead idk what you expect me to say amigo you think i write good\e"
+	"\![enter,passivemode]\0\s[87]It was just\w3.\w3.\w3. a scouting mission. \w8\w8\i[6]Get in, \w5scope the place out, \w5get out, \w7nothing big. \w8\w8We did so many of these over the years. \w8\w8I wanted to get it over with. \w8\w8We had bigger things to do. \x\s[87]B\w1u\w1t\w4.\w4.\w4. \w8\w4it was an ambush. \w8\w8I walked right into it, \w6and Raph had to bail me out. \w8.\w8.\w8.\w8.\w8.\w8It was going well at first. \w8\w8\i[6]We were winning, \w6we were kicking their butts! \w8\w8And then\w4.\w4.\w4. \w8the building we were in fell.\x\s[87]I- \w4my arm got stuck. \w8\w8I couldn't get it out. \w8\w8Raph was fighting them back, \w3and I wanted to get out, \w3and I told him to get me out, \w3and he- \w5I-\w8\w8\w8\w8\w8\w8\w8\s[87]\i[7]\w8\i[8]\w8\n\w1I\w1 \w1w\w1a\w1t\w1c\w1h\w1e\w1d\w1 \w1t\w1h\w1o\w1s\w1e\w1 \w1t\w1h\w1i\w1n\w1g\w1s\w1 \w1k\w1i\w1l\w1l\w1 \w1h\w1i\w1m\w1. \n\w8\w8\w8\w8\w8\f[sub,true]If only I\w2.\w2.\w2.\w2.\w2.\w2.\w2.\w2. If I didn't distract him, \w2if I wasn't so wreckless, \w2if I didn't screw up, \w2If I'd done it sooner,\w2 Raph\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\f[sub,false]\w8\w8\w8\w8\w8\w8\w8\n\n[half]I cut off my arm, \w4finished off the rest of them, \i[6]\w6but Raph\w6.\w6.\w6. \w8\w8\w8It was too late.\x\w8\w8\w8\w8\w8\s[88]\i[8]\w2H\w2e\w2h\w4.\w4.\w4. \w8\w8it's been so long, \w4and I still cannot believe the big guy's gone. \w8\w8\s[88]\i[7]He did what he always done\w5.\w5.\w5. \w8\w4he protected his family.\n\n"
+	--
+	"\![*]\q[He was a hero,raphhero]\n/
+	\![*]\q[He would be so proud of you,raphproud]\n/
+	\![*]\q[I'm so sorry,raphsorry]\n/
+	\![*]\q[Say nothing,raphsaynothing]\e:chain=end"
+}}CHAIN
+
+Select.raphhero
+{
+	raphded = 1
+	raphchain = 3
+	
+	"\i[5]*You tell him that Raphael was a hero. \n\n[half]\w8\w8\w8\s[88]He sure was. \w8\w8Always. \w8\w8If it wasn't for him, \w6none of us would be heroes. \n\w8\w6\s[87]Thank you for listening. \w8\w4Can't remember the last time I talked about it, \w4if I ever did\w5.\w5.\w5. \w8\w4\s[88]I probably should do it more.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+
+Select.raphproud
+{
+	raphded = 1
+	raphchain = 3
+	
+	"\i[5]*You tell him that Raphael would be proud of him. \w8\w8\n\n[half]\s[87]\i[6]Heh, \w4you think?\w3.\w3. \w8\w8\w8\w6\s[88]\i[6]No, \w8\s[88]you're probably right. \w8\w8It's \w1Raph \w1we're talking about. \w8\w8\s[87]\i[6]I'm not sure he'd even recognize me if he saw me today\w4.\w4.\w4. \n\w8\w6\s[87]Thank you for listening. \w8\w4Can't remember the last time I talked about it, \w4if I ever did\w5.\w5.\w5. \w8\w4\s[88]I probably should do it more.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+
+Select.raphsorry
+{
+	raphded = 1
+	raphchain = 3
+	
+	"\i[5]*You tell him you are sorry. \w8\w8\w6\n\n[half]\s[88]For what? \w8\w8\s[87]I'm the one who should be sorry\i[6]\w6.\w6.\w6. \w8\w6\s[87]but I don't think Raph would want me apologizing to him, \w6or keep on feeling sorry for myself. \w8\w8\8\s[88]Raph was all about smashing things first and apologizing later, \w5after all\w4.\w4.\w4. \n\w8\w6\s[87]Thank you for listening. \w8\w4Can't remember the last time I talked about it, \w4if I ever did\w5.\w5.\w5. \w8\w4\s[88]I probably should do it more.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+
+Select.raphsaynothing
+{
+	raphded = 1
+	raphchain = 3
+	
+	"\w5.\w5.\w5.\w5.\w5.\s[87]\w5.\w5.\w5.\w5.\w8\w8\w6I know he's counting on me. \w8\w4Every day. \w8\w4\s[88]After all, \w6if he was mad at me, \w6he'd haunt me for the rest of my life, \w8am I right?\w5.\w5.\w5.\w5. \w5\i[6]h\w1e\w1h\w5.\w5.\w5. \n\w8\w6\s[87]Thank you for listening. \w8\w4Can't remember the last time I talked about it, \w4if I ever did\w5.\w5.\w5. \w8\w4\s[88]I probably should do it more.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+
+
+
+//DONTRON
+donreveal1
+{{CHAIN
+	sadchainstart = 0
+	donchain = 1
+	bigmood = -80
+	"\0\s[84]\i[5]*He's looking at the picture of his family.\s[84]\e:chain=donreveal2"
+}}CHAIN
+
+donreveal2
+{{CHAIN
+	donchain = 2
+	"\0\s[90]\w8\w8\w8\w8\w8\w8\w4*He's staring at the photo. \w8\w4You wonder if he's alright.\s[87]\e"
+	
+	"\0\s[89]\i[5]*He looks distressed.\s[89]\e"
+	{
+		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1n\w1e\w1d\w1 \w1t\w1o \w1D\w1o\w1n\w1n\w1i\w1e\w1?\w5.\w5.\w5.\n\n"
+		--
+		"\![*]\q[Yes,donreveal3]\n/
+		\![*]\q[No,donnono]\e:chain=end"
+	}
+}}CHAIN
+
+Select.donreveal3
+{
+	"\![leave,passivemode]\s[87]\i[5]*You tell him you would like to know if he wants to tell you. \n\n[half]\w8\w8\s[88]H\w2-h\w1e\w1h\w5.\w5.\w5. \w8\w8a\w1l\w1r\w1i\w1g\w1h\w1t\w1 \w1t\w1h\w1e\w1n\w5.\w5.\w5.\e:chain=donreveal4"
+}
+
+Select.donnono
+{
+	sadchainstart = 0
+	donchain = 0
+	bigmood = -250
+	
+	"\![leave,passivemode]\s[87]\i[5]*You tell him he can tell you another time, \w3when he feels better. \n\n[half]\w8\w4\s[87]O\w1k\w1a\w1y\w3.\w3.\w3 \w8\w8a\w1l\w1r\w1i\w1g\w1h\w1t\w5.\w5.\w5. \w8\w8o\w1k\w1a\w1y\w5.\w5.\w5. \w6\w6\w6\s[88]Sorry about that. \w8\w8\w8\w8\s[84]I got swept up in memories, \w6I suppose.\e:chain=end"
+}
+
+donreveal4
+{{CHAIN
+	bigmood = -800
+	//"\0\s[87]*Originally i had another don death in plan. sorry donnie\e"
+	"\![enter,passivemode]\0\s[87]Donnie did so much for the Resistance, \w4but still insisted that he wanted to do more. \w8\w8\s[88]He wanted to fight together, \w4side\w1-by\w1-side\w5.\w5.\w5. \w8\w8\s[87]But\w5.\w5.\w5. \w8\w8\w4\i[6]I didn't want him to. \w8\w8He was\w6 too fragile \w6and too valuable, \w5and I\w5.\w5.\w5. \w8\w8\s[87]I prohibited him from leaving the base. \w8\w4He was so angry with me, \w4but I had none of it\w4 - I told him he stays put. \w8\w8But Donnie\w5.\w5.\w5.\w5.\w5.\w5.\w5. \w8\w4\i[6]he always loved to bend the rules. \w8\w8\s[87]He'd sneak out when I was away, \w5sometimes alone, \w5and\w5.\w5.\w5. \w8\w4of course he got in trouble. \w8\w8But no matter how much I yelled at him, \w4he would only get more stubborn. \w8\w6\s[87]\i[7]A\w1n\w1d\w1 \w1\i[8]t\w1h\w1e\w1n\w6.\w6.\w6.\w6.\w6.\w6.\w6.\x\s[87]\i[7]That day I returned from my trip to the other Resistance camp, \w5only to find the code Red sirens blaring. \w8\w8Me and Mikey came charging into Donnie's lab, \w5to ask him what's going on, \w5but\w5.\w5.\w5. \w8\w8\w8\w8\w8\i[6]he wasn't there.\n\w8\w8\w8He was the one who signaled code Red.\x\s[87]\i[8]He got captured. \w8\w8By krang. \w8\w8He managed to call us as they dragged him into one of their bases\w5.\w5.\w5. \w8\w8He was supposed to tell us his coordinates, \w5\i[6]b\w1u\w1t\w1 \w1h\w1e\w6.\w6.\w6.\w6.\w6.\w6.\w6.\w6.\w6.\w6.\w8\w8\w8\nKrang can get into your head. \w8\w8Read your mind, \w5view your memories. \w8\w8And if they did that to Donnie, \w5the Resistance would be over. \w8\w8\s[87]\i[8]He knew everything, \w4was in charge of all our defences, \w4knew every secret\w6.\w6.\w6. \w8\w8And so, \w6he \w2just\w5.\w5.\w5.\w5. \w8\w5rattled \w2his \w2passwords \w2to \w2us\w5.\w5.\w5.\w5.\w5.\w5. \w8\w5told \w2where \w2Shelldon's \w2spare \w2parts \w2were\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5. \w5\i[6]and said goodbye. \w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8He took the entire base down with him.\x\s[87]\i[7]We\w5.\w5.\w5. \w8\w8we watched him sign off. \w8\w8Mikey wanted to go out there, \w5try to find him, \w5but I\w5.\w5.\w5. \w8\w8I knew it was too late. \n\w8\w8\i[6]Donnie\w5.\w5.\w5. \w8\w8didn't follow protocol and did things his way. \w8\w8Until the very end. \w8\w8Maybe if I didn't push him, \w6he\w6.\w6.\w6.\w6.\w6.\w6.\n\n"
+	--
+	"\![*]\q[He was a hero,donhero]\n/
+	\![*]\q[It's not your fault,donfault]\n/
+	\![*]\q[I'm so sorry,donsorry]\n/
+	\![*]\q[Say nothing,donsaynothing]\e:chain=end"
+}}CHAIN
+
+Select.donhero
+{
+	donded = 1
+	donchain = 3
+	
+	"\i[5]*You tell him that Donatello was a hero. \n\n[half]\w8\w8\w8\i[6]\w6.\w6.\w6.\w8\w5he did what he thought was right. \w8\w8He kept the Resistance safe, \w6even though it costed him his life. \n\w8\w8He\w5.\w5.\w5. \w8\w5\s[88]he went out with a bang, \w5in a true Donnie fashion.\n\w8\w8\w8\w6\s[87]Thank you for listening. \w8\w4I know it was a lot, \w5but\w5.\w5.\w5. \w8\w8\s[88]I appreciate you hearing me out.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+Select.donfault
+{
+	donded = 1
+	donchain = 3
+	
+	"\i[5]*You tell him it wasn't his fault. \w8\w8\n\n[half]\s[87]\i[6]I\w8.\w8.\w8. \w8\w8\s[87]I told him to stay put for this exact reason. \w8\w8\i[6]So what happened wouldn't happen. \w8\w8But, \w5\s[87]if I didn't, \w6he would never go outside alone, \w6\i[6]and would always have a team by his side to protect him\w8.\w8.\w8. \w8\w8I\w8.\w8.\w8. \w8\w8\s[87]I don't know.\n\w8\w8\w8\w6.\w6.\w6.\w6he's gone now, \w6regardless.\n\w8\w8\w8\w6\s[87]Thank you for listening. \w8\w4I know it was a lot, \w5but\w5.\w5.\w5. \w8\w8\s[88]I appreciate you hearing me out.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+Select.donsorry
+{
+	donded = 1
+	donchain = 3
+	
+	"\i[5]*You tell him you are sorry. \w8\w8\w6\n\n[half]\s[87]\i[6]It's\w6.\w6.\w6. \w8\w8\s[87]fine. \w8\w8Donnie did what he thought was right. \w8\w8I would probably do the same, \w6in his place\w6.\w6.\w6. \w8\w8\i[6]But I can never allow that to happen. \w8\w8\s[87]Not after everything he has given to win this fight.\n\w8\w8\w8\w6\s[87]Thank you for listening. \w8\w4I know it was a lot, \w5but\w5.\w5.\w5. \w8\w8\s[88]I appreciate you hearing me out.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+Select.donsaynothing
+{
+	donded = 1
+	donchain = 3
+	
+	"\w5.\w5.\w5.\w5.\w5.\s[87]\w5.\w5.\w5.\w5.\w8\w8\w6I still cannot believe he's gone. \w8\w8\i[6]Every corner of the base has his tech, \w6his influence, \w6and it feels like \nhe's still just sitting in his lab, \w6working on a brand new thing\w5.\w5.\w5.\n\w8\w8\w8\w6\s[87]Thank you for listening. \w8\w4I know it was a lot, \w5but\w5.\w5.\w5. \w8\w8\s[88]I appreciate you hearing me out.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+
+
+
+
+//SPLINTS
+splinterreveal1
+{{CHAIN
+	sadchainstart = 0
+	splinterchain = 1
+	bigmood = -80
+	"\0\s[84]\i[5]*He's looking at the picture of his family.\s[84]\e:chain=splinterreveal2"
+}}CHAIN
+splinterreveal2
+{{CHAIN
+	splinterchain = 2
+	"\0\s[90]\w8\w8\w8\w8\w8\w8\w4*He's staring at the photo. \w8\w4You wonder if he's alright.\s[87]\e"
+	
+	"\0\s[89]\i[5]*He looks to be deep in thought.\s[89]\e"
+	{
+		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1n\w1e\w1d\w1 \w1t\w1o \w1d\w1a\w1d?\w5.\w5.\w5.\n\n"
+		--
+		"\![*]\q[Yes,splinterreveal3]\n/
+		\![*]\q[No,splinternono]\e:chain=end"
+	}
+}}CHAIN
+
+Select.splinterreveal3
+{
+	"\![leave,passivemode]\s[87]\i[5]*You tell him you would like to know if he wants to tell you. \n\n[half]\w8\w8\w8\w8\s[87]Alright. \w8\w8It's not\w3.\w3.\w3. \w8\w8it's not a good story.\e:chain=splinterreveal4"
+}
+
+Select.splinternono
+{
+	sadchainstart = 0
+	splinterchain = 0
+	bigmood = -250
+	
+	"\![leave,passivemode]\s[87]\i[5]*You tell him he can tell you another time, \w3when he feels better. \n\n[half]\w8\w4\s[87]\w3.\w3.\w3.\w8\w5Alright. \w8\w8Okay. \w8\w8\w8\w8\s[86]It's alright.\n\w8\w8\w5\f[sub,true]I'll be alright, \w4pops\w3.\w3.\w3.\f[sub,false]\e:chain=end"
+}
+
+splinterreveal4
+{{CHAIN
+	bigmood = -800
+	//i didnt come up with anything that interesting for splinter sorry rat dad
+	"\![enter,passivemode]\0\s[87]Pops died\w6.\w6.\w6. \w8\w8shortly after the invasion began.\n\w8\w8We'd been gathering allies at the lair, \w5after our failed attempts to take down the Technodrome by ourselves. \w8\w8But, \w4while we were regrouping and taking care of our wounds\w6.\w6.\w6. \w8\w8\i[6]Krang found us. \w8\w8\w8\w8\w8\w8We were in no condition to fight, \w4\s[87]but we tried. \w8\w8\s[87]We \w2really \w2tried. \w8\w8\i[6]Until dad told us to go. \w8\w8He\w8.\w8.\w8. \w8\w6bought us time to escape. \w8\w8\w8\w8\w8\w8I\w6.\w6.\w6. \w8\w8\s[87]I didn't want to leave him, \w6\i[6]but Mikey was \w2hurt, \w6badly, \w6and Donnie's battle shell was torn, \w6and we couldn't\w6.\w6.\w6. do anything.\s[89]\n\n"
+	--
+	"\![*]\q[He really loved you,splinterlove]\n/
+	\![*]\q[He would be so proud of you,splinterproud]\n/
+	\![*]\q[I'm so sorry,splintersorry]\n/
+	\![*]\q[Say nothing,splintersaynothing]\e:chain=end"
+}}CHAIN
+
+Select.splinterlove
+{
+	dadded = 1
+	splinterchain = 3
+	
+	"\i[5]*You tell him that Splinter really loved him. \n\n[half]\w8\w8\w8\s[88]H\w1e\w1h\w3.\w3.\w3. \w8\w8Yeah. \w8\w8I know. \w8\w8But thank you. \w8\w8\i[6]Dad wasn't perfect, \w5but\w6.\w6.\w6. \w8\w6\s[88]he was a good father.\n\w8\w6\s[88]Thank you for listening. \w8\w4\s[87]It's been so long, \w5and yet, \w5I still\w4.\w4.\w4. \w8\w4still miss him.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+Select.splinterproud
+{
+	dadded = 1
+	splinterchain = 3
+	
+	"\i[5]*You tell him that Splinter would be proud of him. \w8\w8\n\n[half]\s[87]\i[6]H\w1e\w5.\w5.\w5. \w8\s[88]\w4h\w1e\w1h. \w8\w8\i[6]Probably. \w8\w8\s[88]I might not have been his favourite, \w6but I know he cared. \w8\w8\s[88]Thank you, \w5and thank you for listening. \w8\w4\s[87]It's been so long, \w5and yet, \w5I still\w4.\w4.\w4. \w8\w4still miss him.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+Select.splintersorry
+{
+	dadded = 1
+	splinterchain = 3
+	
+	"\i[5]*You tell him you are sorry. \w8\w8\w6\n\n[half]\s[88]Don't be. \w8\w8\s[87]\Dad\w6.\w6.\w6. \w8\w8\w8\s[88]dad lived a good life. \w8\w8I think, \w6\i[6]haha\w4.\w4.\w4.\n\w8\w6\s[88]Thank you for listening. \w8\w4\s[87]It's been so long, \w5and yet, \w5I still\w4.\w4.\w4. \w8\w4still miss him.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}
+Select.splintersaynothing
+{
+	dadded = 1
+	splinterchain = 3
+	
+	"\w5.\w5.\w5.\w5.\w5.\s[87]\w5.\w5.\w5.\w5.\w8\w8\w6And that's it. \w8\w8That's the story. \w8\w8Dad\w6.\w6.\w6. \w8\w8\s[88]I really wish I could talk to him, \w6about\w5.\w5.\w5. \w8\w4things. \w8\w8Boring adult things, \w6ha\w2ha\w6.\w6.\w6.\n\w8\w6\s[88]\w3.\w3.\w3.\w8\w4thank you for listening. \w8\w4\s[87]It's been so long, \w5and yet, \w5I still\w4.\w4.\w4. \w8\w4still miss him.\w8\w8\w6\n\n[half]\i[5]*You can hear him sigh. \w8\w8\i[6]He probably needs some time to himself.\![leave,passivemode]\e:chain=end"
+}	
+//You can make chains as long or as shot as you want! Just make sure to end the chain when you're done.
+
+
+//Alright, we're done with the random conversations for now, but there are a few other things in aitalk that we'll need to fill out too.
+
+
+//-OnMinuteChange
+//These are time-related bits of dialogue for your ghost to say. If you're uninterested, you can delete it all except for a line for MikireTalk. So it'd look something like
+
+//OnMinuteChange
+//{
+//HourCheck
+//--
+//if mikireflag == 1
+// 	{
+// 		MikireTalk
+//	}
+//}
+
+//But I think these are kind of neat, so I'd leave them myself.
+
+
+//Keeps track of if an hour has passed. Just ignore this.
+HourCheck
+{
+if passmin >= 60
+	{
+		passmin = 0
+		passhour = passhour + 1
+	}
+}
+
+
+OnMinuteChange //This is what will trigger time-based dialogue for your Ghost.
+ {
+	HourCheck //checks to see if an hour has passed, ignore it
+	--
+	bigmood += 1
+ 	if minute == 0//These ifs will check what time it is. Here, it's seeing if the minute equals zero...
+	{
+ 		if hour == 12  && raphchain == 0 && donchain == 0 && splinterchain == 0 && timecheckarooni == 1//And the hour equals 12, meaning it's noon. You can change this to some other hour if you want.
+		{
+ 			"\0\s[37]*It's noon.\e"
+			//Replace with appropriate dialogue as you want.
+		}
+ 		elseif hour == 0  && raphchain == 0 && donchain == 0 && splinterchain == 0 && timecheckarooni == 1///If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
+		{
+ 			"\0\s[37]*It's midnight.\e"
+ 			//"\0\s[0]This is another bit of dialogue for midnight.\w8\1\s[10]BooooOoooOOOooOOOOo.\e"
+ 			//"\0\s[0]This is the third bit of dialogue for midnight.\e"
+			//Then replace the dialogue with what's appropriate.
+		}
+		elseif hour == 0  && raphchain == 0 && timecheckarooni == 1 || hour == 0 && donchain == 0 && timecheckarooni == 1 || hour == 0 && splinterchain == 0 && timecheckarooni == 1///If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
+		{
+ 			"\0\s[37]*It's midnight.\e"
+		}
+		elseif raphchain > 0 && timecheckarooni == 1 || donchain > 0 && timecheckarooni == 1 || splinterchain > 0 && timecheckarooni == 1
+		{
+			"\0\i[5]*It's %(hour12)'o clock, \w4but he's too distracted to notice.\e"
+			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		}
+		elseif timecheckarooni == 1
+		{
+			"\0\s[37]It's %(hour12)'o clock.\e"
+			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		}
+	}
+	//You can also check for more specific times! For example...
+	elseif hour == 23 && minute == 55 && raphchain == 0 && donchain == 0 && splinterchain == 0//this checks to see if the hour is 23 and the minutes are at 55... essentially, 11:55 pm.
+	{
+		"\0\s[73]5 minutes 'till the curfew.\e"
+		//Replace with what you like!
+	}
+	elseif hour == 7 && minute == 30 && weekday == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0  && timecheckarooni == 1//Here, it's checking for a specific time on a specific day. You can add things to your time checks just like this by using the AND operator, && (more about operators at the walkthrough page). This adds up to 7:30 am, Sunday. If you have a favorite TV program on at some time, you could have your ghost comment on when it comes on like this.
+	{			
+		//"\0\s[0]It's 7:30 on Sunday.\e"
+		//Replace with what's appropriate.
+	}
+	//If you're not interested in these more specific checks, you can delete those last two elseifs and just leave the one for minute==0, or clear them all out as mentioned above, although leave in the HourCheck and mikireflag bits.
+	
+	//Don't touch this part.
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+ }
+
+//--OnSecondChange
+//Like the above, this handles what happens every time a second goes by. Most of this you will not have to touch.
+
+OnSecondChange
+ {
+	if passsec == 59
+ 		{
+	 	passsec = 1
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+	if mikireflag == 0 && reference1 == 1 //Dialogue for putting them off the screen. You could make this a unique line if you wanted (Like "Hey! What are you doing?"), and have MikireTalk below be for if they continue to be offscreen ("Why are you leaving me out here? Help!" for example). I'll add an example bit of dialogue and comment it out, you can uncomment it and use it if you like, or just leave it out and use MikireTalk below.
+	{
+		//"\0\s[0]You've moved me off screen."
+		
+		MikireTalk
+	}
+	if mikireflag == 1 && reference1 == 0 //Dialogue for coming back on the screen
+	{
+		EndMikireTalk
+	}
+	mikireflag = reference1 //reference1 is if the ghost is offscreen or not
+	if reference2 == 1
+	{
+ 		//This dialogue is for when the two characters are overlapping each other. If you don't want your characters to care, you can just leave this blank.
+		
+ 		//"\0\s[0]Me and Triangle are overlapping.\w8\1\s[19]That's strange since your resolution is %screenwidthx%screenheight, %(username). Shouldn't we have enough space?\4\e"
+		
+		//You can see here the use of two envelopes, screenwidth and screenheight, to tell the user their resolution. Oddly, they are not in parentheses. I'm not sure why this is, but they don't display right otherwise. An odd quirk with these two envelopes.
+		//Note also how Triangle moves away at the end of the dialogue. This is due to the \4 tag. That will make any one character move away from the other if they are able. I talked about this tag and its counterpart tag \5 in the SakuraScript page on the walkthrough.
+	}
+ }
+
+ //---- MikireTalk ---------------------------------------------------------------------
+ //MikireTalk is dialogue for when your main character is off-screen. Like if you dragged Girl over to the side of your monitor until she was partially concealed by it.
+ 
+MikireTalk
+ {
+	 if raphchain == 0 && donchain == 0 && splinterchain == 0
+	 {
+		 "\0\s[7]I'm off the screen! \w3Get me out! \w3Get me out! \w3Get me out!"
+	 }
+	 else
+	 {
+		 "\0\i[5]*He doesn't notice he's off the screen."
+	 }
+	//Note the hotkey combo Triangle mentions. He's telling the truth, that should bring her back on the screen.
+ }
+
+ //----EndMikireTalk--------------------------------------------------------------------
+ //For after you bring the character back on screen.
+ 
+EndMikireTalk
+ {
+	 if raphchain == 0 && donchain == 0 && splinterchain == 0
+	 {
+		"\0\s[0]I'm back, \w2phew. \w8\w3\s[16]Thought I'd get portal-chopped then and there."
+	 }
+	 else
+	 {
+		 "\0\i[5]*He's back."
+	 }
+ }
+
+
+//**** OnSurfaceRestore *****************************************************************
+//OnSurfaceRestore is a handy function. What this does is that after a short period of time, the ghost will go back to its default pose, so you won't have a ghost stuck in one expression for too long. It's also helpful if you've made one of the characters disappear using \s[-1] in dialogue and didn't bring them back at the end of it. This will do that for you.
+//I'm going to comment out the if/else statements in this because the circumstances in which they'd come up seem pretty unlikely and unnecessary if you're just going to be making a simple ghost. You can just leave this function alone and move on if you want. However, if you do want to use them, just uncomment the lines by deleting the slashes and fill in the info as you need.
+
+//*********************Advanced User Info*******************************
+//You can put if statements in OnSurfaceRestore to make exceptions for certain poses, or to make sure that once they're in a certain pose, they stay in that pose. For example, if you turn my Hunter and Smoker ghost into eggplants, there's a check for the their eggplant pose numbers to make sure they STAY eggplants when OnSurfaceRestore is called.
+//You can also use OnSurfaceRestore to clean up things that might be left on the screen, primarily from using p[number]\s[] to call up other objects or characters. Just make sure to add a p[number]\s[-1] to OnSurfaceRestore, and that should get rid of it each time the ghost cleans itself up.
+//***********************************************************************
+
+OnSurfaceRestore
+ {
+ 	//if reference0 == 4 || reference0 == 6 //This is checking what poses they are in. This looks to see if Girl is in pose 4 or pose 6, since she is reference0.
+ 	//{
+ 	//"\1\s[10]You're in a sad pose.\w8\0\s[0]I'll go back to normal then.\e"
+ 	//}
+ 	//elseif reference1 == 14 || reference1 == 16 //This is doing the same but for Triangle, since he's reference1. It looks to see if he's in pose 14 or post 16.
+ 	//{
+ 	//"\0\s[0]You look sad.\w8\1\s[10]I'll go back to normal.\e"
+ 	//}
+ 	//else
+ 	//{
+	//"\0\s[0]\1\s[10]\e"
+	//}
+	//IDLE POSE STUFF
+	//if bigmood < -20
+	//{"\0\s[2]\1\s[10]"}
+	//else
+ 	//{"\0\s[0]\1\s[10]"} //This sets them up in their neutral pose for now.
+	if bigmood < -30 && bigmood > -70 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	{"\0\s[79]\1\s[10]"}
+	elseif bigmood <= -70 && bigmood > -200 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	{"\0\s[2]\1\s[10]"}
+	elseif bigmood <= -200 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	{"\0\s[82]\1\s[10]"}
+	elseif sadchainstart == 1
+	{"\0\s[81]\1\s[10]"}
+	elseif raphchain == 1 || donchain == 1 || splinterchain == 1
+	{"\0\s[84]\1\s[10]"}
+	elseif raphchain == 2 || donchain == 2 || splinterchain == 2
+	{"\0\s[87]\1\s[10]"}
+	else
+ 	{"\0\s[0]\1\s[10]"}
+ }
+
+ 
+ //--OnKeyPress
+ //This defines the hotkeys your ghost will use. You can change these to whatever you want, but I don't really know why you would. I'd just leave this alone. Advanced Users can add new hotkeys attached to whatever function if you want.
+ 
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+	OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+	OnLastTalk
+	}
+	elseif reference0 == "f1"
+	{
+	"\![open,readme]"
+	}
+}
+

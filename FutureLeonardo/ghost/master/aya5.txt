@@ -1,0 +1,33 @@
+﻿//These define what character set your ghost will be using. Don't touch any of them.
+
+charset, UTF-8
+charset.dic, UTF-8
+charset.output, UTF-8
+charset.file, UTF-8
+charset.save, UTF-8
+charset.extension, UTF-8
+
+
+//---- Dictionary Files ---------------------------------------------------------------------
+
+//These are the .dic files your ghost will be using. You can add new .dic files or take them away as you like, just always make sure to test your ghost to make sure it still works if you do. This can be very finicky.
+//I would recommend adding the initials of your ghost to the front of your .dic files, such as hs_string or hs_bootend, particularly if you're going to be editing multiple ghosts at once, or studying other ghost's files to see how they work. It'll help you keep the files straight in Notepad++. You don't have to though, that's optional.
+
+dic, shiori3.txt		
+dic, string.txt			
+dic, aitalk.txt		
+dic, bootend.txt		
+dic, mouse.txt			
+dic, etc.txt			
+dic, menu.txt
+dic, word.txt
+dic, commu.txt
+dic, nameteach.txt
+dic, anchor.txt
+
+//---- Log Location -------------------------------------------------------------------------
+//I'm not entirely sure what this does, but basically don't touch it.
+
+
+//log, ayame.log
+msglang,english	
