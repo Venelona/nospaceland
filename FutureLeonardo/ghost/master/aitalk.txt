@@ -60,7 +60,7 @@ RandomTalk : nonoverlap
 	//"\1\s[10]This is a single line of dialogue for the side character.\e"
 	
 	//FREE ROAM DIALOGUE
-	if bigmood > -1000 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	if bigmood > -1000 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 	{
 		if nowshell == "master" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
 		{
@@ -86,6 +86,20 @@ RandomTalk : nonoverlap
 			"\0\s[15]I need to clean up my pockets\w3.\w3.\w3.\e"
 		
 			"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need more bandages\w4.\w4.\w4.\f[sub,false]\e"
+		}
+		if nowshell == "Taileo"
+		{
+			"\0\s[34]Why do you keep looking at my tail?\w8\w4.\e"
+		
+			//"\0\s[15]I need to clean up my pockets\w3.\w3.\w3.\e"
+		
+			//"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need more bandages\w4.\w4.\w4.\f[sub,false]\e"
+			if bigmood > 60 && happycount > 300
+			{
+				"\0\s[23]\i[5]*He waggles his tail.\e"
+				"\0\s[52]\i[5]*He wiggles his tail.\s[52]\e"
+				"\0\s[96]\i[5]*He's moving his tail happily.\s[96]\e"
+			}
 		}
 	
 		//Profanity
@@ -452,7 +466,7 @@ RandomTalk : nonoverlap
 	}
 	
 	//post ded reveal
-	if raphchain == 3 || donchain == 3 || splinterchain == 3
+	if raphchain == 3 || donchain == 3 || splinterchain == 3 && leowatch == 0
 	{
 		"\0\s[82]\i[5]*You can hear him sigh.\s[82]\e"
 		
@@ -475,10 +489,310 @@ RandomTalk : nonoverlap
 		"\0\s[79]\i[5]*Looks like your conversation did a number on him.\s[79]\e"
 	}
 	
+	//watch party leo
+	if leowatch == 1
+	{
+		if watchleoscreen == 1
+		{
+			//"\0\s[124].\e"
+			"\0\s[124]*He's watching your screen intently.\e"
+			"\0\s[128]Look, \w3there!\e"
+			"\0\s[126]*He sneaks a look at you.\e"
+			"\0\s[126]*He looks at your face.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[126]Hm? \w8\w6Nope.\e"
+			"\0\s[124]*He enjoys looking at your screen.\e"
+			"\0\s[124]*You ask Leo if he likes what's going on. \n\n[half]\s[123]Sure.\e"
+			"\0\s[124]*You ask Leo if he likes what's going on. \n\n[half]\s[123]Can we have more action than this?\e"
+			"\0\s[124]*He's chilling.\e"
+			"\0\s[126]Your screen is a mess, \w3you know that?\e"
+			"\0\s[124]*He's wondering what is going on.\e"
+			"\0\s[127]*He's enjoying spending time with you.\e"
+		}
+		elseif watchleomusic == 1
+		{
+			//"\0\s[124].\e"
+			"\0\s[124]*He's watching your screen intently.\e"
+			"\0\s[128]Can we listen to that song next?\e"
+			"\0\s[123]This is a bop.\e"
+			"\0\s[123]This is catchy.\e"
+			"\0\s[125]This will be stuck in my head for days now\w3.\w3.\w3.\e"
+			"\0\s[126]*He sneaks a look at you.\e"
+			"\0\s[124]*You ask Leo if he likes this song. \w8\w4\n\n[half]\s[123]It's fine.\e"
+			"\0\s[124]*You ask Leo if he likes this song. \w8\w4\n\n[half]\s[123]It's cool.\e"
+			"\0\s[124]*You ask Leo if he likes this song. \w8\w4\n\n[half]\s[127]I like it! \w8\w4\s[123]I can imagine myself slicing the krang to this.\e"
+			"\0\s[124]*He's enjoying listening to the music.\e"
+			"\0\s[124]*He's thinking about your playlist.\e"
+			"\0\s[124]*He's thinking this song.\e"
+			"\0\s[124]*He's thinking about the melody.\e"
+			"\0\s[124]*He's thinking about the lyrics.\e"
+			"\0\s[126]How is this song called again?\e"
+			"\0\s[124]*He's humming along.\e"
+			"\0\s[124]*He's chilling.\e"
+			"\0\s[123]Hm\w3.\w3.\w3.\e"
+			"\0\s[127]This is nice.\e"
+			"\0\s[124]*He's wondering how old this song is.\e"
+			"\0\s[124]*He's deep in his thoughts.\e"
+			"\0\s[127]*He's enjoying spending time with you.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[125]Those lyrics\w5.\w5.\w5.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[125]What is this song?\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]Your playlist.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[125]Your music tastes.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[127]Next karaoke night.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]I'm just bopping to the song.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Raph would like this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Donnie would like this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Mikey would like this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]April would like this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Pops would like this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Casey would like this one\w3.\w3.\w3.\e"
+		}
+		elseif watchleodraw == 1
+		{
+			//"\0\s[124].\e"
+			"\0\s[124]*He's watching your screen intently.\e"
+			"\0\s[128]You missed a spot.\e"
+			"\0\s[127]Don't forget to take breaks!\e"
+			"\0\s[126]*He sneaks a look at you.\e"
+			"\0\s[126]\w8\w8\w8\s[124]\w8\w4*You ask him if he wants anything.\n\n[half]\w8\w4\s[126]Oh? \w8\w4No, \w3\s[127]you make a funny face when you draw.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]No, \w3no, \w3this is calming, \w3actually.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]No, \w3this is like meditation.\e"
+			"\0\s[124]*He's enjoying watching you draw.\e"
+			"\0\s[124]*He's looking at the canvas.\e"
+			"\0\s[124]*He's thinking about what you're drawing.\e"
+			"\0\s[126]What are you drawing again?\e"
+			"\0\s[123]This colour is nice.\e"
+			"\0\s[123]How about adding some blue?\e"
+			"\0\s[124]*He's chilling.\e"
+			"\0\s[123]Hm\w3.\w3.\w3.\e"
+			"\0\s[123]You're doing great.\e"
+			"\0\s[127]Good job, \w3%(username).\e"
+			"\0\s[124]*He's wondering how long have you been drawing things.\e"
+			"\0\s[124]*He's deep in his thoughts.\e"
+			"\0\s[124]*He's taking the canvas in.\e"
+			"\0\s[127]*He's enjoying spending time with you.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]This can use some more blue.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]Mikey's art.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]The amount of brushes you have\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Mikey would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This is relaxing.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]I'm just admiring your skills.\e"
+		}
+		elseif watchleogames == 1
+		{
+			//"\0\s[124].\e"
+			"\0\s[124]*He's watching your screen intently.\e"
+			"\0\s[128]Look, \w3look!\e"
+			"\0\s[128]Watch out!\e"
+			"\0\s[128]Go, \w3go, \w3go!\e"
+			"\0\s[126]*He sneaks a look at you.\e"
+			"\0\s[126]*He's watching your face as you play.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]No, \w3no, \w3keep it going.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]What? \w8\w3This game is cool! \w8\w4Come on, \w3keep going!\e"
+			"\0\s[123]Is this how games changed?\e"
+			"\0\s[124]*He's immersed in the game.\e"
+			"\0\s[123]I wish I could play this\w3.\w3.\w3.\e"
+			"\0\s[124]*He's thinking about the gameplay.\e"
+			"\0\s[124]*He's thinking about what may happen next.\e"
+			"\0\s[126]How is this game called again?\e"
+			"\0\s[124]*He's watching your sick gamer moves.\e"
+			"\0\s[126]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[127]I bet I can do better than you.\e"
+			"\0\s[124]*He's chilling.\e"
+			"\0\s[123]Woah!\e"
+			"\0\s[123]Don't forget to save.\e"
+			"\0\s[123]Ooh, \w3\s[128]look at that!\e"
+			"\0\s[123]%(username), \w3\s[128]there!\e"
+			"\0\s[123]O\w2o\w2h\w3.\w3.\w3.\e"
+			"\0\s[123]Oh, \w3that was cool.\e"
+			"\0\s[127]Nice move!\e"
+			"\0\s[123]Interesting\w3.\w3.\w3.\e"
+			"\0\s[123]Oh, \w3okay?\w3.\w3.\e"
+			"\0\s[124]*He's wondering what is going on.\e"
+			"\0\s[124]*He's deep in his thoughts.\e"
+			"\0\s[124]*He's taking the game in.\e"
+			"\0\s[127]*He's enjoying spending time with you.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Controls in this game are kind of weird.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[125]I wish I could play\w3.\w3.\w3. \w8\w4\s[127]But I do like watching you play, \w3so please, \w3go on.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This game is cool! \w8\w4\s[126]Is there, \w3by any chance, \w3a version of it that will run on a robot arm?\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Raph would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Donnie would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Mikey would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]April would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Pops would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Casey would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Raph would be great at this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Donnie would be great at this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Mikey would be great at this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]April would be great at this one\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This is fun!\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[125]Your taste in games\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[125]Your gaming skills\w3.\w3.\w3.\e"
+		}
+		elseif watchleomovies == 1
+		{
+			//"\0\s[124].\e"
+			"\0\s[124]*He's watching your screen intently.\e"
+			"\0\s[128]Look, \w3look!\e"
+			"\0\s[126]*He sneaks a look at you.\e"
+			"\0\s[126]\w8\w8\w8\s[124]\w8\w4*You ask him if he wants anything.\n\n[half]\w8\w4\s[126]Oh? \w8\w4No, \w3no, \w3\s[127]I just wanted to see your reaction to this scene.\e"
+			"\0\s[123]Hoo, \w3the plot thickens\w3.\w3\w3.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]No, \w3no, \w3keep it going.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]Dude, \w3I'm \w2INVESTED.\e"
+			"\0\s[124]*He's enjoying the movie.\e"
+			"\0\s[124]*He's immersed in the plot.\e"
+			"\0\s[124]*He's thinking about the last scene.\e"
+			"\0\s[124]*He's thinking about what may happen next.\e"
+			"\0\s[126]How is this movie called again?\e"
+			"\0\s[124]*He's thinking about the protagonist.\e"
+			"\0\s[126]Can you pause, \w3please? \w8\w8\s[124]\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w8\w6\w8\w4\s[123]Okay, \w3we're good to go.\e"
+			"\0\s[124]*He's chilling.\e"
+			"\0\s[123]Woah!\e"
+			"\0\s[123]Rewind, \w3rewind- \w8\w8\w5Oh!\e"
+			"\0\s[123]Ooh, \w3\s[128]check that out!\e"
+			"\0\s[123]O\w2o\w2h\w3.\w3.\w3.\e"
+			"\0\s[123]Oh, \w3that was cool.\e"
+			"\0\s[123]Interesting\w3.\w3.\w3.\e"
+			"\0\s[123]Oh, \w3okay?\w3.\w3.\e"
+			"\0\s[124]*He's wondering what is going on.\e"
+			"\0\s[124]*He's deep in his thoughts.\e"
+			"\0\s[124]*He's taking the movie in.\e"
+			"\0\s[127]*He's enjoying spending time with you.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Shu\w1shu\w1shu\w1shu\w2shush! \w8\w4I'm watching!\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This is kind of boring\w3.\w3.\w3. \w8\w4\s[126]But it's cool. \w8\w4\s[123]I like a chill movie night.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This movie is dope! \w8\w4\s[127]Thank you for showing this to me.\e"
+			"\0\s[127]Thank you for showing me this movie. \w8\w4\s[123]I miss watching TV like this\w3.\w3.\w3.\e"
+			"\0\s[127]Thank you for showing me this movie. \w8\w4\s[123]I wish I could show it to Casey\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Raph would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Donnie would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Mikey would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]April would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Pops would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Casey would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This is fun!\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[125]Your taste in movies\w3.\w3.\w3.\e"
+		}
+		elseif watchleovideos == 1
+		{
+			//"\0\s[124].\e"
+			"\0\s[124]*He's watching your screen intently.\e"
+			"\0\s[128]Look, \w3look!\e"
+			"\0\s[123]Hoo, \w3the plot thickens\w3.\w3\w3.\e"
+			"\0\s[126]*He sneaks a look at you.\e"
+			"\0\s[126]\w8\w8\w8\s[124]\w8\w4*You ask him if he wants anything.\n\n[half]\w8\w4\s[126]Oh? \w8\w4No, \w3no, \w3\s[127]I just wanted to see your reaction to this bit.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]No, \w3no, \w3keep it going.\e"
+			"\0\s[124]*He enjoys looking at your screen.\e"
+			"\0\s[124]*He's immersed.\e"
+			"\0\s[126]Can you pause, \w3please? \w8\w8\s[124]\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w8\w6\w8\w4\s[123]Okay, \w3we're good to go.\e"
+			"\0\s[124]*He's chilling.\e"
+			"\0\s[123]Woah!\e"
+			"\0\s[123]Rewind, \w3rewind- \w8\w8\w5Oh!\e"
+			"\0\s[123]Ooh, \w3\s[128]check that out!\e"
+			"\0\s[124]*He's thinking about the last video you watched.\e"
+			"\0\s[123]O\w2o\w2h\w3.\w3.\w3.\e"
+			"\0\s[123]Oh, \w3that was cool.\e"
+			"\0\s[123]Interesting\w3.\w3.\w3.\e"
+			"\0\s[123]Educational\w3.\w3.\w3.\e"
+			"\0\s[124]*He's wondering what is going on.\e"
+			"\0\s[124]*He's looking forward to the next video.\e"
+			"\0\s[124]*He's deep in his thoughts.\e"
+			"\0\s[124]*He's taking the video in.\e"
+			"\0\s[127]*He's enjoying spending time with you.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Shu\w1shu\w1shu\w1shu\w2shush! \w8\w4I'm watching!\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This is kind of boring\w3.\w3.\w3. \w8\w4\s[126]But it's cool. \w8\w4\s[123]Beats watching the same cassette tapes over and over again.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This is cool! \w8\w4\s[127]Thank you for showing this to me.\e"
+			"\0\s[127]Thank you for showing me things. \w8\w4\s[123]This is a real nice break.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Raph would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Donnie would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Mikey would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]April would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Pops would like this\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]Casey would like this\w3.\w3.\w3.\e"
+		}
+		elseif watchleowrite == 1
+		{
+			//"\0\s[124].\e"
+			"\0\s[124]*He's watching your screen intently.\e"
+			"\0\s[128]Don't you need a comma there?\e"
+			"\0\s[128]Typ\w1o\w1o\w1o\w1o\w1o\w1o.\e"
+			"\0\s[126]*He sneaks a look at you.\e"
+			"\0\s[126]\w8\w8\w8\s[124]\w8\w4*You ask him if he wants anything.\n\n[half]\w8\w4\s[126]Oh? \w8\w4No, \w3I'm just looking at your thinking face.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]No, \w3no, \w3I like reading what you write. \w8\w4I pretend it's a comic, \w3but I'm coming up with pictures in my head.\e"
+			"\0\s[124]*You ask Leo if he's bored. \w8\w4\n\n[half]\s[123]No, \w3this is like meditation.\e"
+			"\0\s[124]*He's enjoying watching you write.\e"
+			"\0\s[124]*He's looking at this page.\e"
+			"\0\s[124]*He's rereading the last sentence.\e"
+			"\0\s[124]*He's wondering if there will be a plot twist.\e"
+			"\0\s[124]*He's imagening the ending.\e"
+			"\0\s[124]*He's thinking about the previous page.\e"
+			"\0\s[124]*He's thinking about what you're writing about.\e"
+			"\0\s[126]What are you writing again?\e"
+			"\0\s[123]This font is kind of boring.\e"
+			"\0\s[123]Can you make the font a bit bigger, \w3please?\e"
+			"\0\s[127]Don't forget to take breaks!\e"
+			"\0\s[124]*He's chilling.\e"
+			"\0\s[123]Hm\w3.\w3.\w3.\e"
+			"\0\s[123]You're doing great.\e"
+			"\0\s[127]Good job, \w3%(username).\e"
+			"\0\s[124]*He's wondering how long have you been writing things.\e"
+			"\0\s[124]*He's wondering if you'll let him read the whole thing when it's finished.\e"
+			"\0\s[124]*He's deep in his thoughts.\e"
+			"\0\s[124]*He's taking the writing in.\e"
+			"\0\s[127]*He's enjoying spending time with you.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]The pacing is solid, \w3keep it up.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]Editing this will be a pain\w3.\w3.\w3. \w8\w4\s[127]For you.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]That word count\w3.\w3.\w3.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[123]This is relaxing.\e"
+			"\0\s[124]*You ask Leo what he's thinking about.\w8\w4\n\n[half]\s[126]I'm just admiring your skills.\e"
+		}
+		else
+		{
+			"\0\s[124]*He's watching your screen intently.\e"
+		}
+	}
+
 		
 	//A happier Leo
-	if happycount >= 125 && bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	if happycount >= 125 && bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 	{
+		if nowshell == "master" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
+		{
+		//Then these conversations are available! Note the brackets enclosing this set of dialogue.
+			"\0\s[0]You like my end-of-the-world get up? \w8These pants are pretty comfy.\e"
+		}
+	
+		//You can also put in multiple ifs checking for the same thing to vary the responses. In this case, it's checking to see if they're wearing another shell. You don't need to use elseifs for this! Just an if is fine.
+		if nowshell == "Chin Stripes"
+		{
+			"\0\s[34]You like my chin bananas, \w3huh? \w8\w4\s[53]Do they make me look older?\e"
+		
+			"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need more bandages\w4.\w4.\w4.\f[sub,false]\e"
+		
+			"\0\s[12]\i[5]*He's scratching his chin.\s[12]\e"
+		
+			"\0\s[12]\i[5]*He's rubbing his chin.\s[12]\e"
+		}
+		if nowshell == "Neon Leon"
+		{
+			"\0\s[0]You like my end-of-the-world get up? \w8These pants are pretty comfy.\e"
+		
+			"\0\s[15]I need to clean up my pockets\w3.\w3.\w3.\e"
+		
+			"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need more bandages\w4.\w4.\w4.\f[sub,false]\e"
+		}
+		if nowshell == "Taileo"
+		{
+			"\0\s[34]Why do you keep looking at my tail?\w8\w4.\e"
+		
+			//"\0\s[15]I need to clean up my pockets\w3.\w3.\w3.\e"
+		
+			//"\0\s[2]\i[5]*You hear him mumble something to himself.\s[2]\n\n[half]\f[sub,true]...need more bandages\w4.\w4.\w4.\f[sub,false]\e"
+			if bigmood > 60 && happycount > 300
+			{
+				"\0\s[23]\i[5]*He waggles his tail.\e"
+				"\0\s[52]\i[5]*He wiggles his tail.\s[52]\e"
+				"\0\s[96]\i[5]*He's moving his tail happily.\s[96]\e"
+			}
+		}
+	
 		if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && pizzagot == 1
 		{
 			"\0\s[0]\i[5]*He smells like the pizza you gave him.\s[0]\e"
@@ -750,7 +1064,7 @@ RandomTalk : nonoverlap
 	}
 	
 	//Bad mood Leo
-	if bigmood < -15 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	if bigmood < -15 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 	{
 		"\0\s[2]\i[5]*He seems bummed out.\s[2]\e"
 		
@@ -838,15 +1152,15 @@ RandomTalk : nonoverlap
 	
 	//--Chains
 	//Chain dialogue is unique. A dialogue chain consists of multiple bits of dialogue that get called in order over a period of time.
-	if happycount >= 325 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && raphded == 0 && raphpoint >=5
+	if happycount >= 325 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && raphded == 0 && raphpoint >=5 && leowatch == 0
 	{
 		"\0\s[2]\i[5]*He sighs.\s[2]\e:chain=sadchaingogogo"
 	}
-	if happycount >= 350 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && donded == 0 && donpoint >=5
+	if happycount >= 350 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && donded == 0 && donpoint >=5 && leowatch == 0
 	{
 		"\0\s[2]\i[5]*He sighs.\s[2]\e:chain=sadchaingogogo"
 	}
-	if happycount >= 250 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && dadded == 0 && splinterpoint >=5
+	if happycount >= 250 && bigmood > 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && dadded == 0 && splinterpoint >=5 && leowatch == 0
 	{
 		"\0\s[2]\i[5]*He sighs.\s[2]\e:chain=sadchaingogogo"
 	}
@@ -1062,7 +1376,7 @@ raphreveal2
 	
 	"\0\s[87]\i[5]*He looks distressed.\s[87]\e"
 	{
-		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1n\w1e\w1d\w1 \w1t\w1o \w1R\w1a\w1p\w1h\w1?\w5.\w5.\w5.\n\n"
+		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1e\w1d\w1 \w1t\w1o \w1R\w1a\w1p\w1h\w1?\w5.\w5.\w5.\n\n"
 		--
 		"\![*]\q[Yes,raphreveal3]\n/
 		\![*]\q[No,raphnono]\e:chain=end"
@@ -1145,7 +1459,7 @@ donreveal2
 	
 	"\0\s[89]\i[5]*He looks distressed.\s[89]\e"
 	{
-		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1n\w1e\w1d\w1 \w1t\w1o \w1D\w1o\w1n\w1n\w1i\w1e\w1?\w5.\w5.\w5.\n\n"
+		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1e\w1d\w1 \w1t\w1o \w1D\w1o\w1n\w1n\w1i\w1e\w1?\w5.\w5.\w5.\n\n"
 		--
 		"\![*]\q[Yes,donreveal3]\n/
 		\![*]\q[No,donnono]\e:chain=end"
@@ -1225,7 +1539,7 @@ splinterreveal2
 	
 	"\0\s[89]\i[5]*He looks to be deep in thought.\s[89]\e"
 	{
-		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1n\w1e\w1d\w1 \w1t\w1o \w1d\w1a\w1d?\w5.\w5.\w5.\n\n"
+		"\![enter,passivemode]\0\s[87]D\w1o\w1 \w1y\w1o\w1u\w5.\w5.\w5. \w8\w8\w2D\w1o\w1 \w1y\w1o\w1u\w1 \w1w\w1a\w1n\w1t\w1 \w1t\w1o\w1 \w1k\w1n\w1o\w1w\w1 \w1w\w1h\w1a\w1t\w1 \w1h\w1a\w1p\w1p\w1e\w1n\w1e\w1d\w1 \w1t\w1o \w1d\w1a\w1d?\w5.\w5.\w5.\n\n"
 		--
 		"\![*]\q[Yes,splinterreveal3]\n/
 		\![*]\q[No,splinternono]\e:chain=end"
@@ -1326,40 +1640,45 @@ OnMinuteChange //This is what will trigger time-based dialogue for your Ghost.
 	bigmood += 1
  	if minute == 0//These ifs will check what time it is. Here, it's seeing if the minute equals zero...
 	{
- 		if hour == 12  && raphchain == 0 && donchain == 0 && splinterchain == 0 && timecheckarooni == 1//And the hour equals 12, meaning it's noon. You can change this to some other hour if you want.
+ 		if hour == 12  && raphchain == 0 && donchain == 0 && splinterchain == 0 && timecheckarooni == 1 && leowatch == 0//And the hour equals 12, meaning it's noon. You can change this to some other hour if you want.
 		{
  			"\0\s[37]*It's noon.\e"
 			//Replace with appropriate dialogue as you want.
 		}
- 		elseif hour == 0  && raphchain == 0 && donchain == 0 && splinterchain == 0 && timecheckarooni == 1///If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
+ 		elseif hour == 0  && raphchain == 0 && donchain == 0 && splinterchain == 0 && timecheckarooni == 1 && leowatch == 0///If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
 		{
  			"\0\s[37]*It's midnight.\e"
  			//"\0\s[0]This is another bit of dialogue for midnight.\w8\1\s[10]BooooOoooOOOooOOOOo.\e"
  			//"\0\s[0]This is the third bit of dialogue for midnight.\e"
 			//Then replace the dialogue with what's appropriate.
 		}
-		elseif hour == 0  && raphchain == 0 && timecheckarooni == 1 || hour == 0 && donchain == 0 && timecheckarooni == 1 || hour == 0 && splinterchain == 0 && timecheckarooni == 1///If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
+		elseif hour == 0  && raphchain == 0 && timecheckarooni == 1  && leowatch == 0|| hour == 0 && donchain == 0 && timecheckarooni == 1  && leowatch == 0|| hour == 0 && splinterchain == 0 && timecheckarooni == 1 && leowatch == 0///If the hour is zero, aka midnight. Again, you can change this to whatever hour you want to check for. This section is flexible! You can also add more elseifs if you want to check for other hours.
 		{
  			"\0\s[37]*It's midnight.\e"
 		}
-		elseif raphchain > 0 && timecheckarooni == 1 || donchain > 0 && timecheckarooni == 1 || splinterchain > 0 && timecheckarooni == 1
+		elseif raphchain > 0 && timecheckarooni == 1  && leowatch == 0|| donchain > 0 && timecheckarooni == 1  && leowatch == 0|| splinterchain > 0 && timecheckarooni == 1 && leowatch == 0
 		{
 			"\0\i[5]*It's %(hour12)'o clock, \w4but he's too distracted to notice.\e"
 			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
 		}
-		elseif timecheckarooni == 1
+		elseif timecheckarooni == 1 && leowatch == 0
 		{
 			"\0\s[37]It's %(hour12)'o clock.\e"
 			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
 		}
+		elseif timecheckarooni == 1 && leowatch == 1
+		{
+			"\0\s[124]*It's %(hour12)'o clock.\e"
+			//%(hour12) stores the time. This is a general top of the hour notification. I personally like this because it helps me keep track of time when I've been working on something, so when a ghost is all "Hey it's 3 o clock" I can be like woah really when did that happen. If you think this is annoying though, you can just delete this bit of dialogue to leave this else statement blank, or leave "" in here instead.
+		}
 	}
 	//You can also check for more specific times! For example...
-	elseif hour == 23 && minute == 55 && raphchain == 0 && donchain == 0 && splinterchain == 0//this checks to see if the hour is 23 and the minutes are at 55... essentially, 11:55 pm.
+	elseif hour == 23 && minute == 55 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0//this checks to see if the hour is 23 and the minutes are at 55... essentially, 11:55 pm.
 	{
 		"\0\s[73]5 minutes 'till the curfew.\e"
 		//Replace with what you like!
 	}
-	elseif hour == 7 && minute == 30 && weekday == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0  && timecheckarooni == 1//Here, it's checking for a specific time on a specific day. You can add things to your time checks just like this by using the AND operator, && (more about operators at the walkthrough page). This adds up to 7:30 am, Sunday. If you have a favorite TV program on at some time, you could have your ghost comment on when it comes on like this.
+	elseif hour == 7 && minute == 30 && weekday == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0  && timecheckarooni == 1 && leowatch == 0//Here, it's checking for a specific time on a specific day. You can add things to your time checks just like this by using the AND operator, && (more about operators at the walkthrough page). This adds up to 7:30 am, Sunday. If you have a favorite TV program on at some time, you could have your ghost comment on when it comes on like this.
 	{			
 		//"\0\s[0]It's 7:30 on Sunday.\e"
 		//Replace with what's appropriate.
@@ -1481,6 +1800,8 @@ OnSurfaceRestore
 	{"\0\s[84]\1\s[10]"}
 	elseif raphchain == 2 || donchain == 2 || splinterchain == 2
 	{"\0\s[87]\1\s[10]"}
+	elseif leowatch == 1
+	{"\0\s[124]\1\s[10]"}
 	else
  	{"\0\s[0]\1\s[10]"}
  }
