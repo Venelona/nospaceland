@@ -65,7 +65,7 @@ RandomTalk : nonoverlap
 		if nowshell == "master" //This checks to see what shell they're currently using. You may remember this value being defined back in bootend.dic. If they're in their default shell...
 		{
 		//Then these conversations are available! Note the brackets enclosing this set of dialogue.
-			"\0\s[0]You like my end-of-the-world get up? \w8These pants are pretty comfy.\e"
+			"\0\s[0]¿Te gusta mi outfit del fin del mundo? \w8Los pantalones son bastante cómodos.\e"
 		}
 	
 		//You can also put in multiple ifs checking for the same thing to vary the responses. In this case, it's checking to see if they're wearing another shell. You don't need to use elseifs for this! Just an if is fine.

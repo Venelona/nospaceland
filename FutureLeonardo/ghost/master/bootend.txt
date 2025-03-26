@@ -482,7 +482,7 @@ OnClose
 					{
 						"\0\s[20]El deber me llama. ¡Nos vemos!\w8\w8"
 					
-						"\0\s[20]Es hora de ser un héroe.\w8\w8"
+						"\0\s[20]Hora de ser un héroe.\w8\w8"
 					}
 				elseif timeslot == "lunch"
 					{
@@ -517,7 +517,7 @@ OnClose
 								"\0\s[0]\i[6]Todavía puedo coger sueño\w2.\w2.\w2.\w8\w8"
 							}
 						
-							"\0\s[19]Me despido de usted.\w8\w8"
+							"\0\s[19]Y me despido de usted.\w8\w8"
 						
 							"\0\s[0]\i[6]Dulces sueños.\w8\w8"
 					}
@@ -529,7 +529,7 @@ OnClose
 							}
 							"\0\s[100]Mantente alerta, compañer%(spaform('o','a','e')).\w8\w8"
 						
-							"\0\s[34]Te vas a ir a dormir ahora, ¿verdad?\w8\w8"
+							"\0\s[34]Ahora te irás a dormir, ¿verdad?\w8\w8"
 						
 							"\0\s[8]¡General hasta la vista!\w8\w8"
 					}
