@@ -15,7 +15,7 @@ OnTeachName
 {
 	if reference0 == "TEACHNAME" //ignore this
 		{
-		"\0\s[0]Want me to call you something else? \w6Sure thing.\![open,inputbox,OnNameTeach,-1]\e"
+		"\0\s[0]¿Quieres que te llame de otra manera? \w6No hay problema.\![open,inputbox,OnNameTeach,-1]\e"
 		//This is the bit of dialogue you can rewrite if you want. Note that this line ends with \![open,inputbox,OnNameTeach,-1]. You may recognize this from bootend.dic. Essentially, this will lead to the next function. Make sure you don't delete that tag! The rest you can do whatever with though.
 		}
 	else

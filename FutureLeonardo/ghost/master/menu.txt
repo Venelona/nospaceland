@@ -2412,7 +2412,7 @@ Select.watchvids//VIDEOS
 	}
 	if happycount > 300
 	{
-		"\0\s[0]\i[5]*Preguntas a Leo si quiere ver vídeos contigo. \n\n[half]\w8\w4\s[0]Oh, ¡claro que sí! \s[122]\w8\w8\w8Siempre me gusta mirar cosas contigo.\e"
+		"\0\s[0]\i[5]*Preguntas a Leo si quiere ver vídeos contigo. \n\n[half]\w8\w4\s[0]Oh, ¡claro que sí! \s[122]\w8\w8\w8Siempre me gusta ver cosas contigo.\e"
 		"\0\s[0]\i[5]*Preguntas a Leo si quiere ver vídeos contigo. \n\n[half]\w8\w4\s[0]¡Claro!\s[122]\w8\w8\w8 Así puedo aprender más cosas sobre ti, \w3jeje.\e"
 	}
 }

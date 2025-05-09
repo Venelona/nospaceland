@@ -526,7 +526,7 @@ OnNarCreated
  
 OnSNTPBegin
  {
-	"\0\s[37]Voy a mirar la hora.\w9 Conectando con %(reference0).\e"
+	"\0\s[37]Voy a ver la hora.\w9 Conectando con %(reference0).\e"
 	//%(reference0) here is the site they'll be using to check your clock. I wouldn't worry too much about what the site is or where it's defined, it should be accurate. Replace the dialogue with what you need, you don't have to use reference0 if you don't want to.
  }
 
