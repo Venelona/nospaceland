@@ -36,15 +36,15 @@ OnFirstBoot
 	passhour = 0
 	passmin = 0 
 	passsec = 0 // These keep track of the time.
- 	username         = "Rookie" //This sets a temporary name for the user. It'll be replaced when they tell the ghost their name.
+ 	username         = "Novato" //This sets a temporary name for the user. It'll be replaced when they tell the ghost their name.
 	stroke           = 0	// Sets their being-pet state to zero.
  	teachusername    = 0	// Related to them learning your name.
 	mikireflag       = 0	// Determines behavior at certain points.
  	aitalkinterval = 230 //Their default talk rate.
  	birthdayprint = "????" //A temporary value for the user's birthday.
-	talktime = "5 minutes" //How the value aitalkinterval will display in the config menu.
+	talktime = "5 minutos" //How the value aitalkinterval will display in the config menu.
 	deleteshitai = "ON" //Sets whether or not the user can uninstall the ghost to "OFF". The user can change it later in the config menu (see menu.dic). 
-	nowshell = "NeonLeon" //This is for a special if check in aitalk.dic to see what shell the ghost is using. You should use the name of your default shell folder here.
+	nowshell = "Neon Leon" //This is for a special if check in aitalk.dic to see what shell the ghost is using. You should use the name of your default shell folder here.
 	firstboot = 1 //This marks that this is the first time you've run the ghost. It's so it won't reroute to general name changing dialogue when the user inputs their name.
 	petcount = 0 //does nothing for now
 	petadd = 0
@@ -80,6 +80,15 @@ OnFirstBoot
 	supgot = 0
 	pizzagot = 0
 	timecheckarooni = 1
+	//watchcheck
+	leowatch = 0
+	watchleoscreen = 0
+	watchleomusic = 0
+	watchleodraw = 0
+	watchleogames = 0
+	watchleomovies = 0
+	watchleovideos = 0
+	watchleowrite = 0
 	
 	
 	if reference0 == 0 //Don't touch this line.
@@ -89,10 +98,10 @@ OnFirstBoot
 		//In Notepad++ with C language, you'll also notice that this dialogue is black instead of grey. This is because of the use of the backwards slash as mentioned in the advanced section of the SakuraScripting page. Do you see near the bottom where it has \n\n[half]/ with the other slash at the end before the choices are listed? You will want to replace dialogue up that \n\n[half], but do not mess with the choices beyond that unless you know what you're doing.
 		//Always make sure to keep your dialogue in the quotation marks! And remember, you can't use quotation marks IN dialogue either. You can use two single apostrophes instead if you must. And REMEMBER what I said about \![enter,passivemode]! Do NOT delete that tag! \![raise,OnFirstBoot,0]
 		
-		"\![enter,passivemode]\0\s[3]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[4]\i[6]What the-\w8\w1 where-\n\n[half]\w8\w4What \w2in \w1the- \w8A!\s[1] Hello!\n\n[half]\w8Are you a fellow survivor? \w8\s[5]You don't look, \w6uh, \w6krang-ified. \w8\f[sub,true]Though, \w3looking at that face, \w3is that natural-\f[sub,false]\n\n[half]\w8\w8\s[6]Anyway, \w3it's nice to meet you. \w8\s[0]I'm Leonardo Hamato, \w8\s[19]leader of the resistance. \w8\w4\0\s[0]How can I call you?\n\n[half]/
-		\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n/
-		\![*]\q[She/Her/Hers,choicefirstsheher]\n/
-		\![*]\q[They/Them/Their,choicefirsttheythem]\e"
+		"\![enter,passivemode]\0\s[3]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[4]\i[6]¿Pero qué-\w8\w1 ¿Dónde-\w8\w4 ¿Qué \w2rayos \w1está-\n\n[half]\w8¡Ah!\s[1] ¡Hola!\w8 ¿Tú también eres un sobreviviente? \w8\s[5]No te ves, \w6em, \w6krangificado. \w8\f[sub,true]Aunque, \w3ahora que te miro, \w3esa cara es natural-\f[sub,false]\n\n[half]\w8\w8\s[6]Bueno, en fin, \w3es un placer conocerte. \w8\s[0]Soy Leonardo Hamato, \w8\s[19]líder de la Resistencia. \w8\w4\0\s[0]¿Cómo quieres que me dirija a tí?\n\n[half]/
+		\w5\_q\![*]\q[Él,choicefirsthehim]\n/
+		\![*]\q[Ella,choicefirstsheher]\n/
+		\![*]\q[Elle,choicefirsttheythem]\e"
 
 		
 		//There's a lot going on here, but what you mostly need to remember is to enter Passivemode at the beginning, and make sure not to touch the bottom part that starts with \w5\_q where the options are set up. Do whatever you like with the rest of the dialogue though! Make sure to set up poses for both characters right when you start, otherwise one will be invisible until they speak.
@@ -113,10 +122,10 @@ OnFirstBoot
  	{
 		//---- This is dialogue for when the user uninstalls the ghost for whatever reason, then reinstalls them again. They will run this dialogue instead of their normal dialogue above. You can change this to reflect the fact the user's uninstalled your ghost once, or you can make it the same as the above, it's up to you. You'll see this if you try to run OnFirstBoot using ![raise] without the extra 0 as mentioned above.
  		{
- 		"\![enter,passivemode]\0\s[3]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[4]\i[6]What the-\w8\w1 where-\n\n[half]\w8\w4What \w2in \w1the- \w8A!\s[1] Hello!\n\n[half]\w8Are you a fellow survivor? \w8\s[5]You don't look, \w6uh, \w6krang-ified. \w8\f[sub,true]Though, looking at that face, it's kind of familiar-\f[sub,false]\n\n[half]\w8\w8\s[6]Anyway, it's nice to meet you. \s[0]I'm Leonardo Hamato, leader of the resistance. \0\s[0]How can I call you?\n\n[half]/
-		\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n/
-		\![*]\q[She/Her/Hers,choicefirstsheher]\n/
-		\![*]\q[They/Them/Their,choicefirsttheythem]\e"
+ 		"\![enter,passivemode]\0\s[3]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[4]\i[6]¿Pero qué-\w8\w1 ¿Dónde-\w8\w4 ¿Qué \w2rayos \w1está-\n\n[half]\w8¡Ah!\s[1] ¡Hola!\w8 ¿Tú también eres un sobreviviente? \w8\s[5]No te ves, \w6em, \w6krangificado. \w8\f[sub,true]Aunque, \w3ahora que te miro, \w3tu cara se me hace un tanto familiar-\f[sub,false]\n\n[half]\w8\w8\s[6]Bueno, en fin, \w3es un placer conocerte. \w8\s[0]Soy Leonardo Hamato, \w8\s[19]líder de la Resistencia. \w8\w4\0\s[0]¿Cómo quieres que me dirija a tí?\n\n[half]/
+		\w5\_q\![*]\q[Él,choicefirsthehim]\n/
+		\![*]\q[Ella,choicefirstsheher]\n/
+		\![*]\q[Elle,choicefirsttheythem]\e"
 		}
  	}
 }
@@ -139,6 +148,7 @@ Select.choicefirsthehim
 	hisher = "his"
 	hesshes = "he's"
 	amigo = "amigo"
+	élella = "él"
 	--
 	NameInput
 }
@@ -151,6 +161,7 @@ Select.choicefirstsheher
 	hisher = "her"
 	hesshes = "she's"
 	amigo = "amiga"
+	élella = "ella"
 	--
 	NameInput
 }
@@ -162,6 +173,7 @@ Select.choicefirsttheythem
 	hisher = "theirs"
 	hesshes = "they're"
 	amigo = "amige"
+	élella = "elle"
 	--
 	NameInput
 }
@@ -180,7 +192,7 @@ NameInput
 {
 	//Note that there's a \![leave,passivemode] tag in this dialogue! Don't forget about this! If you leave them in passivemode they won't talk at all and it'd sort of defeat the purpose, right? I actually forgot this for a while with Hunter and Smoker and didn't notice because OnFirstBoot only runs once, so it took me some testing to find out what was wrong. Always make sure to leave passivemode when you're done with it!
 	
-	"\![leave,passivemode]\0\s[0]Cool. \w8What's your name? \![open,inputbox,OnNameTeach,-1]\e"
+	"\![leave,passivemode]\0\s[0]Genial. \w8¿Y cómo te llamas? \![open,inputbox,OnNameTeach,-1]\e"
 	
 	//At the end of this dialogue there's a tag saying "\![open,inputbox,OnNameTeach,-1]". It basically leads to the naming function defined in nameteach.dic, so don't touch it. Make sure it's there though! Otherwise your user won't have a way to put in their name. :o
 	
@@ -258,6 +270,15 @@ OnBoot
 	donchain = 0
 	splinterchain = 0
 	sadchainstart = 0
+	leowatch = 0
+	watchleoscreen = 0
+	watchleomusic = 0
+	watchleodraw = 0
+	watchleogames = 0
+	watchleomovies = 0
+	watchleovideos = 0
+	watchleowrite = 0
+	
 	
 	//IDLE POSES
 	if bigmood < -30 && bigmood > -70 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
@@ -272,6 +293,8 @@ OnBoot
 	{"\0\s[84]\1\s[10]"}
 	elseif raphchain == 2 || donchain == 2 || splinterchain == 2
 	{"\0\s[87]\1\s[10]"}
+	elseif leowatch == 1
+	{"\0\s[124]\1\s[10]"}
 	else
  	{"\0\s[0]\1\s[10]"} //This sets them up in their neutral pose for now.
 	
@@ -298,7 +321,7 @@ OnBoot
 	//***********************************************************************
 	
 	{
-				"\0\s[0]You thought I'd forget? It's %(bornmonthprint) %(borndayprint), Happy birthday! \s[23]Thank you for welcoming me here.\e" 
+				"\0\s[0]¿Creías qué se me había olvidado? Hoy es %(bornday) de %(bornmonthprint). ¡Felíz cumpleaños! \s[23]Gracias por darme la bienvenida a este lugar.\e" 
 				
 				//Notice in this dialogue that there are two new envelopes, %(bornmonthprint) and %(borndayprint). These two things basically display the user's birthday - bornmonthprint is the month and borndayprint is the day. These were defined when the user put in their birthday in the menu.dic file. See word.dic for more info on envelopes.
 				//If the user didn't or hasn't put in their birthday yet, this dialogue will basically never get called. Which makes sense.
@@ -315,7 +338,7 @@ OnBoot
 	//}
 	elseif dayslot == "10month 31day"
 	{
-				"\0\s[0]Happy Halloween. \w8\w4\s[23]I hope you like my costume. \w8\w8\w8\n\s[28]I hope you have a better costume than me.\e"
+				"\0\s[0]Feliz Halloween. \w8\w4\s[23]Espero que te guste mi disfraz. \w8\w8\w8\n\s[28]Espero que tu disfraz sea mejor que el mío.\e"
 				
 				//You can see how these basically work. You can add in new elseif statements along these same lines with your own dayslots if you want to have them say things for all sorts of days. You can also change these existing ones I put in as examples to other dates, like your character's birthdays, perhaps. This is up to you! If you don't care about this, you can delete all the elseifs and just leave the one for the user's birthday.
 	}
@@ -347,15 +370,15 @@ normalboottalky
 	//else
 	if RAND(100) < 45 //What this does is choose a random number from 1-100, and then checks if that number is less than 40. If it's less than forty, then these dialogue pieces will occur. Remember, you can have multiple lines of dialogue within one set of brackets like this! You just need to make sure they're all enclosed in their own set of quotation marks.
 	{
-		"\0\s[8]Eyyy, %(username)! \w8\w4Good day to ca\s[0]ll me, \w4now I can skip on paperwork.\e"
+		"\0\s[8]¡Eeeh, %(username)! \w8\w4Qué buen momento para lla\s[0]madme, \w4ahora puedo saltarme el papeleo.\e"
 	
-		"\0\s[0]Howsit going?\e"
+		"\0\s[0]¿Qué tal estamos?\e"
 	
 		"\0\s[8]%(username).\e"
 		
-		"\0\s[20]General Leo, \w5reporting for duty.\e"
+		"\0\s[20]General Leo, \w5a su servicio.\e"
 		
-		"\0\s[6]Hey there.\e"
+		"\0\s[6]Buenas.\e"
 	}
  	else
  	{
@@ -363,51 +386,51 @@ normalboottalky
 		
 		if timeslot == "earlymorning" //The following dialogue will be called if they are booted during the time specified in GetTimeSlot (in this case, the hour being more than/equal to 5 but less than/equal to 8). Remember, you can add as many lines of dialogue here as you want, or take away as many as you want! Replace the dialogue here with what you see fit.
 		{
-			"\0\s[15]Hmmm.\i[5]\w3.\w3.\w3.\w3.\w3. \w6\s[20]Oh, hey there.\e"
+			"\0\s[15]Mmmm.\i[5]\w3.\w3.\w3.\w3.\w3. \w6\s[20]Oh, hola, ¿qué tal?\e"
 		
-			"\0\s[29]Mr'n'.\e"
+			"\0\s[29]Buenos días\w3.\w3.\w3.\e"
 		
-			"\0\s[22]Oh, sun's up already.\e"
+			"\0\s[22]Oh, ya ha salido el sol.\e"
 		}
 		elseif timeslot == "morning"
 		{
-			"\0\s[0]Morning. \w8\w4What's the plan today?\e"
+			"\0\s[0]Buenos días. \w8\w4¿Cuál es el plan para hoy?\e"
 		
-			"\0\s[6]Ready for action?\e"
+			"\0\s[6]¿List%(spaform('o','a','e')) para la acción?\e"
 		}
 		elseif timeslot == "lunch"
 		{
-			"\0\s[26]Oh, hey there. \w8\w4\s[0]Was debating on eating lunch, but now we can save on resources.\e"
+			"\0\s[26]Oh, hola. \w8\w4\s[0]Estaba pensando en si almorzar, pero ahora podemos ahorrar en provisiones.\e"
 		
-			"\0\s[8]Good to see you, %(username).\e"
+			"\0\s[8]Me alegro de verte, %(username).\e"
 		}
 		elseif timeslot == "afternoon"
 		{
-			"\0\s[29]Gimme a moment.\e"
+			"\0\s[29]Dame un momento.\e"
 		}
 		elseif timeslot == "evening"
 		{
-			"\0\s[12]Patrol- \w8\w4\s[0]Oh hey there.\e"
+			"\0\s[12]Patrull- \w8\w4\s[0]Oh, buenas.\e"
 		
-			"\0\s[20]Sun's setting - be careful.\e"
+			"\0\s[20]Se está poniendo el sol - ten cuidado.\e"
 		
-			"\0\s[0]\i[6]Ah, a peaceful evening.\e"
+			"\0\s[0]\i[6]Ah, una noche tranquila.\e"
 		}
 		elseif timeslot == "latenight"
 		{
-			"\0\s[0]Ain't it late, %(username)? \w8\w4Don't skip on sleep like me.\e"
+			"\0\s[0]¿No se está haciendo tarde, %(username)? \w8\w4No vayas a perder sueño como yo.\e"
 		
-			"\0\s[0]Oh. \w6Here goes my sleep schedule.\e"
+			"\0\s[0]Oh. \w6Y así es como se van mis horas de sueño.\e"
 		
-			"\0\s[6]Oh, hey. \w8\w4After a day \s[0]like this I can use a break.\e"
+			"\0\s[6]Oye, mira. \w8Podría tomarme un respiro \s[0]después de un día como este.\e"
 		}
 		else //the last timeslot we haven't done is midnight, which is what's under here.
 		{
-			"\0\s[100]H\w3m\w3m\w3m\w3.\w3.\w3. \w8\s[0]Ah, \w3hello. \w8\w4Don't mind me, \w6conserving energy.\e"
+			"\0\s[100]H\w3m\w3m\w3m\w3.\w3.\w3. \w8\s[0]Ah, \w3buenas. \w8\w4No me hagas caso, \w6solo estoy conservando energía.\e"
 		
-			"\0\s[0]It's quite late\w5\s[26] - is everything alright?\e"
+			"\0\s[0]Es muy tarde\w5\s[26] - ¿Va todo bien?\e"
 		
-			"\0\s[20]You're up too? \w8\w6Ey.\e"
+			"\0\s[20]¿También estás despiert%(spaform('o','a','e'))? \w8\w6Hey.\e"
 		}
 	}
 }
@@ -429,9 +452,9 @@ OnClose
 		{
 			if raphchain == 3 || donchain == 3 || splinterchain == 3
 			{
-				"\0\s[82]I will see you later\w3.\w3.\w3.\w8\w8"
+				"\0\s[82]Luego te veo\w3.\w3.\w3.\w8\w8"
 				
-				"\0\s[82]Thank you again. \w8\w4For listening.\w8\w8"
+				"\0\s[82]Gracias otra vez. \w8\w4Por escuchar.\w8\w8"
 				
 				"\0\s[82]\w3.\w3.\w3.\w8\w8"
 			}
@@ -439,51 +462,51 @@ OnClose
 			{
 				if RAND(100) < 45 //see above about the random number generator
 				{
-					"\0\s[8]Cya!\w8\w8\w8\w5"
+					"\0\s[8]¡Nos vemos!\w8\w8\w8\w5"
 				
-					"\0\s[23]Stay safe.\w8\w8"
+					"\0\s[23]Mantente a salvo.\w8\w8"
 				
-					"\0\s[19]Take care.\w8\w8"
+					"\0\s[19]Cuídate.\w8\w8"
 				
-					"\0\s[19]Wish me luck.\w8\w8"
+					"\0\s[19]Deséame suerte.\w8\w8"
 				}
 				else
 				{
 				if timeslot == "earlymorning"
 					{
-						"\0\s[20]Damn, it's early. \w8\w4Wish me luck!\w8\w8"
+						"\0\s[20]Bufff, qué temprano es. \w8\w4¡Deséame suerte!\w8\w8"
 					
-						"\0\s[23]Cya!\w8\w8"
+						"\0\s[23]¡Nos vemos!\w8\w8"
 					}
 				elseif timeslot == "morning"
 					{
-						"\0\s[20]Off to my duty. Cya!\w8\w8"
+						"\0\s[20]El deber me llama. ¡Nos vemos!\w8\w8"
 					
-						"\0\s[20]It's hero time.\w8\w8"
+						"\0\s[20]Hora de ser un héroe.\w8\w8"
 					}
 				elseif timeslot == "lunch"
 					{
-						"\0\s[8]I'll see you later.\w8\w8"
+						"\0\s[8]Luego te veo.\w8\w8"
 					
-						"\0\s[0]Let's hope I get back here in one piece.\w8\w8"
+						"\0\s[0]Solo esperemos que vuelva de una sola pieza.\w8\w8"
 					}
 				elseif timeslot == "afternoon"
 					{
-						"\0\s[0]Be careful.\w8"
+						"\0\s[0]Ten cuidado.\w8"
 					
-						"\0\s[20]Back to work.\w8\w8"
+						"\0\s[20]De vuelta al trabajo.\w8\w8"
 					}
 				elseif timeslot == "evening"
 					{
 							if weekday == 6 //here, a nested if statement is checking that if it's evening, is it also saturday? You can do this to check more specific times on other days as well. You can change this to some other day if you want, or just delete this little if/else section entirely and write your own evening related close dialogue.
 							{
-								"\0\s[0]I'll get to sleeping.\w8\s[23] Buhbye. \w8\w8"
+								"\0\s[0]Yo me voy yendo al sobre.\w8\s[23] Adiosito. \w8\w8"
 							}
 							else //if it's not saturday, then it'll do this dialogue instead.
 							{
-								"\0\s[20]Stay alert, %(username).\w8\w8"
+								"\0\s[20]Mantente alerta, %(username).\w8\w8"
 							
-								"\0\s[8]Leonardo, \w4signing off.\w8\w8\w2"
+								"\0\s[8]Leonardo, \w4se despide.\w8\w8\w2"
 							}
 					}
 				elseif timeslot == "latenight"
@@ -491,24 +514,24 @@ OnClose
 							if weekday == 6 //This is the same check as above to see if it's Saturday. Note that this doesn't have an else statement! Sometimes you can get away with that, but make sure you test thoroughly.
 							//Of course, you can also cut this check entirely if you want.
 							{
-								"\0\s[0]\i[6]I can still catch up on my sleep\w2.\w2.\w2.\w8\w8"
+								"\0\s[0]\i[6]Todavía puedo coger sueño\w2.\w2.\w2.\w8\w8"
 							}
 						
-							"\0\s[19]I bid you farewell.\w8\w8"
+							"\0\s[19]Y me despido de usted.\w8\w8"
 						
-							"\0\s[0]\i[6]Nighty night.\w8\w8"
+							"\0\s[0]\i[6]Dulces sueños.\w8\w8"
 					}
 				else //like above, this is the midnight time slot since it's the last one left.
 					{
 							if weekday == 6 //checking if it's the middle of the night on Saturday
 							{
-								"\0\s[35]I, \w4uh, \w4spent my sleep break here\w2.\w2.\w2. \w8\s[23]Was well worth it though.\w8"
+								"\0\s[35]Me-, \w4em, \w4me he pasado aquí toda la noche\w2.\w2.\w2. \w8\s[23]Bueno, ha merecido la pena.\w8"
 							}
-							"\0\s[100]Stay alert, pal.\w8\w8"
+							"\0\s[100]Mantente alerta, compañer%(spaform('o','a','e')).\w8\w8"
 						
-							"\0\s[34]You'll sleep now, right?\w8\w8"
+							"\0\s[34]Ahora te irás a dormir, ¿verdad?\w8\w8"
 						
-							"\0\s[8]General's a-hoy!\w8\w8"
+							"\0\s[8]¡General hasta la vista!\w8\w8"
 					}
 				}
 				
@@ -518,11 +541,11 @@ OnClose
  		
  	else //This dialogue is for if they haven't been open for at least five minutes.
  	{
- 		"\0\s[26]Oh? \w8Bye then-\w8\w8"
+ 		"\0\s[26]¿Oh? \w8Pues adiós-\w8\w8"
 		
-		"\0\s[26]Ah? \w8Okay bye-\w8"
+		"\0\s[26]¿Ah? \w8Bueno, adiós-\w8"
 		
- 		"\0\s[26]Wait, \w2please, \w2not yet-\w8\w2"
+ 		"\0\s[26]Espera, \w2por favor, \w2aún no-\w8\w2"
 		
 		"\0\s[0]\i[7]A-\w8\w3"
  	}
@@ -541,7 +564,7 @@ OnClose
 
 OnWindowStateRestore
  {
-	"\0\s[1]Oop- You alright there, recruit?\e"
+	"\0\s[1]Oh- ¿Estás bien, recruta?\e"
 }
 
 
@@ -554,12 +577,12 @@ OnGhostChanging
  {
 	if reference0 == "Future Leonardo" //Replace this with the name of your Sakura character as you put in install.txt or descript.txt. I set this up to use the full ghost's name with Hunter and Smoker but I forget exactly how I did it and I'm having trouble getting it to work again. I think I just didn't define the Sakura or Kero names in either descript.txt or install.txt. You can experiment with it yourself. Otherwise, leave it as your Sakura character's name.
 	{
-		"\0\s[0]Gimme a sec.\w8\w8\e"
+		"\0\s[0]Dame un segundo.\w8\w8\e"
 		//Replace this dialogue with whatever you like.
 	}
  	else //If you're switching to another Ghost.
 	{
-		"\0\s[0]Oh, \w3seeing %(reference0)? \w8\s[23]Have fuuun!\w8\w8\e"
+		"\0\s[0]Oh, \w3¿vas a ver a %(reference0)? \w8\s[23]¡Qué os lo paséis bien!\w8\w8\e"
 		
 		//Replace this dialogue with whatever you like. Notice the use of the %(reference0) envelope here? In OnGhostChanging, %(reference0) stores the name of the ghost being swapped to, so if you want to display what you're switching to, you can use %(reference0) as in this example. You don't have to use %(reference0) if you don't want to though.
 	}
@@ -576,13 +599,13 @@ OnGhostChanged
 	--
 	if reference0 == "Future Leonardo" //As above, this should be the name of your ghost as in install.txt or descript.txt.
 	{
-		"\0\s[0]Eyyy, \w3\s[19]it's my turn to chill.\e"
+		"\0\s[0]Eyyy, \w3\s[19]pero si ya es mi hora de relajación.\e"
 		
-		"\0\s[8]All good here.\e"
+		"\0\s[8]Todo bien por aquí.\e"
 	}
 	else //If you're switching to them from another ghost...
 	{
-		"\0\s[23]Cya, %(reference0)! \w8\s[53]Missed me?\e"
+		"\0\s[23]¡Adiós, %(reference0), nos vemos! \w8\s[53]¿Me has echado de menos?\e"
 
 		//Again, %(reference0) in this function is the name of the ghost in question. As above, replace these two lines of dialogue what what'd be appropriate for your ghost.
 	}
@@ -597,14 +620,14 @@ OnShellChanging
  {
 	if reference0 == "Chin Stripes" //reference0 in OnShellChanging is the name of the shell you're swapping to. It should be defined in the descript.txt file in your shell folder. If you do have alternate shells, put in the right name here.
 	{
-		"\0\s[0]\i[6]Mutation in progress\w3.\w3.\w3.\w8\e"
+		"\0\s[0]\i[6]Mutación en progreso\w3.\w3.\w3.\w8\e"
 	//Then rewrite this line as appropriate.
 	}
 	else //if you don't have any specific dialogue for a specific shell
 	{
 	//"\0\s[0]This dialogue is for changing shells.\w8\1\s[10]Sure is.\w8\e"
 	
-		"\0\s[0]\i[6]Mutation in progress\w3.\w3.\w3.\w8\e"
+		"\0\s[0]\i[6]Mutación en progreso\w3.\w3.\w3.\w8\e"
 	
 	//Rewrite these two lines as you need.
 	}
@@ -621,9 +644,9 @@ OnShellChanged
  	{
  		nowshell = "Neon Leon" //This is the folder name for your shell. Not the same as the above! 
 		
-		"\0\s[0]Back to the good ol' classic look.\e"
+		"\0\s[0]De vuelta a lo clásico bueno.\e"
 		
-		"\0\s[0]\i[6]Handsome as always.\e"
+		"\0\s[0]\i[6]Tan guapo como siempre.\e"
  		//"\0\s[0]This dialogue is for switching to our default shell.\w8\1\s[18]No really, will anyone actually put in the work to use these functions?\w8\0\s[9]\n\n[half]Shh.\e"
 		//Replace dialogue as required.
  	}
@@ -631,25 +654,29 @@ OnShellChanged
  	{
  		nowshell = "Chin Stripes"
 		
- 		"\0\s[0]Ah, \w3a beard.\w8\w4\s[19]Makes all the difference, \w3am I right?\e"
+ 		"\0\s[0]Ah, \w3la barba. \w8\w4\s[19]Esto lo cambia todo, \w3¿a que sí?\e"
 		
-		"\0\s[0]Am I more handsome now?\e"
+		"\0\s[0]¿Estoy más guapo ahora?\e"
 		
-		"\0\s[55]More face bananas! \w8\w4Won't you look at that!\e"
+		"\0\s[55]¡Más bananas para la cara! \w8\w4¡Mira tú qué cosas!\e"
 		
  		//"\0\s[0]This is another bit of dialogue for switching to this hypothetical shell.\w8\1\s[18]Man if you actually use this, you should tell Zar, it'll blow her mind.\w8\0\n\n[half]\s[9]Shut up, we're not supposed to be in-character here.\e"
 		//I'll do it one day, Zar.
  	}
- 	elseif reference0 == "Another totally real shell wow"
+ 	elseif reference0 == "Taileo"
  	{
- 		nowshell = "thiswouldbesomuchwork"
+ 		nowshell = "Taileo"
 		
- 		"\0\s[100]I am a turtle, I already have a shell.\e"
+ 		"\0\s[0]Oh, ¡mira! \w3¡Pero si es una cola! \w8\w4\s[23]Es casi como si tuviera mi brazo de nuevo\w3.\w3.\w3. \w8\w4\s[28]Casi.\e"
+		
+		"\0\s[54]Hora de menearse.\e"
+		
+		//"\0\s[55]More face bananas! \w8\w4Won't you look at that!\e"
 		//Replace this as well.
  	}
  	else //For any shell without a specific name, or if you don't want to bother with individual responses to a shell.
  	{
-		"\0\s[0]This dialogue is after we've changed my shell to %(reference[0]).\w8\0\s[0]How many shells do I have?\e"
+		"\0\s[0]Este es %(reference[0]). \w8\w4\s[0]A tu servicio.\e"
 	
 	//Note the %(reference[0]) here! This time that should store the name of whatever shell you're switching to. Replace this bit of dialogue as you need.
 	}
