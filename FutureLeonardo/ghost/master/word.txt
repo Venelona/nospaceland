@@ -17,6 +17,19 @@ nameynamey
 	"Pal"
 	"Friendo"
 }
+
+
+
+//Each entry in this array is a new page that will be added to the AI Graph.
+//You can add as many entries as you want, and each one will be a new page.
+//You can add as many items to the entries as you want, just have at least 3 or SSP will crash when trying to load the graph.
+//Obviously, if you add too many, it will at some point become very overwhelming to look at. You might try adding some sort of variables to control when each option is output.
+//Make sure you write the NAMES of the functions/envelopes you want it to count, NOT a function call like %(name)
+AI_Graphs : array
+{
+    "RandomTalk,envelope1,envelope2,envelope3,envelope4,envelope5"
+    "anotherenvelope,anotherenvelope2,anotherenvelope3"
+}
 //As you can see, we stated a word, opened some brackets, wrote some text, and closed the brackets. Now when you write ghost dialogue, you can write %(exampleenvelope) and your ghost will randomly display any of the three bits of text within the brackets! You can go ahead and test this yourself to see how it works, and I'll include some sample dialogue with this in aitalk.dic.
 
 //What can you use this kind of envelope for? You can store tons of random information to keep your ghost's dialogue varied! You can store various cities you like in %(city), musicians you like in %(musicians), places your ghost has been in %(places), food you like in %(food), movies you like in %(movie), fandoms you like in %(fandom), characters you like in %(fandomcharacter), celebrities you like under %(celebrity) or friends of yours in %(friends) or bnfs in %(bnfs), folders on your computer under %(folders), Pokemon you like under %(pokemon), insults under %(insult), swear words under %(swearword) which could potentially be hilarious, just about anything! You can make lists of absolutely anything to use with dialogue for your ghost! This .dic file is only limited by your imagination!

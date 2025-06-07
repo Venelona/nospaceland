@@ -44,7 +44,7 @@ OnFirstBoot
  	birthdayprint = "????" //A temporary value for the user's birthday.
 	talktime = "5 minutes" //How the value aitalkinterval will display in the config menu.
 	deleteshitai = "ON" //Sets whether or not the user can uninstall the ghost to "OFF". The user can change it later in the config menu (see menu.dic). 
-	nowshell = "NeonLeon" //This is for a special if check in aitalk.dic to see what shell the ghost is using. You should use the name of your default shell folder here.
+	nowshell = "Neon Leon" //This is for a special if check in aitalk.dic to see what shell the ghost is using. You should use the name of your default shell folder here.
 	firstboot = 1 //This marks that this is the first time you've run the ghost. It's so it won't reroute to general name changing dialogue when the user inputs their name.
 	petcount = 0 //does nothing for now
 	petadd = 0
@@ -80,6 +80,21 @@ OnFirstBoot
 	supgot = 0
 	pizzagot = 0
 	timecheckarooni = 1
+	//watchcheck
+	leowatch = 0
+	watchleoscreen = 0
+	watchleomusic = 0
+	watchleodraw = 0
+	watchleogames = 0
+	watchleomovies = 0
+	watchleovideos = 0
+	watchleowrite = 0
+	//recruit process checks
+	resistanceinterest = 0
+	recruitchain = 0
+	userrecruit = 0
+	recruitnamecheck = 0
+	nicknameroo = "Recruit"
 	
 	
 	if reference0 == 0 //Don't touch this line.
@@ -258,11 +273,34 @@ OnBoot
 	donchain = 0
 	splinterchain = 0
 	sadchainstart = 0
+	leowatch = 0
+	watchleoscreen = 0
+	watchleomusic = 0
+	watchleodraw = 0
+	watchleogames = 0
+	watchleomovies = 0
+	watchleovideos = 0
+	watchleowrite = 0
+	recruitchain = 0
+	
+	//adding new variables
+	if !ISVAR("resistanceinterest");
+	{
+		resistanceinterest = 0
+	}
+	if !ISVAR("userrecruit");
+	{
+		userrecruit = 0
+	}
+	if !ISVAR("recruitnamecheck");
+	{
+		recruitnamecheck = 0
+	}
 	
 	//IDLE POSES
 	if bigmood < -30 && bigmood > -70 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
 	{"\0\s[79]\1\s[10]"}
-	elseif bigmood <= -70 && bigmood > -200 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	elseif bigmood <= -40 && bigmood > -200 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
 	{"\0\s[02]\1\s[10]"}
 	elseif bigmood <= -200 && sadchain == 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
 	{"\0\s[82]\1\s[10]"}
@@ -272,6 +310,8 @@ OnBoot
 	{"\0\s[84]\1\s[10]"}
 	elseif raphchain == 2 || donchain == 2 || splinterchain == 2
 	{"\0\s[87]\1\s[10]"}
+	elseif leowatch == 1
+	{"\0\s[124]\1\s[10]"}
 	else
  	{"\0\s[0]\1\s[10]"} //This sets them up in their neutral pose for now.
 	
@@ -631,7 +671,7 @@ OnShellChanged
  	{
  		nowshell = "Chin Stripes"
 		
- 		"\0\s[0]Ah, \w3a beard.\w8\w4\s[19]Makes all the difference, \w3am I right?\e"
+ 		"\0\s[0]Ah, \w3a beard. \w8\w4\s[19]Makes all the difference, \w3am I right?\e"
 		
 		"\0\s[0]Am I more handsome now?\e"
 		
@@ -640,16 +680,20 @@ OnShellChanged
  		//"\0\s[0]This is another bit of dialogue for switching to this hypothetical shell.\w8\1\s[18]Man if you actually use this, you should tell Zar, it'll blow her mind.\w8\0\n\n[half]\s[9]Shut up, we're not supposed to be in-character here.\e"
 		//I'll do it one day, Zar.
  	}
- 	elseif reference0 == "Another totally real shell wow"
+ 	elseif reference0 == "Taileo"
  	{
- 		nowshell = "thiswouldbesomuchwork"
+ 		nowshell = "Taileo"
 		
- 		"\0\s[100]I am a turtle, I already have a shell.\e"
+ 		"\0\s[0]Oh look, \w3a tail! \w8\w4\s[23]It's like having my arm back\w3.\w3.\w3. \w8\w4\s[28]Almost.\e"
+		
+		"\0\s[54]Time for some wiggles.\e"
+		
+		//"\0\s[55]More face bananas! \w8\w4Won't you look at that!\e"
 		//Replace this as well.
  	}
  	else //For any shell without a specific name, or if you don't want to bother with individual responses to a shell.
  	{
-		"\0\s[0]This dialogue is after we've changed my shell to %(reference[0]).\w8\0\s[0]How many shells do I have?\e"
+		"\0\s[0]This is %(reference[0]). \w8\w4\s[0]At your service.\e"
 	
 	//Note the %(reference[0]) here! This time that should store the name of whatever shell you're switching to. Replace this bit of dialogue as you need.
 	}

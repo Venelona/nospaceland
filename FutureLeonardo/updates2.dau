@@ -1,22 +1,23 @@
 developer_options.txtabe155229c2a4c19f45f89820f641afesize=138date=2023-04-02T18:48:35charset=windows-1251
+install.txt48305b63efb4b4aca21633ac6c74761dsize=937date=2023-04-02T17:36:00
+readme.txtf02a635e2f1094dffb51fabf6f8194bfsize=2591date=2023-04-02T18:00:41
+thumbnail.png401d1357c4b03eca8815ac56289a217csize=246716date=2023-03-18T01:17:51
 ghost/master/Leoicon.icod6d2b8b4562b28b5356d35dbcbf0f370size=101634date=2023-02-15T19:42:30
-ghost/master/aitalk.txt4ae5973f0602bab0931c8812c46cec89size=108275date=2023-04-29T22:55:55
+ghost/master/aitalk.txt701a261efeb95ab0148aeaf73c89fd7fsize=111168date=2025-06-07T17:05:24
 ghost/master/anchor.txt8710fefeb31c223f44a2dc9a555d3b90size=4981date=2023-04-02T19:12:35
 ghost/master/aya5.dll5f91d5ac918774c5295e47c9cd8b18a5size=671744date=2018-12-02T22:24:32
 ghost/master/aya5.txt0a1b4b5541683dc1950b631e1605c578size=1282date=2023-04-02T19:12:53
-ghost/master/bootend.txtd9e2eceaf4202fd8db206be852c13c2fsize=38852date=2023-04-26T02:07:43
+ghost/master/bootend.txt1e387b8a2d730b9ff842ec98eba0a021size=39223date=2023-05-29T22:47:39
 ghost/master/commu.txt3952cd181d5f201691c5f9eeb18dc53fsize=6649date=2023-04-02T19:19:22
 ghost/master/descript.txtcbfd627f3cc350479ec2095dabd7fd48size=2626date=2023-04-02T19:13:27
 ghost/master/developer_options.txtabe155229c2a4c19f45f89820f641afesize=138date=2023-04-02T18:48:35
-ghost/master/etc.txt116d596e5073ef3e9b838cea693da9ffsize=35200date=2023-04-21T00:50:21
-ghost/master/menu.txt2722bf845e494f83ef80d1bce5c06dc0size=233794date=2023-04-29T23:02:04
-ghost/master/mouse.txtdadb641b4d8590683a3f0949e5bbf0b7size=27325date=2023-04-29T22:47:03
-ghost/master/nameteach.txt8e30f85fa46c776b06d333db6bc13198size=47976date=2023-04-11T18:47:17
+ghost/master/etc.txt70105f4560ca9dcb5b8a094bba58791asize=35201date=2023-05-17T21:14:55
+ghost/master/menu.txte97a00ed6789505d80168bd603658db5size=245088date=2023-05-31T00:53:41
+ghost/master/mouse.txt254d7cafb0aa3e9fd68c759b6b81412csize=28215date=2023-05-01T21:11:10
+ghost/master/nameteach.txt7e9a790d031db4bf265af5657c990ddcsize=50114date=2023-05-11T01:33:27
 ghost/master/shiori3.txt8fb773e71fd3b9458fe8767aab140655size=35270date=2023-04-02T19:20:45
 ghost/master/string.txt4e65b32e8a084430e33c7f8226d57a46size=8211date=2023-04-13T23:05:51
-ghost/master/word.txt5346398f576a8e32794e67df0b3d1ff7size=9123date=2023-04-02T19:21:51
-install.txt48305b63efb4b4aca21633ac6c74761dsize=937date=2023-04-02T17:36:00
-readme.txtf02a635e2f1094dffb51fabf6f8194bfsize=2591date=2023-04-02T18:00:41
+ghost/master/word.txt4c42bf6d360371ffa9eed0532ad3e5b2size=9853date=2023-06-02T17:20:17
 shell/Chin Stripes/descript.txt25c1786d799d6c82cd5ed03aff59f1cfsize=5485date=2023-04-14T21:02:23
 shell/Chin Stripes/h im.pnga31337cf51589858222c7f2c030d525dsize=44470date=2023-04-14T21:02:29
 shell/Chin Stripes/menu_background.png0ca515c4b08f7e9b12f9e7cab9593717size=27646date=2023-04-14T21:02:32
@@ -675,6 +676,13 @@ shell/Neon Leon/surface407.pngcd80143d4c531911d3839113708b6f57size=9701date=2
 shell/Neon Leon/surface408.png2952b1776698a099bc7ef4fa9c04fa82size=41803date=2023-02-27T00:50:24
 shell/Neon Leon/surface409.pnga40a646be4cace2d438063a77e39e10bsize=42744date=2023-02-27T00:50:11
 shell/Neon Leon/surface501.png83b19b80c004aec214cb2e1d0dc36ea7size=7470date=2023-02-27T00:31:34
+shell/Neon Leon/surface5010.png4d8dee6e120bb09296ea2b60a8a26415size=35819date=2023-11-16T19:20:08
+shell/Neon Leon/surface5011.png846fd8942b7b10029772745921e18543size=35989date=2023-11-16T19:20:23
+shell/Neon Leon/surface5012.png684c84d95578535428600c44cbc80513size=35828date=2023-11-16T19:20:53
+shell/Neon Leon/surface5013.png55b988691b8636c26e2abbee00ec9731size=35840date=2023-11-16T19:21:06
+shell/Neon Leon/surface5014.png244b91ed2b9b1ca843a5f3b47cab74e6size=35844date=2023-11-16T19:22:04
+shell/Neon Leon/surface5015.png01776d3f0fe9e66cd7bb19afe92f2e3bsize=35823date=2023-11-16T19:23:11
+shell/Neon Leon/surface5016.pnga5a44e302810a2345e6de049ec249d70size=35845date=2023-11-16T19:23:52
 shell/Neon Leon/surface502.png75a1a88b0d367ba535b889d252e0fad5size=7371date=2023-02-27T00:31:43
 shell/Neon Leon/surface503.png494972eca795620b0c2d83881917318bsize=9335date=2023-02-27T00:31:50
 shell/Neon Leon/surface504.png145d0d2eecb5557034dad38f384ebc30size=8136date=2023-02-27T00:31:57
@@ -836,7 +844,7 @@ shell/Neon Leon/surface907.png2e5e14a55172bf941ca2c55b1d4873d3size=43554date=
 shell/Neon Leon/surface908.pngfc466687c438f7d414fed3703c51d30dsize=43516date=2023-03-03T00:53:28
 shell/Neon Leon/surface909.pngf1016091e9f21abba504b47af1f3a68csize=41580date=2023-03-11T15:49:08
 shell/Neon Leon/surface9999.pnga15e72aebc6cb344cd1d4c6ec5497e3bsize=42054date=2023-03-13T01:03:52
-shell/Neon Leon/surfaces.txt95d6d5bff89015350e1a6984470870c9size=185950date=2023-04-25T20:05:02
+shell/Neon Leon/surfaces.txtb9c4da3c898c63ac6e0b33aec011db05size=186242date=2023-11-16T19:38:12
 shell/Neon Leon/surfacetable.txtf132ad553a131088b08cdbc8dcf3ef86size=414date=2020-10-30T02:07:16
 shell/Neon Leon/thumbnail.png401d1357c4b03eca8815ac56289a217csize=246716date=2023-03-18T01:17:51
 shell/Taileo/descript.txta83758fbdee4b1ef51c38ff3d28b9b6fsize=5479date=2023-04-15T23:32:33
@@ -1286,4 +1294,3 @@ shell/Taileo/surface9999.pnga6ed40d5023032b2327f54bb961caeecsize=42610date=20
 shell/Taileo/surfaces.txt3a8dae715480f24005fdafffc7a6e9ecsize=193064date=2023-04-25T20:32:43
 shell/Taileo/surfacetable.txtf132ad553a131088b08cdbc8dcf3ef86size=414date=2020-10-30T02:07:16
 shell/Taileo/thumbnail.pngdd05a6a8711ea0e631ada0643081be45size=253407date=2023-04-26T02:02:17
-thumbnail.png401d1357c4b03eca8815ac56289a217csize=246716date=2023-03-18T01:17:51

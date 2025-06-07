@@ -94,6 +94,26 @@ OnNameTeach
 	{
 		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
 	}
+	elseif reference0 == "stupid" 
+	{
+		"\0\s[74]Oh come on bud, \w3\s[73]I'm not calling you that. \w8\w4\s[50]No self-deprication is allowed with this old man around, \w3\s[72]gotcha?\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "dumb" 
+	{
+		"\0\s[74]Oh come on bud, \w3\s[73]I'm not calling you that. \w8\w4\s[50]No self-deprication is allowed with this old man around, \w3\s[72]gotcha?\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "stoopid" 
+	{
+		"\0\s[74]Oh come on bud, \w3\s[73]I'm not calling you that. \w8\w4\s[50]No self-deprication is allowed with this old man around, \w3\s[72]gotcha?\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "idiot" 
+	{
+		"\0\s[74]Oh come on bud, \w3\s[73]I'm not calling you that. \w8\w4\s[50]No self-deprication is allowed with this old man around, \w3\s[72]gotcha?\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "dumbass" 
+	{
+		"\0\s[74]Oh come on bud, \w3\s[73]I'm not calling you that. \w8\w4\s[50]No self-deprication is allowed with this old man around, \w3\s[72]gotcha?\![open,inputbox,OnNameTeach,-1]"
+	}
 	elseif reference0 == "leonardo" 
 	{
 		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
@@ -372,6 +392,30 @@ OnNameTeach
 		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
 	}
 	elseif reference0 == "shitty" 
+	{
+		username = tempname
+		Profanity = 1
+		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
+		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
+		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+	}
+	elseif reference0 == "bigdick" 
+	{
+		username = tempname
+		Profanity = 1
+		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
+		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
+		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+	}
+	elseif reference0 == "tits" 
+	{
+		username = tempname
+		Profanity = 1
+		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
+		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
+		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+	}
+	elseif reference0 == "boobs" 
 	{
 		username = tempname
 		Profanity = 1

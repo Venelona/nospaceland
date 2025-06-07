@@ -59,7 +59,7 @@ MouseMoveSakura
 					\w5\_q\![*]\q[Let me pet you,choicepet1]\n/
 					\![*]\q[Nothing?..,choicepet2]\e"
 				}
-				elseif petadd <= 20 && bigmood >= -60 && raphchain == 0 && donchain == 0 && splinterchain == 0
+				elseif petadd <= 20 && bigmood >= -60 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 				{
 					petadd += 1
 					happycount += 1
@@ -103,14 +103,14 @@ MouseMoveSakura
 					
 					
 				}
-				elseif petadd == 68 && bigmood >= -60 && raphchain == 0 && donchain == 0 && splinterchain == 0
+				elseif petadd == 68 && bigmood >= -60 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 				{
 					petadd += 1
 					happycount += 1
 					bigmood += 69
 					"\0\s[28]Nice.\e"
 				}
-				elseif petadd > 20 && petadd <= 100 && bigmood >= -60 && raphchain == 0 && donchain == 0 && splinterchain == 0
+				elseif petadd > 20 && petadd <= 100 && bigmood >= -60 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 				{
 					petadd += 1
 					happycount += 1
@@ -172,7 +172,7 @@ MouseMoveSakura
 					
 					
 				}
-				elseif bigmood < -60 && raphchain == 0 && donchain == 0 && splinterchain == 0
+				elseif bigmood < -60 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 					{
 						petadd += 1
 						//bigmood -=1
@@ -186,7 +186,7 @@ MouseMoveSakura
 						"\0\s[2]\i[5]*He seems too irritated for pets.\s[2]\e"
 					}
 				//distraught (work on)
-				elseif bigmood < -200 && raphchain == 0 && donchain == 0 && splinterchain == 0
+				elseif bigmood < -200 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 					{
 						petadd += 1
 						//bigmood -=1
@@ -199,9 +199,9 @@ MouseMoveSakura
 						"\0\s[2]\i[5]*He seems too sad for pets.\s[2]\e"
 					}
 				
-				elseif raphchain > 0 || donchain > 0 || splinterchain > 0
+				elseif raphchain > 0 && leowatch == 0 || donchain > 0 && leowatch == 0 || splinterchain > 0 && leowatch == 0
 				{
-					if raphchain == 1 || donchain == 1 || splinterchain == 1
+					if raphchain == 1 && leowatch == 0 || donchain == 1 && leowatch == 0 || splinterchain == 1 && leowatch == 0
 					{
 						petadd += 1
 						happycount += 1
@@ -210,7 +210,7 @@ MouseMoveSakura
 						"\0\s[84]\i[5]*He is too distracted for pets.\s[84]\e"
 						"\0\s[84]\i[5]*He's thinking too deeply to notice your pets.\s[84]\e"
 					}
-					if raphchain == 2 || donchain == 2 || splinterchain == 2
+					if raphchain == 2 && leowatch == 0 || donchain == 2 && leowatch == 0 || splinterchain == 2 && leowatch == 0
 					{
 						petadd += 1
 						happycount += 1
@@ -221,7 +221,7 @@ MouseMoveSakura
 						"\0\s[87]\i[5]*He's thinking too deeply to notice your pets.\s[87]\e"
 						"\0\s[87]\i[5]*You try to cheer him up, \w4but he doesn't notice.\s[87]\e"
 					}
-					if raphchain == 3 || donchain == 3 || splinterchain == 3
+					if raphchain == 3 && leowatch == 0 || donchain == 3 && leowatch == 0 || splinterchain == 3 && leowatch == 0
 					{
 						petadd += 1
 						happycount += 1
@@ -243,6 +243,110 @@ MouseMoveSakura
 				//	petadd += 1
 				//	happycount += 1
 				//}
+				elseif leowatch == 1
+				{
+					if bigmood < 0
+					{
+						petadd += 1
+						happycount += 1
+						"\0\s[125]*He just stares at you.\e"
+						"\0\s[125]Eh?\e"
+						"\0\s[125]*He glares at you.\e"
+						"\0\s[124]*He sighs.\e"
+						"\0\s[124]*He's distracted by your screen.\e"
+						"\0\s[124]*He's distracted by his thoughts.\e"
+						"\0\s[124]...\e"
+						"\0\s[124]He doesn't say anything.\e"
+						"\0\s[123]You should just\w3.\w3.\w3. Do your thing.\e"
+					}
+					elseif bigmood >= 0 && petadd <= 20
+					{
+						petadd += 1
+						happycount += 1
+						"\0\s[125]What are you d\w1o\w1o\w1o\w1o\w1ing?\e"
+						"\0\s[125]Come o\w1o\w1o\w1on\w3.\w3.\w3."
+						"\0\s[125]I see you there\w3.\w3.\w3.\e"
+						"\0\s[125]%(username)\w3.\w3.\w3.\e"
+						"\0\s[125]Come on, \w8cut it out.\e"
+						"\0\s[125]\i[6]I didn't sit down so you can pat me easier\w3.\w3.\w3.\e"
+						"\0\s[123]*You can hear him grumble.\e"
+						"\0\s[125]\i[6]*He glares at you.\e"
+						"\0\s[124]*You can hear him sigh.\e"
+						"\0\s[125]\i[6]En\w1o\w1o\w1o\w1ugh\w3.\w3.\w3.\e"
+						"\0\s[126]A?\e"
+						"\0\s[126]Oh?\e"
+						"\0\s[125]Hey\w3.\w3.\w3.\e"
+					}
+					elseif bigmood >= 0 && petadd > 20 && petadd <= 100
+					{
+						petadd += 1
+						happycount += 1
+						bigmood += 1
+						"\0\s[125]\i[6]*He grumbles for a bit.\e"
+						"\0\s[125]\i[6]*He seems embarrassed.\e"
+						"\0\s[123]\i[6]*He sighs.\e"
+						"\0\s[125]...\e"
+						"\0\s[123]...\e"
+						"\0\s[123]\i[6]...\e"
+						"\0\s[125]\i[6]...\e"
+						"\0\s[124]\i[6]*You spy a blush.\e"
+						"\0\s[125]Enough, \w4enough\w2.\w2.\w2.\e"
+						"\0\s[125]\i[6]You're distracting me.\e"
+						"\0\s[125]\i[6]%(username), please\w3.\w3.\w3.\e"
+						"\0\s[123]Come on, \w3I'm watching stuff here!\e"
+						"\0\s[124]*He says nothing, but it seems he likes it.\e"
+						"\0\s[125]\i[6]I didn't sit down so you can pat me easier\w3.\w3.\w3.\e"
+						"\0\s[123]%(username), \w3eyes on the screen.\e"
+						"\0\s[125]Again?\e"
+						"\0\s[126]A?\e"
+						"\0\s[126]Oop?\e"
+						"\0\s[126]Oh?\e"
+						"\0\s[125]Hey\w3.\w3.\w3.\e"
+					}
+					else //>100 pets
+					{
+						petadd += 1
+						happycount += 1
+						bigmood += 1
+						"\0\s[127]\i[6]*He leans into your pets.\e"
+						"\0\s[123]\i[6]*He hums.\e"
+						"\0\s[125]\i[6]*He seems embarrassed.\e"
+						"\0\s[123]...\e"
+						"\0\s[126]...\e"
+						"\0\s[123]\i[6]...\e"
+						"\0\s[125]\i[6]...\e"
+						"\0\s[124]\i[6]*You can hear him mumble something under his breath.\e"
+						"\0\s[124]\i[6]*He's blushing.\e"
+						"\0\s[124]\i[6]*He churrs.\e"
+						"\0\s[123]*Enough, \w4enough\w2.\w2.\w2.\e"
+						"\0\s[127]*It seems he's enjoying the pats.\e"
+						"\0\s[124]\i[6]*You sneak a pet in while he's down.\e"
+						"\0\s[123]\i[6]Okay, \w6okay, \w6let's get back to the screen.\e"
+						"\0\s[124]\i[6]Mhm\w4.\w4.\w4.\e"
+						"\0\s[127]Heh\w3.\w3.\w3.\e"
+						"\0\s[126]More?\e"
+						"\0\s[124]*He says nothing, but it seems he appreciates it.\e"
+						"\0\s[124]*He doesn't turn his head, but it seems he appreciates it.\e"
+						"\0\s[127]Thank you, \w3thank you\w3.\w3.\w3.\e"
+						"\0\s[127]\i[6]*He seems happy.\e"
+						"\0\s[127]\i[6]*He's enjoying the pets.\e"
+						"\0\s[126]A?\e"
+						"\0\s[126]Oop?\e"
+						"\0\s[126]Oh?\e"
+						"\0\s[123]%(username), \w3eyes on the screen.\e"
+						"\0\s[125]\i[6]I didn't sit down so you can pat me easier\w3.\w3.\w3.\e"
+						"\0\s[123]Don't distract me\w2.\w2.\w2.\e"
+						"\0\s[124]*He relaxes a bit more.\e"
+					}
+				}
+				
+				elseif petadd == 4999 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
+				{
+					petadd += 1
+					happycount += 5
+					bigmood += 20
+					"\0\s[0]\i[7]Oh no, \w4\s[26]%(username), \w4did you- \w8\w5Did you pat me 5000 times?! \w8\w4YOU FOOL, \w4what have you done, \w5YOU'VE GONE TOO FAR- \w8A\w3A\w3A\w3A\w3A\w3A\4\w3A\w3A\w3A\w3A\w3A\w3A\w1-\n\w4A\w1A\w1A\w1\s[0]ha\w1ha\w1ha\w1ha\w1ha\w1ha\w1ha! \w8\w8\w5\s[52]What? \w8\w4What have you thought would happen, \w4\s[53]I'll explode or something? \w8\w4\s[53]Relax. \s[52]\w8\w4I'm, \w4\s[0]uh, \w4\s[35]terrified by your dedication to my bald head, \w4\s[19]but I don't plan on spontaneously combusting\w4,\s[28]\f[sub,true] in here anyway.\f[sub,false] \w8\w4\s[20]I do appreciate it though. \w8\w4I'm more familiar with your arm now than I was with \s[19]my Righty, \w3\s[23]ha\w1ha.\e"
+				}
 				else
 				{
 					petadd += 1
@@ -291,7 +395,7 @@ MouseMoveSakura
 						"\0\s[20]Thank you, \w3thank you\w3.\w3.\w3.\e"
 						"\0\s[23]\i[5]*He seems happy.\e"
 						"\0\s[2]You don't have to do this, you know?\w4.\w4.\w4 \w8\w6\s[30]But thank you.\e"
-						"\0\s[0]\i[6]\i[5]I know, I know, I'm great.\e"
+						"\0\s[0]\i[6]I know, \w3I know, \w3I'm great.\e"
 						"\0\s[18]Pet? \w3Pot? \w3Pat? \w3Pot? \w3Pet? \w3Pat? \w3Pet? \w3Pat? \w3Pet? \w3Pot?\e"
 						"\0\s[0]I'd charge you for this if I had any use for money\w3.\w3.\w3. \n\w8\w4\s[23]Just kidding. \w8\w4\s[20]You can pet me for free, \w2any time.\e"
 						"\0\s[0]There's no stopping you, \w5huh? \w8\w4\s[19]Admirable.\e"

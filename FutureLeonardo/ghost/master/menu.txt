@@ -17,13 +17,24 @@
 	
 OpenSakuraMenu
 {
-	if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0
+	if bigmood >= 0 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 	{
 		"\0\s[0]\b2Yeah?"
 		"\0\s[0]\b2Hm?"
 		"\0\s[0]\b2Got a report?"
 		"\0\s[0]\b2Need anything?"
 		"\0\s[19]\b2Need a hand?"
+	}
+	elseif leowatch == 1
+	{
+		"\0\s[126]\b2Yeah?"
+		"\0\s[126]\b2Hm?"
+		"\0\s[123]\b2M?"
+		"\0\s[124]\b2..."
+		"\0\s[123]\b2Yes?"
+		"\0\s[123]\b2Hm?"
+		"\0\s[126]\b2M?"
+		"\0\s[126]\b2Yes?"
 	}
 	elseif bigmood < -100 && raphchain == 0 && donchain == 0 && splinterchain == 0
 	{
@@ -65,39 +76,66 @@ OpenSakuraMenu
 
 MenuRun
  {	
- 	wd = GetWeekDay
- 	ap = GetAP
- 	nowmin = Getnowmin
- 	nowhour = Getnowhour
-	//These four statements basically get the day of the week, whether it's AM or PM, the hour, and the time. It's putting together the information to display the time at the bottom of the balloon. Pay it no mind.
-	--
-	"\n\n\_q\b2" //The \n\n means two new lines as detailed in the walkthrough, and \_q means quick session, meaning all the text from this point on will display instantly instead of a few letters at a time like normal ghost dialogue.
-	--
-	if lastTalk != "" && raphchain != 3 && donchain != 3 && splinterchain != 3//What this does is check to see if the ghost has already said a random bit of dialogue on its own, essentially by seeing if the lastTalk thing is NOT empty (!= means "does not equal").
+	if leowatch == 1
 	{
-	  "\![*]\q[Repeat Last Dialogue,OnLastTalk]\n\n[half]"
-	  //If the ghost has said something, it will then display this menu option. You can replace "Repeat Last Dialogue" with whatever caption you like, such as "What were you saying?" or "What did you say?" or "Could you repeat that?" or something like that.
-	  
-	  //*********************Advanced User Info*******************************
-	  //These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
-	  
-	  //I briefly touched in bootend.dic about \q, but I'll again cover it here. Pay very close attention to how this bit of dialogue is formatted. You'll see it goes \![*]\q[Displayed Name,linkedfunction]. Breaking it down, \![*] puts the balloon's option icon in front of the choice (usually a > or something), \q sets up the choice, Displayed Name which is the text that will display in the ghost's balloon, then linkedfunction, which is what the choice is linked to when the user clicks it. As you go through this file, look at how every menu option is set up, and you will see they all follow this format, give or take a \![*]. If you're going to be adding new options to menus or creating your own functions and such, make sure you follow this format and learn it well. Make sure to read the coding page of the walkthrough.
-	  //***********************************************************************
+		wd = GetWeekDay
+		ap = GetAP
+		nowmin = Getnowmin
+		nowhour = Getnowhour
+		//These four statements basically get the day of the week, whether it's AM or PM, the hour, and the time. It's putting together the information to display the time at the bottom of the balloon. Pay it no mind.
+		--
+		"\n\n\_q\b2" //The \n\n means two new lines as detailed in the walkthrough, and \_q means quick session, meaning all the text from this point on will display instantly instead of a few letters at a time like normal ghost dialogue.
+		--
+		if lastTalk != "" && raphchain != 3 && donchain != 3 && splinterchain != 3
+		{
+		"\![*]\q[Repeat Last Dialogue,OnLastTalk]\n\n[half]"
+		}
+		--
+		"\![*]\q[Say something,OnAiTalk]\n\n"
+	
+		--
+		"You can...\n\n[half]\![*]\q[Stand up,leowatchover]\n\n\n[half]"
+		--
+		"Or...\n\n[half]\![*]\q[Check your status,configmenu]\n\n[half]/
+		\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year)\e"
 	}
-	--
- 	"\![*]\q[Say something,OnAiTalk]\n\n"
+	else
+	{
+		wd = GetWeekDay
+		ap = GetAP
+		nowmin = Getnowmin
+		nowhour = Getnowhour
+		//These four statements basically get the day of the week, whether it's AM or PM, the hour, and the time. It's putting together the information to display the time at the bottom of the balloon. Pay it no mind.
+		--
+		"\n\n\_q\b2" //The \n\n means two new lines as detailed in the walkthrough, and \_q means quick session, meaning all the text from this point on will display instantly instead of a few letters at a time like normal ghost dialogue.
+		--
+		if lastTalk != "" && raphchain != 3 && donchain != 3 && splinterchain != 3//What this does is check to see if the ghost has already said a random bit of dialogue on its own, essentially by seeing if the lastTalk thing is NOT empty (!= means "does not equal").
+		{
+		"\![*]\q[Repeat Last Dialogue,OnLastTalk]\n\n[half]"
+		//If the ghost has said something, it will then display this menu option. You can replace "Repeat Last Dialogue" with whatever caption you like, such as "What were you saying?" or "What did you say?" or "Could you repeat that?" or something like that.
+	  
+		//*********************Advanced User Info*******************************
+		//These text boxes are meant for those who have an interest in expanding or using more complicated functions in their ghost. Also for my own reference in the future since I plan on using this template too, haha. If you have no interest in any of this and just want to keep things as simple as possible, feel free to skip these boxes.
+	  
+		//I briefly touched in bootend.dic about \q, but I'll again cover it here. Pay very close attention to how this bit of dialogue is formatted. You'll see it goes \![*]\q[Displayed Name,linkedfunction]. Breaking it down, \![*] puts the balloon's option icon in front of the choice (usually a > or something), \q sets up the choice, Displayed Name which is the text that will display in the ghost's balloon, then linkedfunction, which is what the choice is linked to when the user clicks it. As you go through this file, look at how every menu option is set up, and you will see they all follow this format, give or take a \![*]. If you're going to be adding new options to menus or creating your own functions and such, make sure you follow this format and learn it well. Make sure to read the coding page of the walkthrough.
+		//***********************************************************************
+		}
+		--
+		"\![*]\q[Say something,OnAiTalk]\n\n"
 	
-	//This option will force the ghost to say something from aitalk if the user clicks it. Just replace "Say something" and "Say something 2" with whatever captions you think would be appropriate for such an option. IF you don't want two options for captions, delete one of the lines.
-	//Advanced users, you can add multiple captions for any option you add to a menu you make just like this, as long as you separate it from the other options into its own section with two dashes above and below.
-	--
-	"You can...\n\n[half]\![*]\q[Ask him a question,askyask]\n\n[half]/
-	\![*]\q[Give him something,giveygive]\n\n\n[half]"
-	--
-	"Or...\n\n[half]\![*]\q[Check your status,configmenu]\n\n[half]/
-	\![*]\q[Run errands,dosomething]\n\n\n[half]/
- 	\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year)\e"
+		//This option will force the ghost to say something from aitalk if the user clicks it. Just replace "Say something" and "Say something 2" with whatever captions you think would be appropriate for such an option. IF you don't want two options for captions, delete one of the lines.
+		//Advanced users, you can add multiple captions for any option you add to a menu you make just like this, as long as you separate it from the other options into its own section with two dashes above and below.
+		--
+		"You can...\n\n[half]\![*]\q[Ask him a question,askyask]\n\n[half]/
+		\![*]\q[Give him something,giveygive]\n\n[half]/
+		\![*]\q[Interact,dointeracty]\n\n\n[half]"
+		--
+		"Or...\n\n[half]\![*]\q[Check your status,configmenu]\n\n[half]/
+		\![*]\q[Run errands,dosomething]\n\n\n[half]/
+		\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year)\e"
 	
-	//These three lead to the Config Menu, the Function menu, and Cancel. You can leave these alone if you like. All the envelopes at the end (see word.dic) basically display the year, month, day, weekday, and time.
+		//These three lead to the Config Menu, the Function menu, and Cancel. You can leave these alone if you like. All the envelopes at the end (see word.dic) basically display the year, month, day, weekday, and time.
+	}
 }
 
 //Leave this alone
@@ -710,7 +748,7 @@ Select.CANCEL
 			
 			"\0\s[2]Hm.\e"
 		}
-		elseif bigmood < -100 && raphchain == 0 && donchain == 0 && splinterchain == 0
+		elseif bigmood < -100 && raphchain == 0 && donchain == 0 && splinterchain == 0 && leowatch == 0
 		{
 			"\0\s[2]Okay.\e"
 		
@@ -719,6 +757,14 @@ Select.CANCEL
 			"\0\s[79]\w4.\w4.\w4.\e"
 			
 			"\0\s[2]Hm.\e"
+		}
+		elseif leowatch == 1
+		{
+			"\0\s[123]\w1.\w1.\w1.\e"
+				
+			"\0\s[123]Uhum.\e"
+				
+			"\0\s[123]Sure.\e"
 		}
 		elseif raphchain > 0 || donchain > 0 || splinterchain > 0
 		{
@@ -743,7 +789,7 @@ Select.CANCEL
 		}
 		else
 		{
-			"\0\s[0]Aright then.\e"
+			"\0\s[0]Alright then.\e"
 		
 			"\0\s[0]Uhum.\e"
 		
@@ -791,7 +837,7 @@ Select.dosomething
 //When the user clicks Open Calender. This will open the calender function of SSP, an in-built feature that you don't have to worry about in the least.
 Select.CALENDAR
 {
-	"\0\s[37]Opening the calendar.\w8\![open,calendar]\e"
+	"\0\s[37]What day is it again? \w8\w4I come from the future, \w3I can't be sure our times are synced.\w8\![open,calendar]\e"
 	
 	//You can replace the dialogue here up to the \!.
 	//Advanced users, can you break it down yet? It's basically just using \! to open calender.exe or dll or whatever SSP uses to make it happen.
@@ -870,6 +916,11 @@ OnChoiceTimeout
 		sadchainstart = 0
 		"\0\s[100]\i[5]*You can hear him sigh. \w8\w4He'll be fine.\e"
 	}
+	elseif recruitchain == 1
+	{
+		recruitchain = 0
+		"\0\s[28]\i[5]*You hear him mumble something to himself.\s[28]\n\n[half]\f[sub,true]...eh, \w3later. \w8\w4Later.\f[sub,false]\e"
+	}
 	elseif raphchain == 1 || donchain == 1 || splinterchain == 1
 	{
 		"\0\s[84]\w1.\w1.\w1.\e"
@@ -887,6 +938,12 @@ OnChoiceTimeout
 		"\0\s[82]\w1.\w1.\w1.\e"
 				
 		"\0\s[82]Uhum.\e"
+	}
+	elseif leowatch == 1
+	{
+		"\0\s[123]\w1.\w1.\w1.\e"
+				
+		"\0\s[123]Uhum.\e"
 	}
 	else
 	{
@@ -1011,6 +1068,25 @@ Select.askyask
 			"\![*]\q[Go back,BACKTOMENU]\n/
 			\![*]\q[Let him be,CANCEL]\e"
 		}
+		elseif userrecruit > 0
+		{
+			"\i[5]*You want to ask him about...\n\n\_q"
+		
+			--
+			"\![*]\q[Himself,askhimself]   /
+			\![*]\q[His past,askpast]   /
+			\![*]\q[The invasion,askinvasion]   /
+			\![*]\q[Resistance,askresistance]\n/
+			\![*]\q[Others,askothers]   /
+			\![*]\q[Yourself,askyourself]   /
+			\![*]\q[Mystic powers,askpowers]   /
+			\![*]\q[His arm,askhisarm]\n/
+			\![*]\q[Puns,askpuns]   /
+			\![*]\q[Recruit,askrecruit]\n\n\n/
+			\![*]\q[Go back,BACKTOMENU]\n/
+			\![*]\q[Nevermind,CANCEL]\e"
+			
+		}
 		else
 		{
 			"\i[5]*You want to ask him about...\n\n\_q"
@@ -1086,7 +1162,7 @@ Select.askhimself
 		"\0\s[0]\i[5]*You ask him how he is doing today. \n\n[half]\w8\w4\s[0]I'm fine. \w8\w4\s[19]Ready to take on the world.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how he is doing today. \n\n[half]\w8\w4\s[58]E\w1e\w1e\w1e\w1e\w1e\w1e\w1e\w1e\w1e\w1e\w1u\w1u\w1u\w1u\w1u\w1u\w1u\w1g\w1h\w1h\w1h\w1h\w1h\w1?\w8\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how he is doing today. \n\n[half]\w8\w4\s[28]Eh.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him how he is doing today. \n\n[half]\w8\w4\s[23]You worried about me? \w8\w4\s[20]Cute, \w3cute. \w8\w4\s[19]As you can see, I'm still in one piece. \w8\w3\s[20]So worry not.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him how he is doing today. \n\n[half]\w8\w4\s[23]You worried about me? \w8\w4\s[20]Cute, \w3cute. \w8\w4\s[19]As you can see, \w3I'm\nstill in one piece. \w8\w3\s[20]So worry not.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how he is doing today. \n\n[half]\w8\w4\s[81]Fine\w3.\w3.\w3. \w8\w8\s[100]It's all fine.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	}
 	else
@@ -1190,7 +1266,8 @@ Select.askpast
 Select.askinvasion
 {
 	bigmood -= 1
-	"\0\s[74]\i[5]*You ask him how it all began. \n\n[half]\w8\w3\s[82]From their purge atop the New York city, \w3the Krang ripped open the sky itself. \w8\w3What came out was terror, \w3and what rained down upon us was worth than death\w3.\w3.\w3. \w8\w3\s[19]At least that's the kid-friendly explanation. \w8\w3\s[81]It feels like it happened a lifetime ago, \w4but I still remember that day as if it was yesterday. \w8\w8\s[77]I wish I\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w3. \n\n[half]\w8\w3\s[77]\i[5]\i[8]*You can hear him sigh.\s[77]\i[8]\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
+	resistanceinterest += 1
+	"\0\s[74]\i[5]*You ask him how it all began. \n\n[half]\w8\w3\s[82]From their purge atop the New York city, \w3the Krang ripped open the sky itself. \w8\w3What came out was terror, \w3and what rained down upon us was worse than death\w3.\w3.\w3. \w8\w3\s[19]At least that's the kid-friendly explanation. \w8\w3\s[81]It feels like it happened a lifetime ago, \w4but I still remember that day as if it was yesterday. \w8\w8\s[77]I wish I\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w3.\w3. \n\n[half]\w8\w3\s[77]\i[5]\i[8]*You can hear him sigh.\s[77]\i[8]\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[74]\i[5]*You ask him if he believes in victory. \n\n[half]\w8\w3\s[0]Of course I do! \w8\w3\s[19]I'm still alive, \w4\s[20]I can still fight, \w4\s[0]and I will not hold back until victory is ours. \w8\w3\s[22]For those who's still alive, \w3for those who are fighting as well, \w3for those who have fallen\w3.\w3.\w3. \w8\w3\s[21]We still have hope.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[74]\i[5]*You ask him where things are standing at the moment. \n\n[half]\w8\w3\s[2]Well, \w4\s[11]according to our info, \w4eighty seven percent of the New York has been krang-ified\w3.\w3.\w3. \w8\w4The Technodrome seems unreachable at the moment. \w8\w3\s[13]Currently we're trying to create an opening to take that thing down, \w4\s[100]hopefully before they locate us\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[74]\i[5]*You ask him if they ever took any krang hostage. \n\n[half]\w8\w3\s[72]No. A great portion of them shares a hive mind, that would be too dangerous and to little usefullness for us.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
@@ -1207,6 +1284,7 @@ Select.askinvasion
 Select.askresistance
 {
 	bigmood -= 1
+	resistanceinterest += 1
 	"\0\s[0]\i[5]*You ask how many people there is in the Resistance.  \n\n[half]\w8\w3\s[12]In our main camp it's around three hundred. \w8\w3\s[73]There's a few smaller camps, \w3\s[16]overall it's maybe half a thousand? \w8\w4\s[74]Being in the heart of the Krang territory, \w8\s[2]we don't have the means to communicate much outside of the New York perimeters. \w8\w3I hope there's thousand of thousands more people out there, \w3\s[100]fighting back like us, \w3or even just living\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[0]\i[5]*You ask him how long he's been the leader.  \n\n[half]\w8\w3\s[81]\w4.\w4.\w4.\w8Ten years. \w8\w6\s[100]I was a co-leader, \w3\s[31]but then\w3.\w3.\w3. \w8\w8\w8\w3\s[77]I became the only one.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[0]\i[5]*You ask him how many humans there is in the Resistance.  \n\n[half]\w8\w3\s[16]In comparison to yokai? \w8\w3\s[15]I'd say around fourty percent. \w8\w3\s[73]Same for yokai, \w3and all others are mutants. \w8\w3When the invasion began, \w3\s[72]a lot of humans volonteered to be mutanted to enhance their fighting power. \w8\w3\s[2]Squads O, \w3E \w3and Z\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
@@ -1334,37 +1412,37 @@ Select.askpuns
 		jokefirst = 1
 		happycount += 5
 		bigmood += 15
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[52] Really? \w8\w2Yo- \w8\s[55]Well, \w3\s[57]of course you want to hear my zingers! \w8\w4Hehe\w3.\w3.\w3. \n\n[half]\w8\w3\s[57]\i[5]*He seems so excited it seems he forgot to actually make a joke\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[52] Really? \w8\w2Yo- \w8\s[55]Well, \w3\s[57]of course you want to hear my zingers! \w8\w4Hehe\w3.\w3.\w3. \n\n[half]\w8\w3\s[57]\i[5]*He's so excited it seems he forgot to actually make a joke\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	}
 	else
 	{
 		happycount += 1
 		bigmood += 3
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I'm afraid for the calendar. \w8\w4\s[24]\i[6]Its days are \f[italic,true]numbered.\f[italic,false]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I'm afraid for the calendar. \w8\w4\s[24]\i[6]Its days are \f[italic,true]numbered.\s[25]\f[italic,false]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a famous turtle? \w8\w4\s[57]Leonardo.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a famous turtle? \w8\w4\s[24]\i[6]A \w3\f[italic,true]shell\w3\f[italic,false]-ebrity!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a blind sea turtle? \w8\w4\s[24]\i[6]Can't \w2sea \w2turtle!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a famous turtle? \w8\w4\s[24]\i[6]A \w3\f[italic,true]shell\w3\f[italic,false]-ebrity!\s[25]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a blind sea turtle? \w8\w4\s[24]\i[6]Can't \w2sea \w2turtle!\s[25]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you get when you cross a turtle with a porcupine? \w8\w4\s[68]That's what Draxum keeps getting me to do. \w8\w4'New, better mutants' \w3right, \w3right\w3.\w3.\w3.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]How do you make a turtle fast? \w8\w4\s[20]Don't feed it. \w8\w8\w8\w4That one's relatable.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a flying turtle? \w8\w4\s[24]\i[6]A \w3\f[italic,true]shell\f[italic,false]\w3-icopter! \w8\w8\w8\w8\s[79]\w8\w8\n\w3\f[sub,true]Donnie always hated this one\w3.\w3.\w3.\f[sub,false]\w8\w6\n\n\_q\![*]\q[Another?..,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a turtle who is only awake at night? \w8\w4\s[24]\i[6]A noc-\w3\f[italic,true]turtle!\f[italic,false]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a turtle who is only awake at night? \w8\w4\s[24]\i[6]A noc-\w3\f[italic,true]turtle!\s[25]\f[italic,false]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do you call a turtle who is only awake at night? \n\n[half]\w8\w3\i[5]*You say Leonardo. \n\n[half]\w8\w3\s[20]Ha\w3ha!\w3.\w3. \w8\w8\w6\s[63]Don't steal my punchlines.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]So what if I don’t know what apocalypse means? \w8\w4\s[24]\i[6]It’s not the end \s[25]of the world!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I'm here making apocalypse jokes \s[53]like there's no tomorrow.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I talked to a horse mutant about the apocalypse once. \w8\w3He told me \w4\s[24]\i[6]the end is \f[italic,true]\w3neigh\f[italic,false].\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I talked to a horse mutant about the apocalypse once. \w8\w3He told me \w4\s[24]\i[6]the end is \f[italic,true]\w3nei\s[25]gh\f[italic,false].\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What did the clock do to the ruler during the apocalypse? \w8\w4\s[53]Desperate times called for desperate measures.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What does a current chant when met with resistance? \w8\w4\s[0]\i[6]O\w3h\w3m\w3m\w3m\w3m\w3m\w3. \w8\w8\w8\s[75]\w8\w8\w8\w3.\w3.\w3.\w3it was for my brother. \w8\w4\s[22]He'd always smirk at that one. \w8\w8\w3Well, \w3\s[23]the first twelve times.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I'm trying to thing of a sword pun, \w4but ones I got on my mind all have \s[53]\w4\f[italic,true]duel\f[italic,false] \w4meanings \w2in them!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I told my friend a pun about a sword, \w4\s[53]but he wasn't \n\f[italic,true]\w3sharp\f[italic,false] \w3enough to understand it! \w8\w4He didn't even understand \s[54]the \w3\f[italic,true]point\f[italic,false] \w3of the conversation!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why did the famous blacksmith rejected his newly forged sword? \w8\w3He thought \s[24]\i[6]\w3it \w2smelt \w2funny!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why did the famous blacksmith rejected his newly forged sword? \w8\w3He thought \s[24]\i[6]\w3it \w2smelt \w2\s[25]funny!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]My brother wanted to invent an invisible sword, \w3but I saw \w4\s[53]\f[italic,true]no point\f[italic,false] \w4in such a thing!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What is the best way to describe a sword which is very light in weight? \w8\w3\s[24]\i[6]A lightsaber!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What is the best way to describe a sword which is very light in weight? \w8\w3\s[24]\i[6]A lightsaber!\w4\s[25]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Which is the favorite sword fight move of a resistor? \w8\w4\s[54]Obviously, \w4\s[53]it is a riposte!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why did a small sword kept getting angry at others? \w8\w4It was \s[24]\i[6]short-tempered!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why did a small sword kept getting angry at others? \w8\w4It was \s[24]\i[6]short-tempered!\w2\s[25]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What shoes does a ninja wear? \w8\w5\s[24]\i[6]Sne\w2akers!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do doctors call a wound caused by a throwing star? \w8\w5\s[24]\i[6]A \w3ninjury!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]What do doctors call a wound caused by a throwing star? \w8\w5\s[24]\i[6]A \w3ninjury!\w3\s[25]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why can’t ninjas trace? \w8\w4\s[53]Because it’s impossible for us to leave one!\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why don’t ninjas watch sad movies? \w8\w4They’re too \n\s[24]\i[6]\w2\f[italic,true]sensei\f[italic,false]-\w4tive.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why don’t ninjas watch sad movies? \w8\w4They’re too \n\s[24]\i[6]\w2\f[italic,true]sensei\f[italic,false]-\w4tive.\w1\s[25]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]Why can’t ninjas toot? \w8\w4\s[53]Nothing escapes a ninja.\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	}
 	//"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half].\e"
@@ -1502,13 +1580,13 @@ Select.givesupplies
 		"\0\s[117]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[113]More new clothes? \w8\w4Hoo boy! \w8\w4\s[114]Man, \w4\s[119]\i[6]I haven't changed my outfit in ten years\w3.\w3.\w3. \w8\w4\s[52]Good thing I look stylish \s[53]no matter what I wear.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[115]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[115]Cabbages, \w4carrot, \w4chicken\w3.\w3.\w3. \w8\w4\s[119]\i[6]Good stuff, \w4good stuff, \w4gracias, \w4\s[19]compadre. \w8\w4\s[23]I hope Mikey still remembers how to use a kitchen.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[115]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[115]Are those action figures over there? \w8\w4\s[112]Kids gonna love them. \w8\w4\s[119]\i[6]I'll be lying if I said I wasn't a bit jealous. \w8\w4\s[100]I never got to complete my Jupiter Jim set\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[115]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[111]Oh, \w3\s[112]%(username), \w3thank you so much. \w8\w4\s[119]\i[6]It feels so good to have actual cooking \s[22]ingridients at the base\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[115]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[111]Oh, \w3\s[112]%(username), \w3thank you so much. \w8\w4\s[119]\i[6]It feels so good to have actual cooking \s[22]ingredients at the base\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[115]\i[5]*You give Leo a bag full of supplies.\n\n[half]\w8\w3\s[115]Four, \w4five, \w4six\w3.\w3.\w3. \w8\w4that's a lot of salami. \w8\w4\s[111]And fresh bread! \w8\w4\s[112]I'm so used to the brick-bread \s[119]\i[6]\w3it's a miracle I still have my back up teeth. \w8\w4\s[23]Thank you, \w4%(username).\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[117]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[113]More goodies? \w8\w3Good with me. \w8\w4\s[114]Thank you, \w3buddy, \w3\s[119]\i[6]this will really help folks. \w8\w4\s[22]More than you know.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[115]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[115]Canned tomato soup and clean water? \w8\w4\s[112]A classic. \w8\w4\s[119]\i[6]Thank you, \w4%(username).\s[20]\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[117]\i[5]*You give Leo a bag full of supplies.\n\n[half]\w8\w3\s[113]More supplies? \w8\w4\s[114]Always welcome, \w4heh. \w8\w4\s[119]\i[6]Thank you so much. \w8\w4\s[97]Really.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[115]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[111]Oh, \w3this is good stuff. \w8\w4\s[112]Thank you. \w8\w4\s[119]\i[6]Casey has been asking me about magical food bags\w3.\w3.\w3. \w8\w4\s[20]I told him \s[19]I'm just getting better with my stage magic. \w8\w4\s[0]Don't worry, \w4\s[23]I'll give you credit.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[117]\i[5]*You give Leo a bag full of supplies.\n\n[half]\w8\w3\s[117]Oh, \w4\s[119]\i[6]people at the camp has been raving about sudden supplies- \w8\w4\s[73]It's so hard to explain to people interdimensional travel into person's computer, \w3like, \w3\s[71]what is there not to understand? \w8\w4\s[20]I'm not complaining-\n\w8\w3\s[23]even if people will call me a witch, \w4\s[19]it's worth getting more food. \w8\w4\s[0]\i[6]Gracias.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[117]\i[5]*You give Leo a bag full of supplies.\n\n[half]\w8\w3\s[117]Oh, \w4\s[119]\i[6]people at the camp have been raving about sudden supplies- \w8\w4\s[73]It's so hard to explain to people interdimensional travel into person's computer, \w3like, \w3\s[71]what is there not to understand? \w8\w4\s[20]I'm not complaining-\n\w8\w3\s[23]even if people will call me a witch, \w4\s[19]it's worth getting more food. \w8\w4\s[0]\i[6]Gracias.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[115]\i[5]*You give Leo a bag full of supplies. \n\n[half]\w8\w3\s[112]Gracias, \w4%(username). \w8\w4\s[119]\i[6]Mikey told me to pass his thanks for the cooking ingredients. \w8\w4\s[20]He also made a request \s[19]for some ginger and dragonfruit, \w3if you won't mind. \w8\w4\s[15]Why he picked those out of all cooking ingredients is a mystery to me, \w3but- \w8\w3\s[23]No pressure, \w4no pressure. \w8\w4\s[97]He'll be on the verge of bursting into happy tears regardless.\w8\w4\n\n\_q\![*]\q[Give something else?,giveygive]   \![*]\q[I'm done,CANCEL]\e"
 	}
 	else
@@ -2131,7 +2209,7 @@ Select.askapril //APRIL
 			"\0\s[0]\i[5]*You ask Leo what made April a Commander. \n\n[half]\w8\w4\s[20]Nepotism. \w8\w8\w8\s[28]P\w1f\w1f\w1f\w1t, \w6\s[0]seriously, \w2\s[19]it was all her.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 			//She is. Because her competition is dead-             ...that's the joke we made with my fren and she told me to put it in the script
 			"\0\s[0]\i[5]*You ask Leo if April's single. \n\n[half]\w8\w4\s[0]Oh, \w3\s[20]April O'Neil is too attached to her last name \w1and is married to her job. \w8\w4\s[23]Sorry, \w4%(username).\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
-			"\0\s[0]\i[5]*You ask Leo if April still considers her birthdays cursed. \n\n[half]\w8\w4\s[74]She does, \w4\s[62]but I still think it's all nonsense. \w8\w4\s[63]So what if on her twenty third birthday we misplaced out explosives? \w8\w4\s[64]And the fact that on her thirty seventh birthday we got captured and Mikey had to bust us out \s[63]was just a coincidence. \w8\w8\w3.\w6.\w6.\w8\w4\s[0]we do keep her inside for that day, \w3though. \w8\w4\s[28]Yunno, \w4for the sake of a good party. \w8\w4\s[35]No other reason.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
+			"\0\s[0]\i[5]*You ask Leo if April still considers her birthdays cursed. \n\n[half]\w8\w4\s[74]She does, \w4\s[62]but I still think it's all nonsense. \w8\w4\s[63]So what if on her twenty third birthday we misplaced our explosives? \w8\w4\s[64]And the fact that on her thirty seventh birthday we got captured and Mikey had to bust us out \s[63]was just a coincidence. \w8\w8\w3.\w6.\w6.\w8\w4\s[0]we do keep her inside for that day, \w3though. \w8\w4\s[28]Yunno, \w4for the sake of a good party. \w8\w4\s[35]No other reason.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		}
 		
 	}
@@ -2151,7 +2229,7 @@ Select.askdraxum //DRAXUM
 	"\0\s[0]\i[5]*You ask Leo how old is Draxum. \n\n[half]\w8\w4\s[58]Two-\w2hundred-\w2something-\w2something. \w8\w4\s[15]I can't decide if he aged really well or terribly\w4.\w4.\w4.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[0]\i[5]*You ask Leo if Baron Draxum ever called him son. \n\n[half]\w8\w4\s[66]Eugh. \w8\w5No. \w8\w5I don't think he even called Mikey that. \w8\w4\s[52]Oh, \w4BUT, \w4\s[55]I remember how Barry tried to give some parental approval and encourgment to Don. \w8\w4\s[53]\f[italic,true]That\f[italic,false] \w3was something to behold.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[0]\i[5]*You ask Leo if he and Draxum are on good terms. \n\n[half]\w8\w4\s[19]We are! \w8\w4\s[64]Despite his roof-throwing habbits, \w5\s[20]he's a good guy. \w8\w4Good-\w2ish. \w8\w8\w8\w8\s[74]Okay. \w8\w4\s[28]Mediocr-\w2ish.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
-	"\0\s[0]\i[5]*You ask Leo if Draxum had ever faced punishment from the people he mutated. \n\n[half]\w8\w4\s[74]Everybody do know that it was his fault, \w4\s[79]but the invasion was a priority back in the days. \w8\w4\s[74]Now it's just. \w8\w4\s[72]A fact. \w8\w4\s[100]I'm sure whoever had their gripes with Barry figured things out by now. \w8\w6\s[63]It would be helpful if the old sheep-goat was ever sorry about it\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
+	"\0\s[0]\i[5]*You ask Leo if Draxum had ever faced punishment from the people he mutated. \n\n[half]\w8\w4\s[74]Everybody does know that it was his fault, \w4\s[79]but the invasion was a priority back in the days. \w8\w4\s[74]Now it's just. \w8\w4\s[72]A fact. \w8\w4\s[100]I'm sure whoever had their gripes with Barry figured things out by now. \w8\w6\s[63]It would be helpful if the old sheep-goat was ever sorry about it\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 }
 
 Select.askcaseyjr //CASEY JR
@@ -2172,7 +2250,7 @@ Select.askcaseyjr //CASEY JR
 		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[53]He's good!\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[79]He's been hanging around in the lab today\w3.\w3.\w3.\w6\w2\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[62]Experiencing teenage angst, \w4\s[68]and I am the one who has to deal with it. \w8\w4\s[63]Well, \w4\s[62]when I get back.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
-		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[62]Oh, \w3\s[68]Casey is in a b\w1i\w1i\w1i\w1i\w1g trouble when I get back.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
+		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[62]Oh, \w3\s[68]Casey is in b\w1i\w1i\w1i\w1i\w1g trouble when I get back.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[79]He's\w3.\w3.\w3. \w8\w4alright. \w8\w4\s[2]Alright, \w4he's alright, \w4he's alright\w3.\w3.\w3.\w8\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[19]He's doing just fine.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 		"\0\s[0]\i[5]*You ask him how Casey Jr has been doing. \n\n[half]\w8\w4\s[79]He's been coughing earlier - \w2\s[82]I hope it's nothing serious\w3.\w3.\w3.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
@@ -2277,4 +2355,354 @@ Select.askotherpeople
 	"\0\s[0]\i[5]*You ask Leo about Baxter Stockboy.\n\n[half]\w8\w4\s[0]Thankfully, \w3\s[19]he grew up to be less annoying.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[0]\i[5]*You ask Leo about Todd.\n\n[half]\w8\w4\s[79]Todd is a force of nature.\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
 	"\0\s[0]\i[5]*You ask Leo about Warren Stone.\n\n[half]\w8\w4\s[0]Who?\w8\w4\n\n\_q\![*]\q[Ask again?,askyask]   \![*]\q[I'm done,CANCEL]\e"
+}
+
+
+
+//INTERACT----------
+Select.dointeracty
+{
+	if raphchain > 0 || donchain > 0 || splinterchain > 0
+		{
+			"\i[5]*This doesn't seem like a good time for this\w3.\w3.\w3.\w8\w4\n\n\_q"
+			--
+			"\![*]\q[Go back,BACKTOMENU]\n/
+			\![*]\q[Let him be,CANCEL]\e"
+		}
+	elseif bigmood < -200
+		{
+			"\i[5]*It looks like he doesn't want to do anything right now\w3.\w3.\w3.\w8\w4\n\n\_q"
+			--
+			"\![*]\q[Go back,BACKTOMENU]\n/
+			\![*]\q[Let him be,CANCEL]\e"
+		}
+	elseif recruitchain == 1
+		{
+			"\i[5]*It seems like he's distracted by something right now\w3.\w3.\w3.\w8\w4\n\n\_q"
+			--
+			"\![*]\q[Go back,BACKTOMENU]\n/
+			\![*]\q[Let him be,CANCEL]\e"
+		}
+	elseif happycount >= 100
+		{
+			"\i[5]*You want to...\n\_q\n"
+			--
+			"\![*]\q[Watch something together,watchstuff]\n\n\n/
+			\![*]\q[Go back,BACKTOMENU]\n/
+			\![*]\q[Nevermind,CANCEL]\e"
+		}
+	else
+		{
+			"\i[5]*It seems Leo is still too wary of you to do anything...\n\_q\n\n"
+			--
+			"\![*]\q[Go back,BACKTOMENU]\n/
+			\![*]\q[Nevermind,CANCEL]\e"
+		}
+}
+
+
+//WATCH STUFF--------------
+Select.watchstuff//MENU
+{
+	 	"\i[5]\b2*You want him to watch...\n\_q\n\n"
+		--
+ 		"\![*]\q[Videos,watchvids]\n/
+		\![*]\q[Movies,watchmovies]\n/
+		\![*]\q[Games,watchgames]\n/
+		\![*]\q[Drawing,watchdraw]\n/
+		\![*]\q[Writing,watchwrite]\n/
+		\![*]\q[Music,watchmusic]\n\n[half]/
+		\![*]\q[Screen,watchscreen]\n\n\n/
+		\![*]\q[Go back,BACKTOMENU]\n/
+ 		\![*]\q[Nevermind,CANCEL]\e"
+}
+
+Select.watchvids//VIDEOS
+{
+	leowatch = 1
+	watchleovideos = 1
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[0]Oh, sure!\s[122]\w8\w8 What are we watching?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 I miss browsing random videos. \s[123]Or having time to watch them, \w3haha.\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[0]Let's go!\s[122]\e"
+	if bigmood < 0
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe it'll cheer me up.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\e"
+	}
+	if happycount > 300
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[0]Oh, yes! \s[122]\w8\w8\w8I always like watching things with you.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch videos with you. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 This way I can learn more things about you, \w3hehe.\e"
+	}
+}
+
+Select.watchmovies//MOVIES
+{
+	leowatch = 1
+	watchleomovies = 1
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Oh, sure!\s[122]\w8\w8 What are we watching?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 It better have some killer action scenes.\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Let's go!\s[122] \w8\w8\w8You got anything with Lou Jitsu?\e"
+	if bigmood < 0
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe it'll cheer me up.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe something with a happy ending\w3.\w3.\w3.\e"
+	}
+	if happycount > 300
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Oh, yes! \s[122]\w8\w8\w8I always like watching things with you.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch movies with you. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 Let's see what kind of movies you like to see.\e"
+	}
+}
+
+Select.watchgames//GAMES
+{
+	leowatch = 1
+	watchleogames = 1
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Oh, sure!\s[122]\w8\w8 What are you going to play?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 Is it going to be a let's play?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Let's go!\s[122] \w8\w8\w8I miss playing video games. \w8\w4\s[123]Watching them is not the same, \w3\s[127]but I get to judge you!\e"
+	if bigmood < 0
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe it'll cheer me up.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Sure thing. \s[122]\e"
+	}
+	if happycount > 300
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Oh, yes! \s[122]\w8\w8\w8I believe in you, \w3bud.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I'll be rooting for you.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I wish I could play something with you\w3.\w3.\w3.\e"
+	}
+}
+
+Select.watchdraw//DRAW
+{
+	leowatch = 1
+	watchleodraw = 1
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Oh, sure!\s[122]\w8\w8 What are you going to draw?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 How about you draw me?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Let's go!\s[122] \w8\w8\w8It's like reading comics at a painstakingly slow speed!\e"
+	if bigmood < 0
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe it'll be calming\w3.\w3.\w3.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Sure thing. \s[122]\e"
+	}
+	if happycount > 300
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Oh, yes! \s[122]\w8\w8\w8I like the way you draw.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 Mikey likes to say that art is a struggle\w3 - I wish you good luck.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you draw. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I'm not an art guy, \w3but like your art.\e"
+	}
+}
+
+Select.watchwrite//WRITING
+{
+	leowatch = 1
+	watchleowrite = 1
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Oh, sure!\s[122]\w8\w8 What are you going to write?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 Writing fanfiction, \w3h\w1u\w1u\w1u\w1u\w1h?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Alright-y.\s[122] \w8\w8\w8As long as you won't have me do paperwork. \w8\w4Eh.\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Alright-y.\s[122] \w8\w8\w8Coffee shop AU time?\e"
+	if bigmood < 0
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe it'll be calming\w3.\w3.\w3.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Sure thing. \s[122]\e"
+	}
+	if happycount > 300
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Oh, yes! \s[122]\w8\w8\w8I like your writing style.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 Watching you type is really calming.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you write. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I'm great at fanfiction myself, \w3maybe I'll show you some of it later if you're interested.\e"
+	}
+}
+
+Select.watchmusic//MUSIC
+{
+	leowatch = 1
+	watchleomusic = 1
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Oh, sure!\s[122]\w8\w8 What are we listening to today?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 Don't complain if I start singing along.\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 I love me some music.\e"
+	if bigmood < 0
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe it'll be calming\w3.\w3.\w3.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Maybe it'll cheer me up\w3.\w3.\w3.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Sure. \s[122]\e"
+	}
+	if happycount > 300
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Oh, yes! \s[122]\w8\w8\w8Show off your music taste, \w3compadre.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I wish I could bring you along to one of our karaoke parties.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to listen to music with you. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I'm always ready to groove.\e"
+	}
+}
+
+Select.watchscreen//SCREEN
+{
+	leowatch = 1
+	watchleoscreen = 1
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You ask Leo if he wants to watch you play games. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Oh, sure!\s[122]\w8\w8 What are you going to do?\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Sure thing!\s[122]\w8\w8\w8 Things! \w8\w3Things! \w8\w3Things!\e"
+	"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]You bet I do!\s[122]\e"
+	if bigmood < 0
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Sure. \s[122]\w8\w8\w8Hopefully it will keep my mind off of\w3.\w3.\w3. \w8\w4Stuff.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Sure thing. \s[122]\e"
+	}
+	if happycount > 300
+	{
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Oh, yes! \s[122]\w8\w8\w8Technically I always watch you do things, \w3\s[123]but this way I can do it without resorting to my sneaky ninja ways.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 Let's chill together.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I like doing that.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Sure!\s[122]\w8\w8\w8 I like watching you work on your stuff.\e"
+		"\0\s[0]\i[5]*You ask Leo if he wants to watch you do things. \n\n[half]\w8\w4\s[0]Yeah!\s[122]\w8\w8\w8 It's quite calming.\e"
+	}
+}
+
+Select.leowatchover//STAND UP
+{
+	leowatch = 0
+	watchleoscreen = 0
+	watchleomusic = 0
+	watchleodraw = 0
+	watchleogames = 0
+	watchleomovies = 0
+	watchleovideos = 0
+	watchleowrite = 0
+	lastTalk = ""
+	//"\0\s[0]\i[5]*You tell Leo the watch party is over. \n\n[half]\w8\w4\s[54]Ooh, what are we watching?\s[122]\e"
+	"\0\s[124]*You tell Leo the watch party is over. \n\n[half]\w8\w4Ah, \w3alright.\s[129]\w8\w8 It was fun.\w8\s[0]\e"
+	"\0\s[124]*You tell Leo the watch party is over. \n\n[half]\w8\w4Alright then.\s[129]\w8\w8\w8 Good time.\w8\s[0]\e"
+	"\0\s[124]*You tell Leo the watch party is over. \n\n[half]\w8\w4Ok\w1a\w1a\w1ay. \s[129]\w8\w8\w5\s[0]What now?\w8\e"
+	if happycount > 300
+	{
+		"\0\s[124]*You tell Leo the watch party is over. \n\n[half]\w8\w4A\w1w\w1w\w1h\w1h\w1h\w1h\w3.\w3.\w3. \s[129]\w8\w3Alright.\w8\s[0]\e"
+		"\0\s[124]*You tell Leo the watch party is over. \n\n[half]\w8\w4Alright. \s[129]\w8\w3Well\w3.\w3.\w3. \w8\w4\s[19]What are we gonna do now?\e"
+		"\0\s[124]*You tell Leo the watch party is over. \n\n[half]\w8\w4Okie\w3-dokie. \s[129]\w8\w3I rea\s[23]lly enjoyed that.\e"
+		"\0\s[124]*You tell Leo the watch party is over. \n\n[half]\w8\w4Okie\w3-dokie. \s[129]\w8\w3Can we\s[0] do this again later?\e"
+	}
+}
+
+Select.askrecruit
+{
+	if userrecruit == 2
+	{
+		"\0\s[20]Oh, \w4\s[19]have you reconsidered my offer of becoming a honorary member of the Resistance? \w8\w4\s[20]Like I said before, \w4you won't have any responsibilities. \w8\w4It's just my- \w4\s[96]not just mine, \w5\s[97]\f[italic,true]o\w2u\w2r\f[italic,false]\w4 way \s[96]to thank you for all the help you've provided. \w8\w4\s[0]\i[6]And like I said, \w3if you don't want it, it's cool. \w8\w4\s[19]I get it. \w8\w4\s[20]What do you say?\w3\n\n\_q"
+		
+			--
+			"\![*]\q[I want to join,joinresistanceoption]\n/
+			\![*]\q[Decline the offer,notjoinresistanceoption]\e"
+	}
+	elseif recruitnamecheck == 0
+	{
+		"\0\s[0]\i[5]*You ask Leo what can you do now that you are a part of the Resistance. \n\n[half]\w8\w4\s[0]Oh, \w3\s[19]I got just a thing, \w3%(amigo). \w8\w4\s[20]First thing I wanted to do is \s[19]assign you a code name. \w8\w4\s[28]\f[sub,true]It's not just because I want to give you a nickname,\f[sub,false] \w2\s[20]code names are \f[italic,true]\w1v\w2e\w2e\w2e\w1r\w1y\f[italic,false] important.\w3\n\n\_q" 
+			--
+			"\![*]\q[Give me a code name,codenamegive]\n/
+			\![*]\q[Is it really necessary,codenamereally]\n/
+			\![*]\q[Do you have a code name,codenameleo]\n/
+			\![*]\q[I don't want one,codenameno]\e"
+	}
+	else//work on
+	{
+		happycount += 1
+		bigmood += 3
+		"\0\s[0]\i[5]*You ask him to tell you a joke.\n\n[half]\w8\w3\s[19]I'm afraid for the calendar. \w8\w4\s[24]\i[6]Its days are \f[italic,true]numbered.\s[25]\f[italic,false]\w8\w6\n\n\_q\![*]\q[Another! Another!,askyask]   \![*]\q[I'm done,CANCEL]\e"
+	}
+}
+
+Select.joinresistanceoption
+{
+	userrecruit = 1
+	bigmood += 10
+	"\0\s[74]\i[5]*You tell him you wish to join the Resistance.\n\n[half]\w8\w4\s[53]Great! \w8\w4\s[20]As a General, \w3\s[19]I'm proud to welcome you to the Resistance, \w3%(username). \w8\w4\s[20]You can ask me about the business any time you want. \w8\w4Every new member of the Resistance boosts our chances of taking back our- \w6\s[35]well, \w5not yours, \w5\s[28]but my world, \w3\s[23]ha\w2ha.\w8\w6\n\n\_q\![*]\q[Talk business,askyask]   \![*]\q[Happy to join,CANCEL]\e"
+}
+
+Select.notjoinresistanceoption
+{
+	bigmood -= 10
+	"\0\s[74]\i[5]*You decline his offer.\n\n[half]\w8\w4\s[74]Oh\w3.\w3.\w3. \w8\w4I see. \w8\w4\s[19]It's fine. \w8\w4\s[23]You already help us so much, \w3\s[19]and you don't have to be an official part of the Resistance to have my trust. \w8\w4\s[0]\i[6]It's all good.\w8\w6\n\n\_q\![*]\q[Let's talk about something else,askyask]   \![*]\q[I'm done,CANCEL]\e"
+}
+
+Select.codenamegive
+{
+	"\![enter,passivemode]\0\s[74]\i[5]*You tell Leo you are ready to get your code name.\n\n[half]\w8\w4\s[74]I like your attitude! Code name, code name, hm hm hm... We can go with plain Recruit. Keep it classy, you know. What do you think?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \![*]\q[Maybe later,CANCEL]\e"
+}
+
+Select.codenamereally
+{
+	"\![enter,passivemode]\0\s[74]\i[5]*You ask if it's really necessary.\n\n[half]\w8\w4\s[74]Of course! Weeeeeell perhaps not, and I'm just trying my best to make you feel included- but its an important step of our very professional arrangement. If you don't want to waste time, how about we just settle on Recruit? What do you say?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \![*]\q[Maybe later,CANCEL]\e"
+}
+
+Select.codenameleo
+{
+	"\![enter,passivemode]\0\s[74]\i[5]*You ask Leo if he has a code name.\n\n[half]\w8\w4\s[74]Of course I do! Like I said, it's a standart procedure. \n\n[half]\w8\w4\s[74]\i[5]*You ask Leo what is it. \n\n[half]\w8\w4\s[74]I'll tell you if we ever go on a mission together, 'kay? But first, we need to pick a code name for you... We can simply go with Recruit, what do you think? \w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \![*]\q[Maybe later,CANCEL]\e"
+}
+
+Select.codenameno
+{
+	recruitnamecheck = 1
+	"\0\s[74]\i[5]*You tell him you don't want a code name.\n\n[half]\w8\w4\s[74]Declining your General's first order... Oh, %(username), I'm afraid it means I have to demote you. No, that's not severe enough of a punishment - imagine, going against your Leader's FIRST order - I'm oughtta kick you from the Resistance all together!.. I'm kidding, pal. What's with that look? You don't want a code name, I'll just call you Recruit, no biggie. And don't worry, we don't actually kick people out from the Resistance. There's too little people left to begin with...\w8\w6\n\n\_q\![*]\q[Let's talk about something else,askyask]   \![*]\q[I'm done,CANCEL]\e"
+}
+
+Select.codenamechoose
+{
+	nicknameroo = "%(nicknameroopoll)"
+	"\0\s[23]Don't like it? Hmmm... How about %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Your face... I'd call you %(nicknameroo). What do you think?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Code name, code name... %(nicknameroo)? You like that?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]You know, you always looked like %(nicknameroo) to me.\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]How about %(nicknameroo)? I think it might suit ya.\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Do you like %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Hoooooow about %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Leeet's try %(nicknameroo).\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]What's your thoughts on %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Ah! I got it! %(nicknameroo)!\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]%(nicknameroo) doesn't sound too bad... Thoughts?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]What about %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Your thoughts on %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]I had %(nicknameroo) stored for a while... Wanna take it?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]%(nicknameroo)! A great name for a great recruit.\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]How %(nicknameroo) sounds?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]How about %(nicknameroo)? A classic.\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]We can try %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]So... you wanna be %(nicknameroo)?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]%(nicknameroo) is a popular one. Kinda. Don't ask.\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]%(nicknameroo) is a good one.\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]You can be %(nicknameroo).\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]%(nicknameroo)! I'd take that one myself, but I can let you have it. Just this once.\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Once upon a time I wished I'd be called %(nicknameroo)... What about you?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Ah, I know! %(nicknameroo)!\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]You give off strong %(nicknameroo) vibes...\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]%(nicknameroo)? Maybe? If you like it?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Oh oh oh, %(nicknameroo)!\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Got it! %(nicknameroo)! You like it?\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+	"\0\s[23]Hmmmmmmmmmmmm.... mmmm..... mmmmmm....... %(nicknameroo)?.....\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \n\n\![*]\q[Maybe later,nochoose]\e"
+}
+
+Select.codenamechosen
+{
+	if recruitnamecheck == 0 //first time
+	{
+		recruitnamecheck = 1
+		"\![leave,passivemode]\0\s[23]%(nicknameroo) it is!\w8\w4\n\n\_q\![*]\q[Ask something?,askyask]   \![*]\q[Reporting for duty,CANCEL]\e"
+	}
+	else
+	{
+		"\![leave,passivemode]\0\s[23]%(nicknameroo) it is!\w8\w6\n\n\_q\![*]\q[Next,codenamechoose]   \![*]\q[This one!,codenamechosen]   \![*]\q[Maybe later,CANCEL]\e"
+	}
 }

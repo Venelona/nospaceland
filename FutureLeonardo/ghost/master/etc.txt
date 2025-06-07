@@ -336,7 +336,7 @@ OnUpdateFailure
  	}
 	else //for other errors
  	{
- 		"\0\s[17]The update could not be completed. \w8\w4\0\s[16]The error is '%(reference0)'. \w8\w4Darn.\e"
+ 		"\0\s[17]The update could not be completed. \w8\w4\0\s[16]The error is\n'%(reference0)'. \w8\w4Darn.\e"
 	}
  }
 
@@ -345,41 +345,41 @@ OnUpdateFailure
  //This dialogue plays when they begin downloading a new file. WARNING: if you have big plans for your ghost and are going to make a lot of new image files for it (like... i do, cough) at some point, you're going to want to make these messages very brief, if you even have them at all. The reason is because the user will see these messages for EVERY individual file that they have to download, and if you have, say, 50 pna files in the queue, they will see this dialogue 50 times. Not only that, but displaying the dialogue takes some time, so it also extends the download process.
  //If you aren't planning on adding a ton of files at any point, or are only intending to update the .dic files which will be at most a handful of files, then you can go ahead and put a short message in here. But if your ghost is going to grow in leaps and bounds as you work on it, try and keep these messages as brief as possible (or again, just make it "" to have there be no message at all) to make the process that much faster for your user.
  
-OnUpdate.OnDownloadBegin
- {
- 	if "aitalk" _in_ reference0 //this is checking to see what kind of files are being downloaded. In this case, it's looking for files called aitalk in the download queue. If you want to have a specialized bit of dialogue for each type of file, you can expand this with elseifs and by replacing aitalk with whatever file you have in mind. Keep in mind my warning above though.
- 	{
- 		"\0\s[38]Ooh, look-y, new dialogue.\e"
- 	}
- 	else //for files not specified above
- 	{
-		"\0\s[38]Another file recieved, copy.\e"
-	}
- }
+//OnUpdate.OnDownloadBegin
+ //{
+ 	//if "aitalk" _in_ reference0 //this is checking to see what kind of files are being downloaded. In this case, it's looking for files called aitalk in the download queue. If you want to have a specialized bit of dialogue for each type of file, you can expand this with elseifs and by replacing aitalk with whatever file you have in mind. Keep in mind my warning above though.
+ 	//{
+ 		//"\0\s[38]Ooh, look-y, new dialogue.\e"
+ 	//}
+ 	//else //for files not specified above
+ 	//{
+	//	"\0\s[38]Another file recieved, copy.\e"
+	//}
+ //}
 
  //---- OnUpdate.OnMD5CompareBegin ---------------------------------------------------
  //This checks the hash value of the files in the directory and the files listed in updates.dau, I believe. It will do this for every file the user downloads, so I again remind you of my warning above! For every file they download, they will have to go through three sets of unique dialogue, and it can get old fast. Not to mention it slows things down a lot. Again, I would recommend keeping this very brief, if not just replacing it with "..." or "" instead.
  
-OnUpdate.OnMD5CompareBegin
- {
-	"\0\s[38]Checking the MD5 value.\e"
- }
+//OnUpdate.OnMD5CompareBegin
+ //{
+	//"\0\s[38]Checking the MD5 value.\e"
+ //}
 
  //---- OnUpdate.OnMD5CompareComplete --------------------------------------------------
  //After they've checked the MD5 value and it matches. See above about the length of this message.
  
-OnUpdate.OnMD5CompareComplete
-{
-	"\0\s[20]MD5 check good.\e"
-}
+//OnUpdate.OnMD5CompareComplete
+//{
+	//"\0\s[20]MD5 check good.\e"
+//}
 
  //---- OnUpdate.OnMD5CompareFailure ---------------------------------------------------
  //If the MD5 values don't match, meaning if the file is missing or damaged or incomplete in some way. If you follow my Network Update directions carefully, this shouldn't come up very often, but don't be surprised if you run into it every now and then by forgetting a file here or there.
  
-OnUpdate.OnMD5CompareFailure
- {
-	"\0\s[15]The MD5 values don't match.\w8\e"
- }
+//OnUpdate.OnMD5CompareFailure
+ //{
+	//"\0\s[15]The MD5 values don't match.\w8\e"
+ //}
 
  
  
