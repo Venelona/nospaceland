@@ -2376,13 +2376,13 @@ Select.dointeracty
 			"\![*]\q[Go back,BACKTOMENU]\n/
 			\![*]\q[Let him be,CANCEL]\e"
 		}
-	elseif recruitchain == 1
-		{
-			"\i[5]*It seems like he's distracted by something right now\w3.\w3.\w3.\w8\w4\n\n\_q"
-			--
-			"\![*]\q[Go back,BACKTOMENU]\n/
-			\![*]\q[Let him be,CANCEL]\e"
-		}
+	//elseif recruitchain == 1
+		//{
+			//"\i[5]*It seems like he's distracted by something right //now\w3.\w3.\w3.\w8\w4\n\n\_q"
+			//--
+			//"\![*]\q[Go back,BACKTOMENU]\n/
+			//\![*]\q[Let him be,CANCEL]\e"
+	//	}
 	elseif happycount >= 100
 		{
 			"\i[5]*You want to...\n\_q\n"
