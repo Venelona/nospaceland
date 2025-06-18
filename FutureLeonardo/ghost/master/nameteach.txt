@@ -15,7 +15,7 @@ OnTeachName
 {
 	if reference0 == "TEACHNAME" //ignore this
 		{
-		"\0\s[0]¿Quieres que te llame de otra manera? \w6No hay problema.\![open,inputbox,OnNameTeach,-1]\e"
+		"\0\s[0]¿Quieres que te llame de otra manera? \w6Sin problema.\![open,inputbox,OnNameTeach,-1]\e"
 		//This is the bit of dialogue you can rewrite if you want. Note that this line ends with \![open,inputbox,OnNameTeach,-1]. You may recognize this from bootend.dic. Essentially, this will lead to the next function. Make sure you don't delete that tag! The rest you can do whatever with though.
 		}
 	else
@@ -63,683 +63,779 @@ OnNameTeach
 	
 	if reference0 == "leo" //this checks to see if the user input any variation of the name "Girl". You may want to put in a check here if the user tries to name themselves the same name as your characters, since that could be confusing in dialogue. Or just a response to any kind of strange name, like Barack Obama or Cindy Crawford or Mike Nelson or Random Hajile. Or you can prevent certain offensive names if you don't want users using them. Really the power is yours here.
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 		//Note here that it's using the same tag as above to reopen the text box to let the user put in another name. You can replace the dialogue with whatever as long as you keep the \![open,inputbox,OnNameTeach,-1] tag.
 	}
 	elseif reference0 == "leon" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "hamatoleon" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "leonhamato" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "leohamato" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "hamatoleo" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "leonardohamato" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "hamatoleonardo" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "leonardo" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "neonleon" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my name, too! \w8\s[0]I think one of us needs to change, pal, or this will get awkward.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]yo también me llamo así! \w8\s[0]Creo que uno de nosotros se va a tener que cambiar el nombre, colega, o esto se va a poner raro.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "donnie" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "donatello" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "dontron" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "bootyshaker" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "bootyshaker9000" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "bootyyyshaker9000" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "othellovonryan" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "bootyyyshaker" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "d" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "dee" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "hamatodonnie" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "doniehamato" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "hamatodonatello" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "donatellohamato" 
 	{
 		username = "Noodle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Noodle?\n\n[half]/
-		\w5\_q\![*]\q[Noodle it is.,choicenoodle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Noodle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Noodle.,choicenoodle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
-	elseif reference0 == "raph" 
+	elseif reference0 == "rafa" 
 	{
 		username = "Waffle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Waffle?\n\n[half]/
-		\w5\_q\![*]\q[Waffle it is.,choicewaffle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Waffle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Waffle.,choicewaffle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
-	elseif reference0 == "raphael" 
+	elseif reference0 == "rafael" 
 	{
 		username = "Waffle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Waffle?\n\n[half]/
-		\w5\_q\![*]\q[Waffle it is.,choicewaffle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Waffle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Waffle.,choicewaffle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
-	elseif reference0 == "raphie" 
+	elseif reference0 == "rafie" 
 	{
 		username = "Waffle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Waffle?\n\n[half]/
-		\w5\_q\![*]\q[Waffle it is.,choicewaffle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Waffle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Waffle.,choicewaffle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
-	elseif reference0 == "raphy" 
+	elseif reference0 == "rafi" 
 	{
 		username = "Waffle"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Waffle?\n\n[half]/
-		\w5\_q\![*]\q[Waffle it is.,choicewaffle]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Waffle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Waffle.,choicewaffle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
+	}
+	elseif reference0 == "rafy" 
+	{
+		username = "Waffle"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Waffle?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Waffle.,choicewaffle]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "splinter" 
 	{
-		username = "Soupy"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Soupy?\n\n[half]/
-		\w5\_q\![*]\q[Soupy it is.,choicesoupy]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		username = "Tallarín"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Tallarín?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Tallarín.,choicesoupy]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "hamatosplinter" 
 	{
-		username = "Soupy"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Soupy?\n\n[half]/
-		\w5\_q\![*]\q[Soupy it is.,choicesoupy]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		username = "Tallarín"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Tallarín?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Tallarín.,choicesoupy]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "splinterhamato" 
 	{
-		username = "Soupy"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Soupy?\n\n[half]/
-		\w5\_q\![*]\q[Soupy it is.,choicesoupy]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		username = "Tallarín"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Tallarín?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Tallarín.,choicesoupy]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "hamatoyoshi" 
 	{
-		username = "Soupy"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Soupy?\n\n[half]/
-		\w5\_q\![*]\q[Soupy it is.,choicesoupy]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		username = "Tallarín"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Tallarín?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Tallarín.,choicesoupy]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "yoshi" 
 	{
-		username = "Soupy"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Soupy?\n\n[half]/
-		\w5\_q\![*]\q[Soupy it is.,choicesoupy]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		username = "Tallarín"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Tallarín?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Tallarín.,choicesoupy]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "yoshihamato" 
 	{
-		username = "Soupy"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Soupy?\n\n[half]/
-		\w5\_q\![*]\q[Soupy it is.,choicesoupy]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		username = "Tallarín"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Tallarín?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Tallarín.,choicesoupy]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "karai" 
 	{
 		username = "Cracker"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Cracker?\n\n[half]/
-		\w5\_q\![*]\q[Cracker it is.,choicecracker]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Cracker?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Cracker.,choicecracker]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "karaihamato" 
 	{
 		username = "Cracker"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Cracker?\n\n[half]/
-		\w5\_q\![*]\q[Cracker it is.,choicecracker]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Cracker?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Cracker.,choicecracker]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
 	elseif reference0 == "hamatokarai" 
 	{
 		username = "Cracker"
-		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, that's. \w8\w8\s[33]That's a nice name. \w8\w3Do you mind if I call y\w1o\w1o\w1o\w1o\w1u\w1u\w1u\w1u\w1u \w8Cracker?\n\n[half]/
-		\w5\_q\![*]\q[Cracker it is.,choicecracker]\n/
-		\![*]\q[What? No!,choicenameno]\e"
+		"\0\s[0]\i[7]\w8\w8\w6\s[31]\i[6]\w8\w8\w8\w8\w8\w8\w8\w8\w8\w8\s[32]Ooh, qué- \w8\w8\s[33]qué nombre tan bonito. \w8\w3¿Te importarí\w1a\w1a\w1a\w1a si te llam\w1o\w1o\w1o\w1o\w1o \w8Cracker?\n\n[half]/
+		\w5\_q\![*]\q[Me quedo con Cracker.,choicecracker]\n/
+		\![*]\q[¿Qué? ¡No!,choicenameno]\e"
 	}
-	elseif reference0 == "fuck" 
+	elseif reference0 == "joder" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "fuckface" 
+	elseif reference0 == "pendejo" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "penis" 
+	elseif reference0 == "pene" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "vagina" 
+	elseif reference0 == "coño" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "dick" 
+	elseif reference0 == "conio" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "adick" 
+	elseif reference0 == "polla" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "apenis" 
+	elseif reference0 == "nepe" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "shit" 
+	elseif reference0 == "verga" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "fuckboi" 
+	elseif reference0 == "mierda" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "fuckboy" 
+	elseif reference0 == "ctm" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "shitty" 
+	elseif reference0 == "gilipollas" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "pieceofshit" 
+	elseif reference0 == "huevón" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "fucker" 
+	elseif reference0 == "huevon" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "ass" 
+	elseif reference0 == "malparido" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "asshole" 
+	elseif reference0 == "cabron" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "bitch" 
+	elseif reference0 == "cabrón" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
-	elseif reference0 == "cunt" 
+	elseif reference0 == "orto" 
 	{
 		username = tempname
 		Profanity = 1
-		"\0\s[27]\w8\w8\w8\w8You know the show's family friendly, right? \w8\w6I won't stop you, I'm a big boy, but... \w8\w8\w6I see you there.\n\n[half]/
-		\w5\_q\![*]\q[Fuck yeah.,choicefuckyeah]\n/
-		\![*]\q[Wait no I want to be PG-13,choicefamilyfriendly]\e"
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
+	}
+	elseif reference0 == "capullo" 
+	{
+		username = tempname
+		Profanity = 1
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
+	}
+	elseif reference0 == "perra" 
+	{
+		username = tempname
+		Profanity = 1
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
+	}
+	elseif reference0 == "puta" 
+	{
+		username = tempname
+		Profanity = 1
+		"\0\s[27]\w8\w8\w8\w8¿Sabes que esta serie es para todos los públicos, verdad? \w8\w6No voy a detenerte, yo ya estoy grande, pero... \w8\w8\w6Te estoy observando.\n\n[half]/
+		\w5\_q\![*]\q[De puta madre.,choicefuckyeah]\n/
+		\![*]\q[¡No espera! Quiero ser PG-13,choicefamilyfriendly]\e"
 	}
 	elseif reference0 == "mikey" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "michelangelo" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "miguel ángel" 
+	{
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "miguelángel" 
+	{
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "miguel angel" 
+	{
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "miguelangel" 
+	{
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "hamatomikey" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "mikeyhamato" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "michelangelohamato" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "hamatomichelangelo" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "hamatomiguelángel" 
+	{
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "hamatomiguelangel" 
+	{
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "angelo" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "mystichands" 
+	elseif reference0 == "manosmísticas" 
 	{
-		"\0\s[26]Oh, no way, \s[19]that's my brother's name! \w8\s[20]Can I call you something else? \w8He'd get jealous otherwise.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "manosmisticas" 
+	{
+		"\0\s[26]¡Qué, no me digas, \s[19]así se llama mi hermano! \w8\s[20]¿Puedo llamarte de otra manera? \w8Si no, se va a poner celoso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "hamato" 
 	{
-		"\0\s[26]Oh, that's my clan's name. \w8\s[16]Is that your first name? \w8\s[15]That might get really confusing. \w8\s[20]Is there anything else I can call you?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Oh, así es cómo se llama mi clan. \w8\s[16]¿No es ese tu apellido? \w8\s[15]Esto va a ser un lío. \w8\s[20]¿Hay otra manera en la que pueda llamarte?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "shredder" 
 	{
-		"\0\s[34]Huh, you don't say... \w8\w8\w6\s[19]Believe me, \w6that name might sound cool, \w6but you don't really want to be known by that. \w8\w3\s[20]Trust me.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "destructor" 
+	{
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "shreddy" 
 	{
-		"\0\s[34]Huh, you don't say... \w8\w8\w6\s[19]Believe me, \w6that name might sound cool, \w6but you don't really want to be known by that. \w8\w3\s[20]Trust me.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "footclan" 
+	elseif reference0 == "clandelpie" 
 	{
-		"\0\s[34]Huh, you don't say... \w8\w8\w6\s[19]Believe me, \w6that name might sound cool, \w6even though it's not even really a name... \w6but you don't really want to be known by that. \w8\w3\s[20]Trust me.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 aunque ni siquiera es un nombre de verdad...\w6 Pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "footclanrecruit" 
+	elseif reference0 == "clanpie" 
 	{
-		"\0\s[34]Huh, you don't say... \w8\w8\w6\s[19]Believe me, \w6that name might sound cool, \w6even though it's not even really a name... \w6but you don't really want to be known by that. \w8\w3\s[20]Trust me.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 aunque ni siquiera es un nombre de verdad...\w6 Pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "bigmama" 
+	elseif reference0 == "recrutaclandelpie" 
 	{
-		"\0\s[34]Huh, you don't say... \w8\w8\w6\s[19]Believe me, \w6that name might sound cool, \w6but you don't really want to be known by that. \w8\w3\s[20]Trust me.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 aunque ni siquiera es un nombre de verdad...\w6 Pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "april" 
+	elseif reference0 == "recrutaclanpie" 
 	{
-		"\0\s[26]Oh, wow. \w8\w4\s[15]Never thought that was a popular human name. \w8\w4\s[20]\f[italic,true]May\f[italic,false] I call you something else? \w8\s[19]Any other month's a fair game.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 aunque ni siquiera es un nombre de verdad...\w6 Pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "apriloneil" 
+	elseif reference0 == "granmamá" 
 	{
-		"\0\s[26]Oh, wow. \w8\w4\s[15]Never thought that was a popular human name. \w8\w4\s[20]\f[italic,true]May\f[italic,false] I call you something else? \w8\s[19]Any other month's a fair game.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "aprilo'neil" 
+	elseif reference0 == "granmama" 
 	{
-		"\0\s[26]Oh, wow. \w8\w4\s[15]Never thought that was a popular human name. \w8\w4\s[20]\f[italic,true]May\f[italic,false] I call you something else? \w8\s[19]Any other month's a fair game.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "oneilapril" 
+	elseif reference0 == "gran mamá" 
 	{
-		"\0\s[26]Oh, wow. \w8\w4\s[15]Never thought that was a popular human name. \w8\w4\s[20]\f[italic,true]May\f[italic,false] I call you something else? \w8\s[19]Any other month's a fair game.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "o'neilapril" 
+	elseif reference0 == "gran mama" 
 	{
-		"\0\s[26]Oh, wow. \w8\w4\s[15]Never thought that was a popular human name. \w8\w4\s[20]\f[italic,true]May\f[italic,false] I call you something else? \w8\s[19]Any other month's a fair game.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[34]Vaya, no me digas... \w8\w8\w6\s[19]Ese nombre puede sonar genial,\w6 pero créeme cuando te digo,\w6 que no quieres ser reconocido por eso. \w8\w3\s[20]Hazme caso.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "abril" 
+	{
+		"\0\s[26]Oh, guau. \w8\w4\s[15]Nunca me habría imaginado que ese nombre era popular entre los humanos. \w8\w4\s[20]Anonadado \f[italic,true]me hallo\f[italic,false]. \w6¿Puedo llamarte algo diferente? \w8\s[19]Cualquier otro mes me sirve.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "abriloneil" 
+	{
+		"\0\s[26]Oh, guau. \w8\w4\s[15]Nunca me habría imaginado que ese nombre era popular entre los humanos. \w8\w4\s[20]Anonadado \f[italic,true]me hallo\f[italic,false]. \w6¿Puedo llamarte algo diferente? \w8\s[19]Cualquier otro mes me sirve.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "abrilo'neil" 
+	{
+		"\0\s[26]Oh, guau. \w8\w4\s[15]Nunca me habría imaginado que ese nombre era popular entre los humanos. \w8\w4\s[20]Anonadado \f[italic,true]me hallo\f[italic,false]. \w6¿Puedo llamarte algo diferente? \w8\s[19]Cualquier otro mes me sirve.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "oneilabril" 
+	{
+		"\0\s[26]Oh, guau. \w8\w4\s[15]Nunca me habría imaginado que ese nombre era popular entre los humanos. \w8\w4\s[20]Anonadado \f[italic,true]me hallo\f[italic,false]. \w6¿Puedo llamarte algo diferente? \w8\s[19]Cualquier otro mes me sirve.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "o'neilabril" 
+	{
+		"\0\s[26]Oh, guau. \w8\w4\s[15]Nunca me habría imaginado que ese nombre era popular entre los humanos. \w8\w4\s[20]Anonadado \f[italic,true]me hallo\f[italic,false]. \w6¿Puedo llamarte algo diferente? \w8\s[19]Cualquier otro mes me sirve.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "casey" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "caseyjr" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "caseyjones" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "jonescasey" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "caseyii" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cassey" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "casseyjr" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cas" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cassandra" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cassandrajones" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "jonescassandra" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cass" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cassjones" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "casjunior" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "caseyjunior" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "casseyjunior" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cassjunior" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "casey jones junior" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "cassey jones junior" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "casjones" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "jonescas" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "jonescass" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[33]Uhhh, can I call you anything else? \w8\w6\s[19]You see, \w4I have not one but \w6TWO friends named Casey. \w8Well, Cassey and Casey, \w6so you see, \w6it's already confusing- \w8\s[20]Is there anything else you go by?\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[33]Emmm, ¿puedo llamarte otra cosa? \w8\w6\s[19]Verás, \w4yo no tengo uno si no \w6DOS amigos que se llaman Casey. \w8Bueno, es Cassey y Casey, \w6y como ya puedes ver, \w6ya es bastante confuso- \w8\s[20]¿Hay algún otro nombre que suelas usar?\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "draxum" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "barondraxum" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "baróndraxum" 
+	{
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "draxumbaron" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "draxumbarón" 
+	{
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "albearto" 
 	{
 		username = tempname
-		"\0\s[26]Oh, you were named after a pizza mascot? \w8\s[20]That's cool."
+		"\0\s[26]Oh, ¿te pusieron el nombre de la mascota de una pizzería? \w8\s[20]Genial."
 	}
-	elseif reference0 == "atomiclass" 
+	elseif reference0 == "chicaatómica" 
 	{
 		username = tempname
-		"\0\s[26]Oh, fellow Jupiter Jim fan? \w8\s[20]I haven't heard that name for... \w8\s[100]A long time\w3.\w3.\w3."
+		"\0\s[26]Oh, ¿también eres fan de Jupiter Jim? \w8\s[20]No he oído ese nombre en... \w8\s[100]Mucho tiempo\w3.\w3.\w3."
 	}
-	elseif reference0 == "mscuddles" 
+	elseif reference0 == "chicaatomica" 
 	{
-		"\0\s[26]Oh, really? \w8\w4\s[34]Do you have Ms. in your name, or- \w8\s[15]That's confusing... \w8\w3\s[20]Mind if I call you anything else?\![open,inputbox,OnNameTeach,-1]"
+		username = tempname
+		"\0\s[26]Oh, ¿también eres fan de Jupiter Jim? \w8\s[20]No he oído ese nombre en... \w8\s[100]Mucho tiempo\w3.\w3.\w3."
 	}
-	elseif reference0 == "frankenfoot" 
+	elseif reference0 == "sraabrazos" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]¿Eh, en serio? \w8\w4\s[34]Lo de Sra. viene incluido en el nombre o- \w8\s[15]Vaya lío... \w8\w3\s[20]¿Te importaría si te llamo de otra manera?\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "ghostbear" 
+	elseif reference0 == "frankenpie" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
+	}
+	elseif reference0 == "fantasmoso" 
+	{
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "hueso" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "huginn" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "huesojr" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "jupiterjim" 
 	{
-		"\0\s[0]Ooooo, fellow Jupiter Jim fan? \w8\w4\s[22]Gosh, I miss those movies... \w8\w8\w5\s[20]May I call you something else though? \w8The nostalgia is too strong.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[0]Oooooh, ¿también eres fan de Jupiter Jim? \w8\w4\s[22]Dios, cómo echo de menos las películas... \w8\w8\w5\s[20]Aunque, ¿podría llamarte algo diferente? \w8La nostalgia es demasiado fuerte.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "kendra" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "mayhem" 
+	elseif reference0 == "caos" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "muninn" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "piebald" 
+	elseif reference0 == "motita" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "repomantis" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w6\s[15]Well his actual name is Garry or something but I keep forgetting it- \w4\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w6\s[15]Bueno, en realidad se llama Garry o algo así pero se me sigue olvidando- \w4\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "rupert" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "meatsweats" 
+	elseif reference0 == "carnesofrita" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name.\w6\s[15]Well his actual name is Rupert but we rarely call him that- \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre.\w6\s[15]Bueno, en realidad se llama Rupert pero casi nunca le llamamos así- \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "rupertswaggart" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "swaggartrupert" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "harold" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "stanley" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "shelldon" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "sloppyjoseph" 
+	elseif reference0 == "viscosojoseph" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "baxter" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "basterstockboy" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "stockboy" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "stockboybaxter" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "sunita" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "todd" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "warren" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "warrenstone" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
-	elseif reference0 == "bullhop" 
+	elseif reference0 == "botorones" 
 	{
-		"\0\s[26]Oh, what a coincidence. \w8\w4\s[19]I actually know someone with the same name. \w8\s[20]Is there anything else you go by? \w8For less confusion.\![open,inputbox,OnNameTeach,-1]"
+		"\0\s[26]Vaya, qué coincidencia. \w8\w4\s[19]Da la casualidad de que conozco a alguien con el mismo nombre. \w8\s[20]¿Hay algún otro nombre que suelas usar? \w8Para evitar confusión.\![open,inputbox,OnNameTeach,-1]"
 	}
 	elseif reference0 == "" //This is if the user doesn't put in a name at all, since that'd also get awkward in dialogue.
 	{
 		
 		if firstboot == 1
 		{
-			username = "Rookie" //this sets the user's name to USER.
+			username = "Recruta" //this sets the user's name to USER.
 			NameDone
 		}
 		else
-			username = "Rookie" //this sets the user's name to USER.
-			"\0\s[0]Shy, huh? \w8Don't worry, \s[20]I won't swing a sword at you   \s[0]or anything. \w8\s[28]Again. \w8\w8\w4\s[0]For now I'll call you Rookie, 'kay?\e"
+			username = "Recruta" //this sets the user's name to USER.
+			"\0\s[0]Te da vergüenza contestar, ¿eh? \w8No te preocupes, \s[20]No blandiré mi espada en tu dirección \s[0]u otra cosa. \w8\s[28]De nuevo. \w8\w8\w4\s[0]Por ahora te llamaré Recruta, ¿de acuerdo?\e"
 		//You can change this snip to whatever.
 	}
 	else //if the user put in something not specified above, ie a proper name the ghost can use. 
@@ -764,7 +860,7 @@ Select.choicenoodle
 	}
 	else
 	{
-		"\0\s[0]Yeah. \w8Noodle. \s[100]\w8Nice."
+		"\0\s[0]Sí. \w8Noodle. \s[100]\w8Bien."
 	}
 }
 
@@ -776,7 +872,7 @@ Select.choicewaffle
 	}
 	else
 	{
-		"\0\s[0]Yeah. \w8Waffle. \s[100]\w8Nice."
+		"\0\s[0]Sí. \w8Waffle. \s[100]\w8Bien."
 	}
 }
 
@@ -788,7 +884,7 @@ Select.choicesoupy
 	}
 	else
 	{
-		"\0\s[0]Yeah. \w8Soupy. \s[100]\w8Nice."
+		"\0\s[0]Sí. \w8Tallarín. \s[100]\w8Bien."
 	}
 }
 Select.choicecracker
@@ -799,13 +895,13 @@ Select.choicecracker
 	}
 	else
 	{
-		"\0\s[0]Yeah. \w8Cracker. \s[100]\w8Nice."
+		"\0\s[0]Sí. \w8Cracker. \s[100]\w8Bien."
 	}
 }
 
 Select.choicenameno
 {
-	"\0\s[0]Oh, how can I call you, then?\![open,inputbox,OnNameTeach,-1]\e"
+	"\0\s[0]Oh, ¿entonces cómo te llamo?\![open,inputbox,OnNameTeach,-1]\e"
 }
 
 Select.choicefuckyeah
@@ -817,13 +913,13 @@ Select.choicefuckyeah
 	else
 	{
 		bigmood -=15
-		"\0\s[27]\w5.\w5.\w5. \s[120]Tch.\e"
+		"\0\s[27]\w5.\w5.\w5. \s[120]Bah.\e"
 	}
 }
 
 Select.choicefamilyfriendly
 {
-	"\0\s[20]Oh, well then, what will it be?\![open,inputbox,OnNameTeach,-1]\e"
+	"\0\s[20]Oh, está bien, ¿qué va a ser?\![open,inputbox,OnNameTeach,-1]\e"
 }
 
 
@@ -843,25 +939,25 @@ Select.titlenone
 
 Select.titlemr
 {
-		username = "Mr. " + tempname
+		username = "Sr. " + tempname
 		NameDone
 }
 
 Select.titlemaster
 {
-		username = "Master " + tempname
+		username = "Amo " + tempname
 		NameDone
 }
 		
 Select.titlems
 {
-		username = "Ms. " + tempname
+		username = "Sra. " + tempname
 		NameDone
 }
 
 Select.titlelady
 {
-		username = "Lady " + tempname
+		username = "Señorita " + tempname
 		NameDone
 }
 
@@ -887,11 +983,11 @@ NameDone
 		firstboot = 0 //this turns the flag off
 		
 		//This dialogue will display the first time the user puts in their name. You might want to add some closing thoughts to the introduction your ghost had in OnFirstBoot, or directions about how to use the ghost, or something like that. It's up to you!
-		"\![enter,passivemode]\0\s[0]Well, hello %(username). \w8\w4\s[23]I know we've just met, \w5and I don't want to be rude, \w5\s[17]but\w3.\w3.\w3. \w8\w6\s[16]Where the \w5\f[sub,true]s\f[sub,false]HELL \w4am I?\n\n[half] \w8\w5\w4\s[16]\i[5]*You tell Leonardo that \s[26]\i[5]he is currently inside of your computer.\n\n[half]\s[26]\w8\w4A\w3h\w3.\w3.\w3. \w8\w4\s[17]I'd have a hard time believing that, \w5but, \w5\s[18]considering we're at war with aliens that came from another dimension over at where I'm from, \w3\s[0]ending up in some computer's dimension doesn't seem too weird.\w8\w5\n\s[23]You don't have any meaty, \w8tentacle-looking things in your files, right?\w8\w8\w8\w8\w8\s[27]      \f[sub,true]I'll know.\f[sub,false]\w8\w8\w4\x\s[0]\i[5]*You explain that \s[26]\i[5]you know about him and his world.\n\n[half]\w8\w6.\w4.\w4. \s[26]\w8Let me get this straight- \s[17]\w6you know about me, \w4my friends, \w4my family, \w4but mostly about my teen years with alarming, \w4border-on-stalking accuracy?\n\s[27]\i[5]\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5. \s[0]Alright.\n\w8\w8\w8What? \w8\s[19]My embarrassing teenage past doesn't mean much in the apocalypse world. \w8\w4\s[20]Your blackmail is useless! \w8\w4And, \w3\s[19]on top of that, \w3I already had a look-sy at your files!\n\w8\w4\s[23]You don't want me blabbering about \w6\f[italic,true]that\f[italic,false] \w6folder, \w3do you?~\w8\w4\x\s[23]\i[5].\w5.\w5.\s[0]Heh. \w8\s[22]It's been a while since I've been somewhere this\w3.\w3.\w3. \w8Peaceful.\n\w8\w8\s[17]I should probaby go back to my world though. \w8\w3I have,\n\w3uh, \w3\s[100]responsibilities.\w3.\w3. \w8I don't want to be away for too long.\w8\w8\w8\w6\c\s[36]\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\n\s[35]\w3.\w3.\w3.af\w3t\w3e\w3r my mystic juices recharge. \w8\w3H\w3a\w3h\w3a\w3.\w3.\w3. \w8\w5\s[0]I hope you won't mind company of a handsome mutant leader turtle for a bit of time\w2.\w2.\w2.\n\n[half]\i[5]*Looks like you can double click his body to open his menu, right click him to open the SSP menu, or press Ctrl to scroll through the text. \w5You can also move your cursor on his head to pet him.\s[0]\![leave,passivemode]\e"
+		"\![enter,passivemode]\0\s[0]Bueno, hola %(username). \w8\w4\s[23]Sé que acabamos de conocernos, \w5y no quiero ser maleducado, \w5\s[17]pero\w3.\w3.\w3. \w8\w6\s[16]¿Dónde \w5\f[sub,true]s\f[sub,false]DEMONIOS \w4estoy?\n\n[half] \w8\w5\w4\s[16]\i[5]*Le dices a Leonardo que \s[26]\i[5]en estos momentos se encuentra dentro de tu ordenador.\n\n[half]\s[26]\w8\w4A\w3h\w3.\w3.\w3. \w8\w4\s[17]En otras circunstancias, me habría costado creer en algo como esto, \w5pero, \w5\s[18]teniendo en cuenta que de donde soy yo estamos en guerra con aliens que han venido desde otra dimensión, \w3\s[0]acabar metido en la dimensión de un ordenador no me resulta demasiado raro.\w8\w5\n\s[23]No tienes cosas carnosas \w8y con apariencia de tentáculo en tus carpetas, ¿verdad?\w8\w8\w8\w8\w8\s[27]      \f[sub,true]Lo averiguaré.\f[sub,false]\w8\w8\w4\x\s[0]\i[5]*Explicas que \s[26]\i[5]sabes sobre él y sobre su mundo.\n\n[half]\w8\w6.\w4.\w4. \s[26]\w8A ver si me ha quedado claro- \s[17]\w6sabes sobre mí, \w4mis amigos, \w4mi familia, \w4pero sobre todo sobre mis años de juventud con una alarmante, \w4casi siendo acosadora exactitud?\n\s[27]\i[5]\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5. \s[0]De acuerdo.\n\w8\w8\w8¿Qué? \w8\s[19]Mis embarazosos años de adolescencia no significan nada en un mundo apocalíptico. \w8\w4\s[20]¡Tu chantaje no sirve para nada! \w8\w4Y, \w3\s[19]te diré más, \w3¡ya le he echado un ojeada a tus archivos!\n\w8\w4\s[23]No querrás que me vaya de la lengua y cuente lo de \w6\f[italic,true]esa\f[italic,false] \w6carpeta, \w3¿verdad que no~?\w8\w4\x\s[23]\i[5].\w5.\w5.\s[0]Je. \w8\s[22]Ha pasado tiempo desde la última vez que he estado en un lugar tan\w3.\w3.\w3. \w8Tranquilo.\n\w8\w8\s[17]Aunque seguramente debería de volver ya a mi mundo. \w8\w3Tengo,\n\w3em, \w3\s[100]responsabilidades.\w3.\w3. \w8No quiero estar fuera demasiado rato.\w8\w8\w8\w6\c\s[36]\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\w5.\n\s[35]\w3.\w3.\w3. Des\w3pu\w3é\w3s de que mi energía mística se haya cargado. \w8\w3J\w3a\w3j\w3a\w3.\w3.\w3. \w8\w5\s[0]Espero que no te moleste la compañía de una apuesta tortuga mutante líder por un ratito\w2.\w2.\w2.\n\n[half]\i[5]*Parece que puedes hacer doble click sobre su cuerpo para abrir el menú, botón secundario sobre él para abrir el menú de SSP, o pulsar Ctrl para adelantar el texto. \w5También puedes mover el ratón sobre su cabeza para acariciarle.\s[0]\![leave,passivemode]\e"
 	}
 	else
 	{
-		"\0\s[0]%(username)? \w8\w2Cool. \w8\w2I'll stick to Leon myself.\e"
+		"\0\s[0]%(username)? \w8\w2Genial. \w8\w2Yo me quedaré con Leon.\e"
 	//Rewrite this as you like. Note the %(username) tag here, as you should be well familiar with by now from the walkthrough and the other .dic files. That will display the name the user just created.
 	}	
 }

@@ -1,45 +1,57 @@
 -----Leonardo-----
 
 
-This is the ghost/ukagaka of Future Leonardo, based on  TV series and a movie Rise of the Teenage Mutant Ninja Turtles by Nickelodeon. WARNING - this thing is loaded with headcanons and subpar writing that might be seen as OOC to some people. Leonardo is pretty friendly, using the time he's stuck in your computer as a break from his duties. He doesn't mind keeping you company or answer your questions, but he can get upset over what you choose to ask him...
+Este es el ghost/ukagaka de Leonarde del Futuro, basado en la serie de TV y película El Ascenso de las Tortugas Ninja de Nickelodeon. ADVERTENCIA - esta cosa está llena de headcanons y con una escritura mediocre por lo que podría parecer fuera del personaje para algunos. Leonardo es bastante buena gente, usando el tiempo que pasa atrapado en tu ordenador cómo descanso de su deber. No le importa darte compañía o responder a tus preguntas, pero se puede disgustar dependiendo de lo que le preguntes...
 
-Leonardo can do most standard Ghost functions, such as...
+Leonardo puede hacer las funciones básicas de cualquier Ghost, tal como...
 
--fixing your system's clock
--emptying your recycle bin
--checking if you have new email (if you set your POP settings properly)
--setting an image as your desktop wallpaper
+-arreglar el reloj del sistema
+-vaciar la papelera de reciclaje
+-comprobar si has recibido correo (solo si los ajustes POP se han configurado correctamente)
+-establecer una imagen cómo fondo de escritorio
 
-and he will also say random bits of dialogue as he loafs around your computer, though you can change the frequency of that in his config menu if you want him to talk more or less. WARNING - this is LOADED with spoilers for the WHOLE 2018 show and the 2022 movie.
+y también comentará aleatoriamente mientras holgazanea en tu ordenador, aunque si quieres que hable más a menudo o menos, puedes cambiar la frecuencia en la que lo hace desde el menú de configuración. ADVERTENCIA - este ghost está CARGADO de spoilers de TODA la serie de 2018 y de la película de 2022.
 
-You can ask Leonardo questions, give him something every day, inquire about his family and friends, and even learn about his most traumatic experiences, including what happened to folks that are no longer around! If he grows to like you and trust you enough, that is.
+Puedes hacer preguntas a Leonardo, darle algo cada día, preguntar sobre su familia y amigos, e incluso aprender sobre sus experiencias más traumáticas, ¡incluyendo lo que les pasó a todos aquellos que ya no están entre nosotros! Eso sí, solo si le llegas a gustar y confía en ti lo suficiente.
 
-You can pet his head via stroking the top of his head with your mouse cursor. Don't be surprised if he gets embarrassed about it, though.
+Puedes acariciarle la cabeza moviendo ligeramente el ratón sobre ella. Que no te sorprenda si le da vergüenza que lo hagas.
 
-The longer you know him and more you talk to him, the more he will grow to know you. As the time goes on, he may start to say new things, and, depending on what he reveals, give more answers to questions. You can check on his mood through the stat screen in the menu, and you can also reset him if you want to undo what he knows of you. 
+Cuanto más hables con él y cuanto más le conozcas, más llegará a saber de ti. A medida que pase el tiempo, puede empezar a decir cosas nuevas, y, dependiendo de lo que revele, dará respuestas nuevas a las preguntas que le hagas. Puedes mirar su estado de ánimo en el menú de estado desde el menú principal, y también puedes reiniciarlo si quieres que se desvanezca todo lo que sabe sobre ti. 
 
-Be warned that some things can't be completely erased though...
+Se consciente de que algunas cosas no pueden ser totalmente eliminadas...
 
 
-@-----Hotkeys
+@-----Atajos de teclado
 --
-t - say something
-r - repeat what he last said
-f1 - open the readme
-ctrl - scroll through text (in case you are tired of seeing the same line, but be careful with that)
+t - decir algo
+r - repetir lo último que ha dicho
+f1 - abrir el léeme
+ctrl - avanzar el texto (por si te cansas de ver las mismas frases, pero ten cuidado)
 --
 
 
-Thanks for downloading him and have fun! Let me know if you run into any bugs or anything - from grammar issues to actual bugs. You're also welcome to ask me more in-deep questions about how he works, or just send me your favourite moments or improvment suggestions.
+¡Gracias por descargartelo y que te lo pases bien! Avisame si te encuentras con algún bug o algo - desde errores gramáticos hasta bugs de verdad. También te invito a hacer preguntas más en profundidad sobre cómo funciona Leo, o a enviarme tus momentos favoritos o sugerencias de mejora.
 
 -Venelona
 https://venelona.tumblr.com/
 https://www.tumblr.com/venelona-turtle-den
 https://twitter.com/Venelona
 
-You can also check out the person who inspired this thing and provided a template for all to make your own desktop buddy
+También puedes mirar la persona quien inspiró todo esto y la que proporcionó una base para todos aquellos que quieran hacer su propio compañero de escritorio.
 -Zarla
 www.ashido.com
 zarla-s.tumblr.com
 zarla.deviantart.com
 
+-Traducción al Español-
+
+¡Hola a todo el mundo, soy Celeste! Y os traigo esta traducción que he hecho con todo el cariño para que podáis tener a Leo del futuro de El Ascenso de Las Tortugas Ninja como vuestro amigo y que os haga compañia desde la pantalla :D
+
+Antes de que os metáis de lleno con él, me gustaría dar una pequeña explicación sobre cómo he afrontado esta traducción:
+Soy española pero soy consciente de que la mayoría de personas que van a jugar con Leo son de Latinoamérica por lo que he decidido poner todos los nombres de los personajes que se mencionan en este ghost siguendo el doblaje latino, mientras que la manera de hablar de Leo va a sonar un tanto castellana y neutra.
+No quería imitar la manera de hablar de México ya que sabía que no iba a poder hacerle justicia por lo que he optado por la opción más «segura» para mí. Sé que esto no le va a gustar a todo el mundo aunque eso no quita que he hecho esto con todo el cariño e ilusión de un fan y gratis.
+
+Puedo decir que he hecho lo mejor que he podido y SIN USAR IA. Espero que os guste mucho y que lo compartáis con los amigos si queréis.
+
+Pues nada, ya no os mareo más. Aquí os dejo mi tumblr para que me podáis informar si encotráis alguna errata o algo feo o solo para pasarme pantallazos de algo que os haya hecho gracia. ¡Besitos y a beber agua!
+https://rosecelestereblog.tumblr.com/
